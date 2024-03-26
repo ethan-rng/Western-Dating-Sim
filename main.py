@@ -22,16 +22,16 @@ font_title = pygame.font.SysFont(None, 100)
 font = pygame.font.SysFont(None, 55)
 
 # Main Menu Items
-menu_items = ['Start New Game', 'Load Game', 'Tutorials', 'High Scores', 'Exit']
+menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
 
 def draw_menu():
     screen.fill(BLACK)
-    title = font_title.render('Western Dating Simulator', True, WHITE)
-    screen.blit(title, (screen_width // 2 - title.get_width() // 2, screen_height -  4 * (screen_height // 5)))
+    title = font_title.render("Western Dating Simulator", True, WHITE)
+    screen.blit(title, (screen_width // 2 - title.get_width() // 2, screen_height -  6 * (screen_height // 7)))
     for index, item in enumerate(menu_items):
         menu_text = font.render(item, True, WHITE)
-        x = screen_width // 2 - (menu_text.get_width() // 2)
-        y = screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 90)
+        x = 0 + screen_width // 10
+        y = screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 60)
         screen.blit(menu_text, (x, y))
     pygame.display.flip()
 
@@ -49,8 +49,8 @@ def main_menu():
                # Check if mouse click is within the bounds of any menu item
                 for index, item in enumerate(menu_items):
                     menu_text = font.render(item, True, WHITE)
-                    x = screen_width // 2 - (menu_text.get_width() // 2)
-                    y = screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 90)
+                    x = 0 + screen_width // 10
+                    y = screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 60)
                     item_rect = menu_text.get_rect(topleft=(x, y))
                     if item_rect.collidepoint(event.pos):
                         menu_click(index)
@@ -63,14 +63,20 @@ def menu_click(index):
         print("Start the Game")
     elif index == 1:
         print("Load Game")
-    #takes you to the tutorial menu
+    #takes you to the highscores table
     elif index == 2:
-        print("Tutorials")
-    #takes you to the high scores table
+        print("Highscores")
+    #takes you to the albums
     elif index == 3:
-        print("High Scores")
-    #quits the game
+        print("Album")
+    #takes you to settings
     elif index == 4:
+        print("Settings")
+    #takes you to help menu
+    elif index == 5:
+        print("Help")
+    #quits the game
+    elif index == 6:
         pygame.quit()
         sys.exit()
 
