@@ -15,7 +15,6 @@ pygame.display.set_caption("Dating Simulator Ver. Western")
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-PURPLE = (160, 32, 240)
 
 # Font setup
 font = pygame.font.SysFont(None, 45)
@@ -29,6 +28,9 @@ logo = pygame.image.load("logo.png").convert()
 logo = pygame.transform.scale(logo, (screen_width // 4, screen_height // 5))
 title = pygame.image.load("title.png").convert()
 title = pygame.transform.scale(title, (screen_width // 4, screen_height // 4 - screen_height // 5))
+
+#load sounds
+click_sfx = pygame.mixer.Sound("assets\click.wav")
 
 # Main Menu Items
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
@@ -51,7 +53,8 @@ def draw_menu():
 
 def main_menu():
     menu_active = True
-    while menu_active:
+    while menu_active:  
+        #checks for the actions of the player
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -62,15 +65,16 @@ def main_menu():
             if event.type == pygame.MOUSEBUTTONDOWN:
                # Check if mouse click is within the bounds of any menu item
                 for index, item in enumerate(menu_items):
-                    menu_text = font.render(item, True, WHITE)
-                    x = x = screen_width // 8 - (menu_text.get_width() // 2)
+                    menu_text = font.render(item, True, BLACK)
+                    x = screen_width // 8 - (menu_text.get_width() // 2)
                     y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
                     item_rect = menu_text.get_rect(topleft=(x, y))
                     if item_rect.collidepoint(event.pos):
+                        click_sfx.play()
                         menu_click(index)
         
         draw_menu()
-  
+
 def menu_click(index):
     # This function handles the menu clicks
     if index == 0:
