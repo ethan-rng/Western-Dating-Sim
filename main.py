@@ -43,6 +43,9 @@ logo = pygame.transform.scale(logo, (screen_width // 4, screen_height // 5))
 title = pygame.image.load("title.png").convert()
 title = pygame.transform.scale(title, (screen_width // 4, screen_height // 4 - screen_height // 5))
 
+#load sounds
+click_sfx = pygame.mixer.Sound("assets\click.wav")
+
 #load main settings button
 controls_settings_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Controls", WHITE, "controls", pygame)
 sound_settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) , (screen_width/4), (screen_height/13), "Sound Settings", WHITE, "sound", pygame)
@@ -87,7 +90,8 @@ def draw_menu(menu_state):
 
 def main_menu(menu_state):
     menu_active = True
-    while menu_active:
+    while menu_active:  
+        #checks for the actions of the player
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -99,11 +103,12 @@ def main_menu(menu_state):
                # Check if mouse click is within the bounds of any menu item
                 if menu_state == "main":
                     for index, item in enumerate(menu_items):
-                        menu_text = font.render(item, True, WHITE)
-                        x = x = screen_width // 8 - (menu_text.get_width() // 2)
+                        menu_text = font.render(item, True, BLACK)
+                        x = screen_width // 8 - (menu_text.get_width() // 2)
                         y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
                         item_rect = menu_text.get_rect(topleft=(x, y))
                         if item_rect.collidepoint(event.pos):
+                        click_sfx.play()
                             menu_state = menu_click(index)
                             
                 elif menu_state == "settings":
@@ -127,7 +132,7 @@ def main_menu(menu_state):
                     
         
         draw_menu(menu_state)
-  
+
 def menu_click(index):
     # This function handles the menu clicks
     if index == 0:
