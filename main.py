@@ -1,6 +1,7 @@
 import pygame
 import sys
 from components.button import Button
+
 # Initialize Pygame
 pygame.init()
 
@@ -123,9 +124,11 @@ def main_menu(menu_state, controls_keys):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:  # Press ESC to exit menu
                     menu_active = False
+                    
             if event.type == pygame.MOUSEBUTTONDOWN:
                # Check if mouse click is within the bounds of any menu item
                 if menu_state == "main":
@@ -272,7 +275,9 @@ def menu_click(index):
         pygame.quit()
         sys.exit()
 
+
 # Call the main menu
-main_menu(menu_state,controls_keys)
+if __name__ == "__main__":
+    main_menu(menu_state, controls_keys)
 
 

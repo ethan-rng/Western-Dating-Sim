@@ -1,109 +1,63 @@
-from User import User
-import json
-from exceptions import IncorrectPassword, IncorrectPrivilege
-from hashlib import sha256
+from models.User import User
+from models.Player import Player
+from typing import List
+import json, os
+from models.exceptions import UserNotFound
 
 """
-TODO
-: Complete the Developer class implementation
-jumptoScreens(self, screenName: str) -> bool:
-modifyUserStats(self, username: str, stats: dict) -> bool
-debugGame(self) -> bool
+TODO: jumptoScreens(self, screenName: str) -> bool:
+TODO: debugGame(self) -> bool
 """
 
-class Developer(User):
-    Players:List[Player]
+class Developer(Player):
+    Players:List[Player] = []
 
     def __init__(self) -> None:
-        with open(f'../data/AdminPasswords.json') as file:
-            file_data = json.load(file)
-
-        # Attributes to Simulate Player
-        self._charisma = 0
-        self._intelligence = 0
-        self._attraction = 0
-        self._attractionScore = {
-            "Serena": 0,
-            "Grace": 0,
-            "Afnan": 0,
-            "Jack":  0,
-        }
-
-        super().__init__("developer", file_data["developer"])
+        # Loading Users From Memory (only gets run on the first instance the class is called)
+        if len(Developer.Players) == 0:
+            with open(os.path.join('models', 'data', 'UserGameStates.json'), "r") as file:
+                jsonData = json.load(file)
+                for data in jsonData:
+                    Developer.Players.append(Player().loadPlayer(data["username"]))
     
-    # PRIVATE FACING METHODS
-    """ Helper function which checks if the developer is logged in before allowing access (throws IncorrectPrivilege exception) """
-    def _checkPrivilege(self) -> None:
-        if super().LoggedInUser != "developer":
-            raise IncorrectPrivilege()
+        super().__init__()
     
 
     # PUBLIC FACING METHODS
-    """ Overrides the login in the user class (throws IncorrectPassword exception)"""
-    def login(self, password:str) -> None:
-        if super().password == sha256(password.encode()).hexdigest():
-            super().LoggedInUser = self
-        raise IncorrectPassword("developer", password)
-    
     """ Public Method which allows the developer to jump to a specific screen (throws IncorrectPrivilege exception) """
+    # ! WORKING IN PROGRESS
     def jumptoScreen(self, screen:str) -> None:
-        self._checkPrivilege()
+        self._checkDev()
+
 
     """ Public Method which allows the change any user's stats (throws IncorrectPrivilege, KeyError and UserNotFound exception) """
-    def modifyUserStats(self, username:str, stat:str, character:str):
-        self._checkPrivilege()
-
+    def modifyUserStats(self, username:str, character:str, stat:int, attrib:str=""):
+        self._checkDev()
         
+        # Handling Non Existing Username
+        for player in Developer.Players:
+            if player.username == username:
+                if character == "self":
+                    if attrib == "charisma":
+                        player.charisma = stat
+                    elif attrib == "intel":
+                        player.intelligence = stat
+                    elif attrib == "attraction":
+                        player.attraction = stat
+                    elif attrib == "level":
+                        player.level = stat
+                    else:
+                        raise KeyError(attrib)
+                else:
+                    # Will raise KeyError if character does not exist
+                    player.attractionScore[character] = stat
+                
+                player.saveProgress()
+
+        raise UserNotFound(username)    
+
 
     """ Public Method which returns a dictionary of various debugging data (throws IncorrectPrivilege exception) """
+    # ! WORKING IN PROGRESS
     def debugGame(self) -> dict:
-        self._checkPrivilege()
-
-
-    # SETTERS AND GETTERS (All throw IncorrectPrivilege exception)
-    @property
-    def charisma(self):
-        self._checkPrivilege()
-        return self._charisma
-
-    @charisma.setter
-    def charisma(self, value):
-        self._checkPrivilege()
-        self._charisma = value
-
-    @property
-    def intelligence(self):
-        self._checkPrivilege()
-        return self._intelligence
-
-    @intelligence.setter
-    def intelligence(self, value):
-        self._checkPrivilege()
-        self._intelligence = value
-
-    @property
-    def attraction(self):
-        self._checkPrivilege()
-        return self._attraction
-
-    @attraction.setter
-    def attraction(self, value):
-        self._checkPrivilege()
-        self._attraction = value
-
-    @property
-    def attractionScore(self):
-        self._checkPrivilege()
-        return self._attractionScore
-
-    @attractionScore.setter
-    def attractionScore(self, value):
-        self._checkPrivilege()
-        self._attractionScore = value
-
-
-
-
-        
-
-  
+        self._checkDev()
