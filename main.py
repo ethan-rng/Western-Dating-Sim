@@ -26,6 +26,7 @@ font = pygame.font.SysFont(None, 45)
 title_font = pygame.font.SysFont(None, 90)
 
 #create a helper function to draw text on the screen
+""" Helper function to draw text on the screen """
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x,y))
