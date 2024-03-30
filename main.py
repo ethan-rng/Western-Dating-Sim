@@ -39,7 +39,7 @@ menu_state = "main"
 # Load images
 path = os.path.join('view', 'assets', 'tower-thumb.jpg')
 background_image = pygame.image.load(path).convert()
-background_image = pygame.transform.scale(background_image, (screen_width , screen_height))
+background_image = pygame.transform.scale(background_image, (screen_width + 200 , screen_height + 200))
 path = os.path.join('view', 'assets', 'rectangle.png')
 grey_rectangle = pygame.image.load(path).convert()
 grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
@@ -105,6 +105,11 @@ def draw_menu(menu_state: str) -> None:
             x = screen_width // 8 - (menu_text.get_width() // 2)
             y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
             screen.blit(menu_text, (x, y))
+        #write the names of our group
+        message = font.render("Created as a part of CS2212 at Western by Group 29", True, PURPLE)
+        screen.blit(message, (screen_width // 4, 19*screen_height//20))
+        message2 = font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, PURPLE)
+        screen.blit(message2, (screen_width // 4, screen_height))
         pygame.display.flip()
         
     elif menu_state == "settings":
