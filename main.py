@@ -2,6 +2,10 @@ import pygame
 import sys
 import os
 from view.button import Button
+from screens.choices import ChoicesScreen
+from screens.dialoguebox import DialogueBox
+from screens.title import SceneTitle
+
 # Initialize Pygame
 pygame.init()
 
@@ -37,7 +41,7 @@ menu_state = "main"
 # Load images
 path = os.path.join('view', 'assets', 'tower-thumb.jpg')
 background_image = pygame.image.load(path).convert()
-background_image = pygame.transform.scale(background_image, (screen_width + 50, screen_height + 180))
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 path = os.path.join('view', 'assets', 'rectangle.png')
 grey_rectangle = pygame.image.load(path).convert()
 grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
@@ -76,6 +80,29 @@ load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, 
 help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "account", pygame)
 back_controls_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
 
+#load background images
+story_background_image_path = os.path.join('view', 'assets', 'talbot.jpg')
+story_background_image_raw = pygame.image.load(story_background_image_path).convert()
+story_background_image = pygame.transform.scale(story_background_image_raw, (screen_width+200, screen_height+400))
+
+#dialogue
+dialogue_lines = [
+    "A bustling Talbot College hallway...",
+    "You bump into a hurried girl (LI), causing her to drop her music score...",
+    "Oh, sorry! Gotta run!!",
+    "Y/N : Wait!",
+    "She runs off, and you notice a music sheet with contact info for an exam..",
+    "Narrator: She's gone but left a dropped sheet with her contact. Do you return it?"
+]
+current_dialogue_index = 0
+dialogue_images_paths = [
+    os.path.join('view', 'assets', 'talbot-1.jpg'),
+    os.path.join('view', 'assets', 'talbot-2.jpg'),
+    os.path.join('view', 'assets', 'talbot-3.jpg'),
+    os.path.join('view', 'assets', 'talbot-4.jpg'),
+    os.path.join('view', 'assets', 'talbot-5.jpg'),
+    os.path.join('view', 'assets', 'talbot-6.jpg')
+]
 
 # Main Menu Items
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
@@ -128,7 +155,25 @@ def draw_menu(menu_state: str) -> None:
         screen.blit(help, (0,0))
         pygame.display.flip()
 
+    elif menu_state == "start":
+        # Set the window caption for the scene
+        pygame.display.set_caption('Scene Title')
+        # Create a SceneTitle instance
+        scene_title = SceneTitle(screen, 'SCENE 1 Talbot College')
+        # Draw the scene title
+        scene_title.draw()
+        # Update the display
+        pygame.display.flip()
+
+    elif menu_state == "chp1":
+        screen.blit(story_background_image, (0, 0))
+        dialogue_box = DialogueBox(screen, font_size=50, box_height=200)
+        dialogue_text = dialogue_lines[current_dialogue_index]  # Get current line of dialogue
+        dialogue_box.draw(dialogue_text)
+        pygame.display.flip()
+
 def main_menu(menu_state, controls_keys):
+    global current_dialogue_index
     menu_active = True
     while menu_active:  
         #checks for the actions of the player
@@ -252,7 +297,19 @@ def main_menu(menu_state, controls_keys):
                     click_sfx.play()
                     
                     pass
-                    
+
+                elif menu_state == "start":
+                    click_sfx.play()
+                    # Listen for a click to switch to DialogueBox
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        # Here you change the state to display the dialogue box
+                        menu_state = "chp1"
+
+                elif menu_state == "chp1":
+                    click_sfx.play()
+                    current_dialogue_index += 1  # Move to the next dialogue line
+                    if current_dialogue_index >= len(dialogue_lines):  # Loop or end dialogue
+                        current_dialogue_index = 0  # Reset index or change state as needed
         
         draw_menu(menu_state)
 
