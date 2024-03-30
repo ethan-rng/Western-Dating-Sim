@@ -1,6 +1,7 @@
 import pygame
 import sys
-from components.button import Button
+import os
+from view.button import Button
 # Initialize Pygame
 pygame.init()
 
@@ -34,17 +35,25 @@ def draw_text(text, font, text_col, x, y):
 menu_state = "main"
 
 # Load images
-background_image = pygame.image.load("tower-thumb.jpg").convert()
+path = os.path.join('view', 'assets', 'tower-thumb.jpg')
+background_image = pygame.image.load(path).convert()
 background_image = pygame.transform.scale(background_image, (screen_width + 50, screen_height + 180))
-grey_rectangle = pygame.image.load("rectangle.png").convert()
+path = os.path.join('view', 'assets', 'rectangle.png')
+grey_rectangle = pygame.image.load(path).convert()
 grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
-logo = pygame.image.load("logo.png").convert()
+path = os.path.join('view', 'assets', 'logo.png')
+logo = pygame.image.load(path).convert()
 logo = pygame.transform.scale(logo, (screen_width // 4, screen_height // 5))
-title = pygame.image.load("title.png").convert()
+path = os.path.join('view', 'assets', 'title.png')
+title = pygame.image.load(path).convert()
 title = pygame.transform.scale(title, (screen_width // 4, screen_height // 4 - screen_height // 5))
+path = os.path.join('view', 'assets', 'help.png')
+help = pygame.image.load(path)
+help = pygame.transform.scale(help, (screen_width, help.get_height() / (help.get_width() / screen_width)))
 
 #load sounds
-click_sfx = pygame.mixer.Sound("assets\click.wav")
+path = os.path.join('view', 'assets', 'click.wav')
+click_sfx = pygame.mixer.Sound(path)
 
 #load main settings button
 controls_settings_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Controls", WHITE, "controls", pygame)
@@ -112,6 +121,11 @@ def draw_menu(menu_state: str) -> None:
         load_button.draw(screen)
         help_button.draw(screen)
         back_controls_button.draw(screen)
+        pygame.display.flip()
+
+    elif menu_state == 'help':
+        screen.fill(DARK_GRAY)
+        screen.blit(help, (0,0))
         pygame.display.flip()
 
 def main_menu(menu_state, controls_keys):
@@ -273,4 +287,3 @@ def menu_click(index):
 
 # Call the main menu
 main_menu(menu_state,controls_keys)
-
