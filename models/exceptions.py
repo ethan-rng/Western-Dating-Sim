@@ -16,6 +16,10 @@ class IncorrectPassword(Exception):
     def __init__(self, username:str, password:str): 
         super().__init__(f"{username} with {password} password is incorrect")
 
+class IllegalStats(Exception):
+    """An Exception Class raised when a user tries to make an account with an illegal stats combination."""
+    def __init__(self, charisma:int, intelligence:int, attraction:int):
+        super().__init__(f"Cannot make an account with charisma: {charisma}, intel: {intelligence}, attraction: {attraction} stats")
 
 # Admin Level Account Exceptions
 class AdminLevelAccount(Exception):
