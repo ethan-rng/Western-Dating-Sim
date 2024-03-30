@@ -56,10 +56,23 @@ accessibility_settings_button = Button(screen_width/5.4, (screen_height/3) + (sc
 account_settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Account Settings", WHITE, "account", pygame)
 back_settings_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "main", pygame)
 
+#controls settings variables
+controls_keys = {"auto_key": pygame.K_g, "settings_key": pygame.K_ESCAPE, "pause_key": pygame.K_p, "save_key": pygame.K_s, "load_key": pygame.K_l, "help_key": pygame.K_h}
+
+#load controls settings buttons
+auto_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Auto: " + chr(controls_keys["auto_key"]), WHITE, "controls", pygame)
+settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) , (screen_width/4), (screen_height/13), "Settings: " + chr(controls_keys["settings_key"]), WHITE, "sound", pygame)
+pause_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Pause: " + chr(controls_keys["pause_key"]), WHITE, "video", pygame)
+save_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Save: " + chr(controls_keys["save_key"]), WHITE, "language", pygame)
+load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Load: " + chr(controls_keys["load_key"]), WHITE, "accessibility", pygame)
+help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "account", pygame)
+back_controls_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
+
+
 # Main Menu Items
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
 
-def draw_menu(menu_state):
+def draw_menu(menu_state: str) -> None:
     if menu_state == "main":
         #Draw main menu screen
         screen.blit(background_image, (0, 0)) #draws background
@@ -77,7 +90,7 @@ def draw_menu(menu_state):
             screen.blit(menu_text, (x, y))
         pygame.display.flip()
         
-    if menu_state == "settings":
+    elif menu_state == "settings":
         screen.fill(DARK_GRAY)
         draw_text("Settings", title_font, BLACK, screen_width/20, screen_height/16 )
         controls_settings_button.draw(screen)
@@ -87,9 +100,22 @@ def draw_menu(menu_state):
         accessibility_settings_button.draw(screen)
         account_settings_button.draw(screen)
         back_settings_button.draw(screen)
-        pygame.display.flip()        
+        back_controls_button.draw(screen)
+        pygame.display.flip()  
+        
+    elif menu_state == "controls":
+        screen.fill(DARK_GRAY)
+        draw_text("Controls", title_font, BLACK, screen_width/20, screen_height/16 )
+        auto_button.draw(screen)
+        settings_button.draw(screen)
+        pause_button.draw(screen)
+        save_button.draw(screen)
+        load_button.draw(screen)
+        help_button.draw(screen)
+        back_controls_button.draw(screen)
+        pygame.display.flip()
 
-def main_menu(menu_state):
+def main_menu(menu_state, controls_keys):
     menu_active = True
     while menu_active:  
         #checks for the actions of the player
@@ -109,26 +135,109 @@ def main_menu(menu_state):
                         y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
                         item_rect = menu_text.get_rect(topleft=(x, y))
                         if item_rect.collidepoint(event.pos):
-                        click_sfx.play()
+                            click_sfx.play()
                             menu_state = menu_click(index)
-                            
+                
+                #Settings buttons            
                 elif menu_state == "settings":
                     if controls_settings_button.draw(screen):
+                        click_sfx.play()
                         menu_state =  controls_settings_button.draw(screen)
                     elif sound_settings_button.draw(screen):
+                        click_sfx.play()
                         menu_state = sound_settings_button.draw(screen)
                     elif video_settings_button.draw(screen):
+                        click_sfx.play()
                         menu_state = video_settings_button.draw(screen)
                     elif language_settings_button.draw(screen):
+                        click_sfx.play()
                         menu_state = language_settings_button.draw(screen)
                     elif accessibility_settings_button.draw(screen):
+                        click_sfx.play()
                         menu_state = accessibility_settings_button.draw(screen)
                     elif account_settings_button.draw(screen):
+                        click_sfx.play()
                         menu_state = account_settings_button.draw(screen)
                     elif back_settings_button.draw(screen):
+                        click_sfx.play()
                         menu_state = back_settings_button.draw(screen)
-        
-                else:
+                
+                #Controls_buttons
+                elif menu_state == "controls":
+                    if auto_button.draw(screen):
+                        click_sfx.play()
+                        key_pressed = False
+                        while key_pressed == False:
+                            for event in pygame.event.get():
+                                if event.type == pygame.KEYDOWN:
+                                    # Assign the pygame key to the action in the keys dict.
+                                    controls_keys["auto_key"] = event.key
+                                    auto_button.updateText("Auto: " + chr(event.key))
+                                    key_pressed = True  
+
+                    elif settings_button.draw(screen):
+                        click_sfx.play()
+                        key_pressed = False
+                        while key_pressed == False:
+                            for event in pygame.event.get():
+                                if event.type == pygame.KEYDOWN:
+                                    # Assign the pygame key to the action in the keys dict.
+                                    controls_keys["settings_key"] = event.key
+                                    settings_button.updateText("Settings: " + chr(event.key))
+                                    key_pressed = True
+                                    
+                    elif pause_button.draw(screen):
+                        click_sfx.play()
+                        key_pressed = False
+                        while key_pressed == False:
+                            for event in pygame.event.get():
+                                if event.type == pygame.KEYDOWN:
+                                    # Assign the pygame key to the action in the keys dict.
+                                    controls_keys["pause_key"] = event.key
+                                    pause_button.updateText("Pause: " + chr(event.key))
+                                    key_pressed = True
+                                    
+                    elif save_button.draw(screen):
+                        click_sfx.play()
+                        key_pressed = False
+                        while key_pressed == False:
+                            for event in pygame.event.get():
+                                if event.type == pygame.KEYDOWN:
+                                    # Assign the pygame key to the action in the keys dict.
+                                    controls_keys["save_key"] = event.key
+                                    save_button.updateText("Save: " + chr(event.key))
+                                    key_pressed = True
+                                    
+                    elif load_button.draw(screen):
+                        click_sfx.play()
+                        key_pressed = False
+                        while key_pressed == False:
+                            for event in pygame.event.get():
+                                if event.type == pygame.KEYDOWN:
+                                    # Assign the pygame key to the action in the keys dict.
+                                    controls_keys["load_key"] = event.key
+                                    load_button.updateText("Load: " + chr(event.key))
+                                    key_pressed = True
+                                    
+                    elif help_button.draw(screen):
+                        click_sfx.play()
+                        key_pressed = False
+                        while key_pressed == False:
+                            for event in pygame.event.get():
+                                if event.type == pygame.KEYDOWN:
+                                    # Assign the pygame key to the action in the keys dict.
+                                    controls_keys["help_key"] = event.key
+                                    help_button.updateText("Help: " + chr(event.key))
+                                    key_pressed = True
+                                    
+                    elif back_controls_button.draw(screen):
+                        click_sfx.play()
+                        menu_state = back_controls_button.draw(screen)
+                
+                #sound settings
+                elif menu_state == "sound":
+                    click_sfx.play()
+                    
                     pass
                     
         
@@ -164,6 +273,6 @@ def menu_click(index):
         sys.exit()
 
 # Call the main menu
-main_menu(menu_state)
+main_menu(menu_state,controls_keys)
 
 
