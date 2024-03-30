@@ -1,6 +1,8 @@
-from User import User
-from Player import Player
+from models.User import User
+from models.Player import Player
 from typing import List
+import json, os
+
 """
 TODO
 : Complete the Instructor class implementation
@@ -25,14 +27,6 @@ class Instructor(User):
                     Instructor.Players.append(Player(data["username"], data["password"], data["charisma"], data["intel"], data["attraction"]))
 
         return super().login("instructor", password)
-
-    # Overriding the Login Method
-    def login(self, password: str) -> bool:
-        if PASSWORD == hash(password):
-            super().LoggedInUser = self
-            return True
-        return False
-        
 
     def viewStats(self, screen: str) -> bool:
         if super().LoggedInUser != "developer":

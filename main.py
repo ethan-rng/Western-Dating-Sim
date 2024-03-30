@@ -2,7 +2,10 @@ import pygame
 import sys
 import os
 from view.button import Button
-from view.slider import Slider
+from screens.choices import ChoicesScreen
+from screens.dialoguebox import DialogueBox
+from screens.title import SceneTitle
+
 # Initialize Pygame
 pygame.init()
 
@@ -31,6 +34,7 @@ title_font = pygame.font.SysFont(None, 90)
 baby_font = pygame.font.SysFont(None, 20)
 
 #create a helper function to draw text on the screen
+""" Helper function to draw text on the screen """
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x,y))
@@ -41,7 +45,7 @@ menu_state = "main"
 # Load images
 path = os.path.join('view', 'assets', 'tower-thumb.jpg')
 background_image = pygame.image.load(path).convert()
-background_image = pygame.transform.scale(background_image, (screen_width + 200 , screen_height + 200))
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 path = os.path.join('view', 'assets', 'rectangle.png')
 grey_rectangle = pygame.image.load(path).convert()
 grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
@@ -89,16 +93,29 @@ load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, 
 help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "help_ctrl", pygame)
 back_controls_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
 
-#sound settings variables
-general_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4), (screen_width/1.8,20), "Game Volume", 0.5, 0, 100)
-music_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + screen_height//6), (screen_width/1.8,20), "Music Volume", 0.5, 0, 100)
-sfx_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + (screen_height//6 *2)), (screen_width/1.8,20), "SFX Volume", 0.5, 0, 100)
-back_volume_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
+#load background images
+story_background_image_path = os.path.join('view', 'assets', 'talbot.jpg')
+story_background_image_raw = pygame.image.load(story_background_image_path).convert()
+story_background_image = pygame.transform.scale(story_background_image_raw, (screen_width+200, screen_height+400))
 
-#load help menu buttons
-back_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "main", pygame)
-next_button = Button(6.5*screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Next", GRAY , "help2", pygame)
-back_to_help1_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "help", pygame)
+#dialogue
+dialogue_lines = [
+    "A bustling Talbot College hallway...",
+    "You bump into a hurried girl (LI), causing her to drop her music score...",
+    "Oh, sorry! Gotta run!!",
+    "Y/N : Wait!",
+    "She runs off, and you notice a music sheet with contact info for an exam..",
+    "Narrator: She's gone but left a dropped sheet with her contact. Do you return it?"
+]
+current_dialogue_index = 0
+dialogue_images_paths = [
+    os.path.join('view', 'assets', 'talbot-1.jpg'),
+    os.path.join('view', 'assets', 'talbot-2.jpg'),
+    os.path.join('view', 'assets', 'talbot-3.jpg'),
+    os.path.join('view', 'assets', 'talbot-4.jpg'),
+    os.path.join('view', 'assets', 'talbot-5.jpg'),
+    os.path.join('view', 'assets', 'talbot-6.jpg')
+]
 
 # Main Menu Items
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
@@ -197,7 +214,25 @@ def draw_menu(menu_state: str) -> None:
         pygame.display.flip()
     
 
+    elif menu_state == "start":
+        # Set the window caption for the scene
+        pygame.display.set_caption('Scene Title')
+        # Create a SceneTitle instance
+        scene_title = SceneTitle(screen, 'SCENE 1 Talbot College')
+        # Draw the scene title
+        scene_title.draw()
+        # Update the display
+        pygame.display.flip()
+
+    elif menu_state == "chp1":
+        screen.blit(story_background_image, (0, 0))
+        dialogue_box = DialogueBox(screen, font_size=50, box_height=200)
+        dialogue_text = dialogue_lines[current_dialogue_index]  # Get current line of dialogue
+        dialogue_box.draw(dialogue_text)
+        pygame.display.flip()
+
 def main_menu(menu_state, controls_keys):
+    global current_dialogue_index
     menu_active = True
     while menu_active:  
         #checks for the actions of the player
@@ -205,9 +240,11 @@ def main_menu(menu_state, controls_keys):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:  # Press ESC to exit menu
                     menu_active = False
+                    
             if event.type == pygame.MOUSEBUTTONDOWN:
                # Check if mouse click is within the bounds of any menu item
                 if menu_state == "main":
@@ -326,48 +363,20 @@ def main_menu(menu_state, controls_keys):
                 elif menu_state == "sound":
                     click_sfx.play()
                     
-                    mouse_pos = pygame.mouse.get_pos()
-                    mouse = pygame.mouse.get_pressed()
-                    
-                    if general_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        general_volume_slider.move_slider(mouse_pos)
-                        general_volume_slider.updateText()
-                        click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
-                    general_volume_slider.draw(screen)
-                    
-                    if music_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        music_volume_slider.move_slider(mouse_pos)
-                        music_volume_slider.updateText()
-                        #add set volume function once music is added
-                    general_volume_slider.draw(screen)
-                    
-                    if sfx_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        sfx_volume_slider.move_slider(mouse_pos)
-                        sfx_volume_slider.updateText()
-                        click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
-                    general_volume_slider.draw(screen)
-                    
-                    
-                    if back_controls_button.draw(screen):
-                        click_sfx.play()
-                        menu_state = back_controls_button.draw(screen)
-                    
+                    pass
 
-                #help menu page 1
-                elif menu_state == "help":
-                    if back_button.draw(screen):
-                        click_sfx.play()
-                        menu_state = back_button.draw(screen)
-                    elif next_button.draw(screen):
-                        click_sfx.play()
-                        menu_state = next_button.draw(screen)
-                
-                #help menu page 2
-                elif menu_state == "help2":
-                    if back_to_help1_button.draw(screen):
-                        click_sfx.play()
-                        menu_state = back_to_help1_button.draw(screen)
-                    
+                elif menu_state == "start":
+                    click_sfx.play()
+                    # Listen for a click to switch to DialogueBox
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        # Here you change the state to display the dialogue box
+                        menu_state = "chp1"
+
+                elif menu_state == "chp1":
+                    click_sfx.play()
+                    current_dialogue_index += 1  # Move to the next dialogue line
+                    if current_dialogue_index >= len(dialogue_lines):  # Loop or end dialogue
+                        current_dialogue_index = 0  # Reset index or change state as needed
         
         draw_menu(menu_state)
 
@@ -400,5 +409,8 @@ def menu_click(index):
         pygame.quit()
         sys.exit()
 
+
 # Call the main menu
 main_menu(menu_state,controls_keys)
+
+
