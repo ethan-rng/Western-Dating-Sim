@@ -81,12 +81,12 @@ back_settings_button = Button(screen_width/2.48, (screen_height/3) + (screen_hei
 controls_keys = {"auto_key": pygame.K_g, "settings_key": pygame.K_t, "pause_key": pygame.K_p, "save_key": pygame.K_s, "load_key": pygame.K_l, "help_key": pygame.K_h}
 
 #load controls settings buttons
-auto_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Auto: " + chr(controls_keys["auto_key"]), WHITE, "controls", pygame)
-settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) , (screen_width/4), (screen_height/13), "Settings: " + chr(controls_keys["settings_key"]), WHITE, "sound", pygame)
-pause_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Pause: " + chr(controls_keys["pause_key"]), WHITE, "video", pygame)
-save_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Save: " + chr(controls_keys["save_key"]), WHITE, "language", pygame)
-load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Load: " + chr(controls_keys["load_key"]), WHITE, "accessibility", pygame)
-help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "account", pygame)
+auto_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Auto: " + chr(controls_keys["auto_key"]), WHITE, "auto_ctrl", pygame)
+settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) , (screen_width/4), (screen_height/13), "Settings: " + chr(controls_keys["settings_key"]), WHITE, "settings_ctrl", pygame)
+pause_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Pause: " + chr(controls_keys["pause_key"]), WHITE, "pause_ctrl", pygame)
+save_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Save: " + chr(controls_keys["save_key"]), WHITE, "save_ctrl", pygame)
+load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Load: " + chr(controls_keys["load_key"]), WHITE, "load_ctrl", pygame)
+help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "help_ctrl", pygame)
 back_controls_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
 
 #sound settings variables
@@ -125,6 +125,13 @@ def draw_menu(menu_state: str) -> None:
         message2 = baby_font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, BLACK)
         screen.blit(message2, (screen_width // 50, screen_height))
         pygame.display.flip()
+        
+    elif menu_state == "start":
+        screen.fill(DARK_GRAY)
+        draw_text("New Game", title_font, BLACK, screen_width/20, screen_height/16)
+        
+
+
         
     elif menu_state == "settings":
         screen.fill(DARK_GRAY)
