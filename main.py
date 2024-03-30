@@ -1,7 +1,8 @@
 import pygame
 import sys
 import os
-from view.button import Button
+from view.components.button import Button
+from view.components.slider import Slider
 from screens.choices import ChoicesScreen
 from screens.dialoguebox import DialogueBox
 from screens.title import SceneTitle
@@ -45,7 +46,7 @@ menu_state = "main"
 # Load images
 path = os.path.join('view', 'assets', 'tower-thumb.jpg')
 background_image = pygame.image.load(path).convert()
-background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
+background_image = pygame.transform.scale(background_image, (screen_width+200, screen_height+200))
 path = os.path.join('view', 'assets', 'rectangle.png')
 grey_rectangle = pygame.image.load(path).convert()
 grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
@@ -93,8 +94,19 @@ load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, 
 help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "help_ctrl", pygame)
 back_controls_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
 
+#sound settings variables
+general_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4), (screen_width/1.8,20), "Game Volume", 0.5, 0, 100)
+music_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + screen_height//6), (screen_width/1.8,20), "Music Volume", 0.5, 0, 100)
+sfx_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + (screen_height//6 *2)), (screen_width/1.8,20), "SFX Volume", 0.5, 0, 100)
+back_sound_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
+
+#load help menu buttons
+back_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "main", pygame)
+next_button = Button(6.5*screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Next", GRAY , "help2", pygame)
+back_to_help1_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "help", pygame)
+
 #load background images
-story_background_image_path = os.path.join('view', 'assets', 'talbot.jpg')
+story_background_image_path = os.path.join('view', 'assets', 'talbot-1.jpg')
 story_background_image_raw = pygame.image.load(story_background_image_path).convert()
 story_background_image = pygame.transform.scale(story_background_image_raw, (screen_width+200, screen_height+400))
 
@@ -183,7 +195,7 @@ def draw_menu(menu_state: str) -> None:
         general_volume_slider.draw(screen)
         music_volume_slider.draw(screen)
         sfx_volume_slider.draw(screen)
-        back_volume_button.draw(screen)
+        back_sound_button.draw(screen)
         pygame.display.flip()
 
     elif menu_state == 'help':
@@ -362,8 +374,31 @@ def main_menu(menu_state, controls_keys):
                 #sound settings
                 elif menu_state == "sound":
                     click_sfx.play()
+                    mouse_pos = pygame.mouse.get_pos()
+                    mouse = pygame.mouse.get_pressed()
                     
-                    pass
+                    if general_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
+                        general_volume_slider.move_slider(mouse_pos)
+                        general_volume_slider.updateText()
+                        click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
+                    general_volume_slider.draw(screen)
+                    
+                    if music_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
+                        music_volume_slider.move_slider(mouse_pos)
+                        music_volume_slider.updateText()
+                        #add set volume function once music is added
+                    general_volume_slider.draw(screen)
+                    
+                    if sfx_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
+                        sfx_volume_slider.move_slider(mouse_pos)
+                        sfx_volume_slider.updateText()
+                        click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
+                    general_volume_slider.draw(screen)
+                    
+                    
+                    if back_sound_button.draw(screen):
+                        click_sfx.play()
+                        menu_state = back_sound_button.draw(screen)
 
                 elif menu_state == "start":
                     click_sfx.play()
