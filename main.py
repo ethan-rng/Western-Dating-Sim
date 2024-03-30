@@ -28,6 +28,7 @@ LIGHT_GRAY = (234,234,234)
 # Font setup
 font = pygame.font.SysFont(None, 45)
 title_font = pygame.font.SysFont(None, 90)
+baby_font = pygame.font.SysFont(None, 20)
 
 #create a helper function to draw text on the screen
 def draw_text(text, font, text_col, x, y):
@@ -119,10 +120,10 @@ def draw_menu(menu_state: str) -> None:
             y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
             screen.blit(menu_text, (x, y))
         #write the names of our group
-        message = font.render("Created as a part of CS2212 at Western by Group 29", True, PURPLE)
-        screen.blit(message, (screen_width // 4, 19*screen_height//20))
-        message2 = font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, PURPLE)
-        screen.blit(message2, (screen_width // 4, screen_height))
+        message = baby_font.render("Created as a part of CS2212 at Western by Group 29", True, BLACK)
+        screen.blit(message, (screen_width // 50, 39*screen_height//40))
+        message2 = baby_font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, BLACK)
+        screen.blit(message2, (screen_width // 50, screen_height))
         pygame.display.flip()
         
     elif menu_state == "settings":
