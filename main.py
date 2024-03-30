@@ -21,6 +21,8 @@ PURPLE = (160, 32, 240)
 GRAY = (192, 192, 192)
 DARK_GRAY = (132, 135, 140)
 GREEN = (0, 255, 0)
+LIGHT_GRAY = (234,234,234)
+
 
 # Font setup
 font = pygame.font.SysFont(None, 45)
@@ -37,7 +39,7 @@ menu_state = "main"
 # Load images
 path = os.path.join('view', 'assets', 'tower-thumb.jpg')
 background_image = pygame.image.load(path).convert()
-background_image = pygame.transform.scale(background_image, (screen_width + 50, screen_height + 180))
+background_image = pygame.transform.scale(background_image, (screen_width , screen_height))
 path = os.path.join('view', 'assets', 'rectangle.png')
 grey_rectangle = pygame.image.load(path).convert()
 grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
@@ -47,9 +49,12 @@ logo = pygame.transform.scale(logo, (screen_width // 4, screen_height // 5))
 path = os.path.join('view', 'assets', 'title.png')
 title = pygame.image.load(path).convert()
 title = pygame.transform.scale(title, (screen_width // 4, screen_height // 4 - screen_height // 5))
-path = os.path.join('view', 'assets', 'help.png')
-help = pygame.image.load(path)
-help = pygame.transform.scale(help, (screen_width, help.get_height() / (help.get_width() / screen_width)))
+path = os.path.join('view', 'assets', 'help1.png')
+help1 = pygame.image.load(path)
+help1 = pygame.transform.scale(help1, (screen_width, help1.get_height() / (help1.get_width() / screen_width)))
+path = os.path.join('view', 'assets', 'help2.png')
+help2 = pygame.image.load(path)
+help2 = pygame.transform.scale(help2, (screen_width, help2.get_height() / (help2.get_width() / screen_width)))
 
 #load sounds
 path = os.path.join('view', 'assets', 'click.wav')
@@ -76,6 +81,10 @@ load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, 
 help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "account", pygame)
 back_controls_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
 
+#load help menu buttons
+back_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "main", pygame)
+next_button = Button(6.5*screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Next", GRAY , "help2", pygame)
+back_to_help1_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "help", pygame)
 
 # Main Menu Items
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
@@ -124,9 +133,18 @@ def draw_menu(menu_state: str) -> None:
         pygame.display.flip()
 
     elif menu_state == 'help':
-        screen.fill(DARK_GRAY)
-        screen.blit(help, (0,0))
+        screen.fill(LIGHT_GRAY)
+        screen.blit(help1, (0, screen_height // 2 - help1.get_height() // 2))
+        back_button.draw(screen)
+        next_button.draw(screen)
         pygame.display.flip()
+    
+    elif menu_state == 'help2':
+        screen.fill(LIGHT_GRAY)
+        screen.blit(help2, (0, 0))
+        back_to_help1_button.draw(screen)
+        pygame.display.flip()
+    
 
 def main_menu(menu_state, controls_keys):
     menu_active = True
@@ -155,7 +173,7 @@ def main_menu(menu_state, controls_keys):
                 elif menu_state == "settings":
                     if controls_settings_button.draw(screen):
                         click_sfx.play()
-                        menu_state =  controls_settings_button.draw(screen)
+                        menu_state = controls_settings_button.draw(screen)
                     elif sound_settings_button.draw(screen):
                         click_sfx.play()
                         menu_state = sound_settings_button.draw(screen)
@@ -252,6 +270,21 @@ def main_menu(menu_state, controls_keys):
                     click_sfx.play()
                     
                     pass
+
+                #help menu page 1
+                elif menu_state == "help":
+                    if back_button.draw(screen):
+                        click_sfx.play()
+                        menu_state = back_button.draw(screen)
+                    elif next_button.draw(screen):
+                        click_sfx.play()
+                        menu_state = next_button.draw(screen)
+                
+                #help menu page 2
+                elif menu_state == "help2":
+                    if back_to_help1_button.draw(screen):
+                        click_sfx.play()
+                        menu_state = back_to_help1_button.draw(screen)
                     
         
         draw_menu(menu_state)
