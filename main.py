@@ -1,6 +1,7 @@
 import pygame
 import sys
-from components.button import Button
+import os
+from view.button import Button
 # Initialize Pygame
 pygame.init()
 
@@ -34,17 +35,25 @@ def draw_text(text, font, text_col, x, y):
 menu_state = "main"
 
 # Load images
-background_image = pygame.image.load("tower-thumb.jpg").convert()
+path = os.path.join('view', 'assets', 'tower-thumb.jpg')
+background_image = pygame.image.load(path).convert()
 background_image = pygame.transform.scale(background_image, (screen_width + 50, screen_height + 180))
-grey_rectangle = pygame.image.load("rectangle.png").convert()
+path = os.path.join('view', 'assets', 'rectangle.png')
+grey_rectangle = pygame.image.load(path).convert()
 grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
-logo = pygame.image.load("logo.png").convert()
+path = os.path.join('view', 'assets', 'logo.png')
+logo = pygame.image.load(path).convert()
 logo = pygame.transform.scale(logo, (screen_width // 4, screen_height // 5))
-title = pygame.image.load("title.png").convert()
+path = os.path.join('view', 'assets', 'title.png')
+title = pygame.image.load(path).convert()
 title = pygame.transform.scale(title, (screen_width // 4, screen_height // 4 - screen_height // 5))
+path = os.path.join('view', 'assets', 'help.png')
+help = pygame.image.load(path)
+help = pygame.transform.scale(help, (screen_width, help.get_height() / (help.get_width() / screen_width)))
 
 #load sounds
-click_sfx = pygame.mixer.Sound("assets\click.wav")
+path = os.path.join('view', 'assets', 'click.wav')
+click_sfx = pygame.mixer.Sound(path)
 
 #load main settings button
 controls_settings_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Controls", WHITE, "controls", pygame)
@@ -55,12 +64,32 @@ accessibility_settings_button = Button(screen_width/5.4, (screen_height/3) + (sc
 account_settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Account Settings", WHITE, "account", pygame)
 back_settings_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "main", pygame)
 
+# Scroll Bar constants
+infoObject = pygame.display.Info()
+screen_width = infoObject.current_w
+screen_height = infoObject.current_h
+SCROLL_BAR_WIDTH = screen_width // 30
+SCROLL_BAR_HEIGHT = screen_height # Height of scroll bar
+SCROLL_BAR_X = screen_width - SCROLL_BAR_WIDTH  # X-coordinate of scroll bar
+SCROLL_BAR_Y = screen_width // 30  # Y-coordinate of scroll bar
+CONTENT_HEIGHT = help.get_height()  # Height of the content to be scrolled
+
+# Variables to keep track of scroll position
+scroll_pos = 0
+max_scroll_pos = CONTENT_HEIGHT - screen_height
+
+# Function to draw the scroll bar
+def draw_scroll_bar() -> None:
+    pygame.draw.rect(screen, GRAY, (SCROLL_BAR_X, SCROLL_BAR_Y, SCROLL_BAR_WIDTH, SCROLL_BAR_HEIGHT))
+    scroll_button_y = (scroll_pos / max_scroll_pos) * (SCROLL_BAR_HEIGHT - SCROLL_BAR_WIDTH)
+    pygame.draw.rect(screen, BLACK, (SCROLL_BAR_X, SCROLL_BAR_Y + scroll_button_y, SCROLL_BAR_WIDTH, SCROLL_BAR_WIDTH))
+
 # Main Menu Items
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
 
-def draw_menu(menu_state):
+def draw_menu(menu_state) -> None:
     if menu_state == "main":
-        #Draw main menu screen
+        #draws the main menu
         screen.blit(background_image, (0, 0)) #draws background
         grey_rectangle.set_alpha(200) #sets transparency of the grey ractangle
         screen.blit(grey_rectangle, (0, screen_height // 5)) #draws the grey rectangle
@@ -86,9 +115,15 @@ def draw_menu(menu_state):
         accessibility_settings_button.draw(screen)
         account_settings_button.draw(screen)
         back_settings_button.draw(screen)
-        pygame.display.flip()        
+        pygame.display.flip()
 
-def main_menu(menu_state):
+    if menu_state == "help":
+        screen.fill(DARK_GRAY)
+        screen.blit(help, (0, 0))
+        draw_scroll_bar()
+        pygame.display.flip()
+
+def main_menu(menu_state) -> None:
     menu_active = True
     while menu_active:  
         #checks for the actions of the player
@@ -108,7 +143,7 @@ def main_menu(menu_state):
                         y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
                         item_rect = menu_text.get_rect(topleft=(x, y))
                         if item_rect.collidepoint(event.pos):
-                        click_sfx.play()
+                            click_sfx.play()
                             menu_state = menu_click(index)
                             
                 elif menu_state == "settings":
@@ -126,6 +161,12 @@ def main_menu(menu_state):
                         menu_state = account_settings_button.draw(screen)
                     elif back_settings_button.draw(screen):
                         menu_state = back_settings_button.draw(screen)
+
+                elif menu_state == "help":
+                    if event.button == 4:  # Scroll up
+                        scroll_pos = max(0, scroll_pos - 20)
+                    elif event.button == 5:  # Scroll down
+                        scroll_pos = min(max_scroll_pos, scroll_pos + 20)
         
                 else:
                     pass
@@ -133,7 +174,7 @@ def main_menu(menu_state):
         
         draw_menu(menu_state)
 
-def menu_click(index):
+def menu_click(index) -> str:
     # This function handles the menu clicks
     if index == 0:
         menu_state = "start"
@@ -156,6 +197,7 @@ def menu_click(index):
     #takes you to help menu
     elif index == 5:
         menu_state = "help"
+        print("help")
         return menu_state
     #quits the game
     elif index == 6:
