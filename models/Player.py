@@ -1,10 +1,12 @@
 from models.User import User
-from exceptions import IllegalStats, IncorrectPrivilege, UserNotFound
+from exceptions import IllegalStats, UserNotFound
 import os, json
 
 # CONSTANTS
 MAX_SCORE = 10 
-
+CHARACTER_BIAS = {
+    "Serena": ["charisma", "intel"]
+}
 """
 TODO: chooseDialogue(self):
 """
@@ -13,23 +15,6 @@ TODO: chooseDialogue(self):
 class Player(User):
     def __init__(self) -> None:    
         super().__init__()
-
-    # PROTECTED FACING METHODS
-    """ Protected helper function which checks if the developer is logged in before allowing access (throws IncorrectPrivilege exception) """
-    def _checkDev(self) -> None:
-        if super().LoggedInUser != "developer":
-            raise IncorrectPrivilege
-    
-    """ Protected helper function which checks if the instructor is logged in before allowing access (throws IncorrectPrivilege exception) """
-    def _checkInstructor(self) -> None:
-        if super().LoggedInUser != "instructor" and super().LoggedInUser!= "developer":
-            raise IncorrectPrivilege
-        
-    """ Protected helper function which checks if the player is logged in before allowing access (throws IncorrectPrivilege exception) """
-    def _checkPlayer(self) -> None:
-        if super().LoggedInUser != self.username and super().LoggedInUser != "instructor" and super().LoggedInUser!= "developer":
-            raise IncorrectPrivilege
-        
 
     # PUBLIC FACING METHODS
     """ Public Method which creates a new player account (throws AdminLevelAccount DuplicateUser, IllegalStats) """
@@ -49,9 +34,6 @@ class Player(User):
         # Individual Attraction Score
         self._attractionScore = {
             "Serena": 0,
-            "Grace": 0,
-            "Afnan": 0,
-            "Jack":  0,
         }
 
     """ Public Method which allows the player to load from a previous game state (throws UserNotFound exception) """
@@ -80,6 +62,7 @@ class Player(User):
                 "intel": self._intelligence,
                 "attraction": self._attraction,
                 "attractionScore": self._attractionScore,
+                "finalScore": self.getFinalScore(),
             }
 
             json.dump(playerData, file, ensure_ascii=False, indent=4)

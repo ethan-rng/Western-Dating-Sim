@@ -1,50 +1,22 @@
-from models import *
-
-from Users.User import User
-from Users.Player import Player
-from Users.Developer import Developer
-from Users.Instructor import Instructor
-
+from models.User import User
+from models.Player import Player
+from models.Developer import Developer
+from models.Instructor import Instructor
 from models.HighScoreTable import HighScoreTable
-from models.MusicPlayer import MusicPlayer
-from models.NPC import NPC
 
 from typing import List
-import json
+import os, json
 
 
 class GameSession:
     def __init__(self):
-        # Component Level Instance Variables
-        self.musicPlayer: MusicPlayer = MusicPlayer()
+        self.currPlayer: User = None
+        self.currentLevel: int = None
         self.highScoreTable: HighScoreTable = HighScoreTable()
-        self._npcs: List[NPC] = [
-            NPC("Serena", ["charisma", "intel"]),
-            NPC("Grace", ["attraction"]),
-            NPC("Afnan", ["intel", "attraction"]),
-            NPC("Jack", ["charisma"])
-        ]
-
-        # User Level Instance Variables
-        self.currentUser = None
-        self.currentLevel: int = 0
-    
-
-        # No fucking clue what this does
-        self._playerState: bool = None 
-
-    # USER LEVEL METHODS
-    def setUser(self, username) -> bool:
-        if username == "developer":
-        elif username == "instructor":
-            self.user
-        else:
 
 
-
-    # GAME LEVEL METHODS
     # Sets Game To Appropriate Level
-    def startNewGame(self, username: str, password: int) -> bool:
+    def startNewGame(self, username:str, ) -> bool:
         # Creates New User
 
         pass
@@ -63,4 +35,6 @@ class GameSession:
 
         pass
 
+    def quitGame(self):
+        pass
 

@@ -12,24 +12,21 @@ TODO: debugGame(self) -> bool
 class Developer(Player):
     Players:List[Player] = []
 
-    def __init__(self) -> None:
-        # Loading Users From Memory (only gets run on the first instance the class is called)
-        if len(Developer.Players) == 0:
-            with open(os.path.join('models', 'data', 'UserGameStates.json'), "r") as file:
-                jsonData = json.load(file)
-                for data in jsonData:
-                    Developer.Players.append(Player().loadPlayer(data["username"]))
-    
+    def __init__(self, password:str) -> None:
         super().__init__()
-    
+        super().login("developer", password)
+        Developer._loadPlayers()
+
+    # PRIVATE CLASS METHODS
+    def _loadPlayers() -> None:
+        with open(os.path.join('models', 'data', 'Developers.json'), "r") as file:
+            jsonData = json.load(file)
+            Developer.Players = []
+
+            for data in jsonData:
+                Developer.Players.append(Player().loadPlayer(data["username"]))
 
     # PUBLIC FACING METHODS
-    """ Public Method which allows the developer to jump to a specific screen (throws IncorrectPrivilege exception) """
-    # ! WORKING IN PROGRESS
-    def jumptoScreen(self, screen:str) -> None:
-        self._checkDev()
-
-
     """ Public Method which allows the change any user's stats (throws IncorrectPrivilege, KeyError and UserNotFound exception) """
     def modifyUserStats(self, username:str, character:str, stat:int, attrib:str=""):
         self._checkDev()
@@ -61,3 +58,9 @@ class Developer(Player):
     # ! WORKING IN PROGRESS
     def debugGame(self) -> dict:
         self._checkDev()
+
+    """ Public Method which allows the developer to jump to a specific screen (throws IncorrectPrivilege exception) """
+    # ! WORKING IN PROGRESS
+    def jumptoScreen(self, screen:str) -> None:
+        self._checkDev()
+

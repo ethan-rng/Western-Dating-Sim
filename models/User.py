@@ -1,4 +1,4 @@
-from exceptions import UserAlreadyExists, UserNotFound, IncorrectPassword, AdminLevelAccount
+from exceptions import UserAlreadyExists, UserNotFound, IncorrectPassword, AdminLevelAccount, IncorrectPrivilege
 from typing import List
 from hashlib import sha256
 import os, json
@@ -29,6 +29,22 @@ class User:
             if user["username"] == username:
                 return True
         return False
+    
+    # PROTECTED FACING METHODS
+    """ Protected helper function which checks if the developer is logged in before allowing access (throws IncorrectPrivilege exception) """
+    def _checkDev(self) -> None:
+        if super().LoggedInUser != "developer":
+            raise IncorrectPrivilege
+    
+    """ Protected helper function which checks if the instructor is logged in before allowing access (throws IncorrectPrivilege exception) """
+    def _checkInstructor(self) -> None:
+        if super().LoggedInUser != "instructor" and super().LoggedInUser!= "developer":
+            raise IncorrectPrivilege
+        
+    """ Protected helper function which checks if the player is logged in before allowing access (throws IncorrectPrivilege exception) """
+    def _checkPlayer(self) -> None:
+        if super().LoggedInUser != self.username and super().LoggedInUser != "instructor" and super().LoggedInUser!= "developer":
+            raise IncorrectPrivilege
         
     # PUBLIC METHODS
     """ Public facing method which makes a new player account (throws AdminLevelAccount and UserAlreadyExists exceptions) """
@@ -73,4 +89,5 @@ class User:
         User.LoggedInUser = None
         self.username = ""
         self._password = ""
+ 
  
