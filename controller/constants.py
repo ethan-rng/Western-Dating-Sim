@@ -1,5 +1,8 @@
 import pygame
+import sys
 import os
+
+pygame.init()
 
 # Colors
 WHITE = (255, 255, 255)

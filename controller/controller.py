@@ -13,97 +13,53 @@ from view.screens.title import SceneTitle
 
 class runGame:
     """ Private helper function to draw text on the screen """
-    def _draw_text(self, text:str, font:Sys, text_col, x, y):
+    def _draw_text(self, text:str, font:sys, text_col, x, y):
         img = font.render(text, True, text_col)
         self.screen.blit(img, (x, y))
 
     def __init__(self):
         # Initialize Pygame
         pygame.init()
+        
+        # Get the current display resolution
+        self.infoObject = pygame.display.Info()
+        self.screen_width = infoObject.current_w
+        self.screen_height = infoObject.current_h
+        
         self.screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
         pygame.display.set_caption("Dating Simulator Ver. Western")
 
+        # Load images
+        path = os.path.join('view', 'assets', 'tower-thumb.jpg')
+        background_image = pygame.image.load(path).convert()
+        self.background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
+        path = os.path.join('view', 'assets', 'rectangle.png')
+        grey_rectangle = pygame.image.load(path).convert()
+        self.grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
+        path = os.path.join('view', 'assets', 'logo.png')
+        logo = pygame.image.load(path).convert()
+        self.logo = pygame.transform.scale(logo, (screen_width // 4, screen_height // 5))
+        path = os.path.join('view', 'assets', 'title.png')
+        title = pygame.image.load(path).convert()
+        self.title = pygame.transform.scale(title, (screen_width // 4, screen_height // 4 - screen_height // 5))
+        
+        # Colors
+        WHITE = (255, 255, 255)
+        BLACK = (0, 0, 0)
+        GRAY = (192, 192, 192)
+        DARK_GRAY = (132, 135, 140)
+        LIGHT_GRAY = (234,234,234)
 
-       
+        # Font setup
+        self.font = pygame.font.SysFont(None, 45)
+        self.title_font = pygame.font.SysFont(None, 90)
+        self.baby_font = pygame.font.SysFont(None, 20)
 
         #game variables
-        menu_state = "main"
-
-      
-
-
-      
-        #controls settings variables
-        controls_keys = {"auto_key": pygame.K_g, "settings_key": pygame.K_t, "pause_key": pygame.K_p, "save_key": pygame.K_s, "load_key": pygame.K_l, "help_key": pygame.K_h}
-
-        #load controls settings buttons
-        auto_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Auto: " + chr(controls_keys["auto_key"]), WHITE, "controls", pygame)
-        settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) , (screen_width/4), (screen_height/13), "Settings: " + chr(controls_keys["settings_key"]), WHITE, "sound", pygame)
-        pause_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Pause: " + chr(controls_keys["pause_key"]), WHITE, "video", pygame)
-        save_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Save: " + chr(controls_keys["save_key"]), WHITE, "language", pygame)
-        load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Load: " + chr(controls_keys["load_key"]), WHITE, "accessibility", pygame)
-        help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "account", pygame)
-        back_controls_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
-
-        #sound settings variables
-        general_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4), (screen_width/1.8,20), "Game Volume", 0.5, 0, 100)
-        music_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + screen_height//6), (screen_width/1.8,20), "Music Volume", 0.5, 0, 100)
-        sfx_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + (screen_height//6 *2)), (screen_width/1.8,20), "SFX Volume", 0.5, 0, 100)
-        back_sound_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
-
-        #load help menu buttons
-        back_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "main", pygame)
-        next_button = Button(6.5*screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Next", GRAY , "help2", pygame)
-        back_to_help1_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "help", pygame)
-
-        #dialogue
-        dialogue_lines = [
-            "A bustling Talbot College hallway...",
-            "You bump into a hurried girl (LI), causing her to drop her music score...",
-            "Oh, sorry! Gotta run!!",
-            "Y/N : Wait!",
-            "She runs off, and you notice a music sheet with contact info for an exam..",
-            "Narrator: She's gone but left a dropped sheet with her contact. Do you return it?"
-        ]
-        # flag to show choices
-        global show_choices
-        # Choices_made is an dictionary that remembers the choices
-        choices_made = {}
-        #To refer to choices made...  like for example choices_made.get(5) at the scene #5 would be 0 if picked yes, and 1 if picked no 
-        # Key = 5 (index of background), value = Option 1 or 2 (or index 0 or 1 of choices)
-
-        show_choices = False
-        current_dialogue_index = 0
-        dialogue_images_paths = [
-            os.path.join('view', 'assets', 'talbot-1.jpg'),
-            os.path.join('view', 'assets', 'talbot-2.jpg'),
-            os.path.join('view', 'assets', 'talbot-3.jpg'),
-            os.path.join('view', 'assets', 'talbot-4.jpg'),
-            os.path.join('view', 'assets', 'talbot-5.jpg'),
-            os.path.join('view', 'assets', 'talbot-6.jpg')
-        ]
-
-        #load background images
-
-        #story_background_image_path = os.path.join('view', 'assets', 'talbot.jpg')
-        #story_background_image_raw = pygame.image.load(story_background_image_path).convert()
-        #story_background_image = pygame.transform.scale(story_background_image_raw, (screen_width+200, screen_height+400))
-        dialogue_background_images = [pygame.image.load(path).convert() for path in dialogue_images_paths]
-        for i, img in enumerate(dialogue_background_images):
-            dialogue_background_images[i] = pygame.transform.scale(img, (screen_width, screen_height))
-
-        # Manage the scene/title
-        current_scene_index = 1
-        scene_titles = {
-            1: "SCENE 1: Talbot College",            
-            2: "SCENE 2: The Library Encounter",
-            3: "SCENE 3: The Mysterious Forest",
-            4: "SCENE 4: The Hidden Cave",
-            5: "SCENE 5: The Final Showdown",
-            }
+        self.menu_state = "main"
 
         # Main Menu Items
-        menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
+        self.menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
 
         def draw_menu(menu_state: str) -> None:
             global show_choices
@@ -113,28 +69,28 @@ class runGame:
             show_choices = False
             if menu_state == "main":
                 #Draw main menu screen
-                screen.blit(background_image, (0, 0)) #draws background
+                self.screen.blit(background_image, (0, 0)) #draws background
                 grey_rectangle.set_alpha(200) #sets transparency of the grey ractangle
-                screen.blit(grey_rectangle, (0, screen_height // 5)) #draws the grey rectangle
-                pygame.draw.rect(screen, BLACK, (0, screen_height // 4, screen_width // 4, screen_height - screen_height // 5), 4) #draws the border around the grey rectangle
-                screen.blit(logo, (0, 0)) # draws the logo
-                screen.blit(title, (0, screen_height // 5)) # draws the title
-                pygame.draw.rect(screen, BLACK, (0, screen_height // 5, screen_width // 4, screen_height // 4 - screen_height // 5), 4) #draws the border around the title
+                self.screen.blit(grey_rectangle, (0, screen_height // 5)) #draws the grey rectangle
+                pygame.draw.rect(self.screen, BLACK, (0, screen_height // 4, screen_width // 4, screen_height - screen_height // 5), 4) #draws the border around the grey rectangle
+                self.screen.blit(logo, (0, 0)) # draws the logo
+                self.screen.blit(title, (0, screen_height // 5)) # draws the title
+                pygame.draw.rect(self.screen, BLACK, (0, screen_height // 5, screen_width // 4, screen_height // 4 - screen_height // 5), 4) #draws the border around the title
                 #draws out the menu screen
-                for index, item in enumerate(menu_items):
+                for index, item in enumerate(self.menu_items):
                     menu_text = font.render(item, True, BLACK)
                     x = screen_width // 8 - (menu_text.get_width() // 2)
-                    y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
-                    screen.blit(menu_text, (x, y))
+                    y = (screen_height // 2 - (menu_text.get_height() * len(self.menu_items) // 2) + (index * 75))
+                    self.screen.blit(menu_text, (x, y))
                 #write the names of our group
                 message = baby_font.render("Created as a part of CS2212 at Western by Group 29", True, BLACK)
-                screen.blit(message, (screen_width // 50, 39*screen_height//40))
+                self.screen.blit(message, (screen_width // 50, 39*screen_height//40))
                 message2 = baby_font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, BLACK)
-                screen.blit(message2, (screen_width // 50, screen_height))
+                self.screen.blit(message2, (screen_width // 50, screen_height))
                 pygame.display.flip()
                 
             elif menu_state == "settings":
-                screen.fill(DARK_GRAY)
+                self.screen.fill(DARK_GRAY)
                 draw_text("Settings", title_font, BLACK, screen_width/20, screen_height/16 )
                 controls_settings_button.draw(screen)
                 sound_settings_button.draw(screen)

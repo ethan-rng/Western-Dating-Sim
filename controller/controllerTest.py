@@ -3,11 +3,12 @@ import sys
 import os
 
 from controller.constants import *
-from view.screens import *
 from view.screens.chapters import *
 
+from view.screens.menu.menu import Menu
+
 class runGame:
-    def __init__(self):
+    def __init__(self) -> None:
         # Initialize Pygame
         pygame.init()
         self.screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
@@ -37,10 +38,10 @@ class runGame:
                 sys.exit()
 
     def main_menu(self):
-        menu()
+        Menu(self.screen)
 
     def chapter1(self):
-        chapter1_scene()
+        pass
 
     def chapter2(self):
         pass

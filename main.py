@@ -1,4 +1,4 @@
-from controller.controller import runGame
+from controller.controllerTest import runGame
 
 """
     TODO: probably download and setup virtual environment
