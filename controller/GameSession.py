@@ -3,6 +3,7 @@ from models.Player import Player
 from models.Developer import Developer
 from models.Instructor import Instructor
 from models.HighScoreTable import HighScoreTable
+from models.exceptions import *
 
 from typing import List
 import os, json
@@ -16,9 +17,8 @@ class GameSession:
 
 
     # Sets Game To Appropriate Level
-    def startNewGame(self, username:str, ) -> bool:
-        # Creates New User
-
+    def startNewGame(self, username:str, password:str):
+        
         pass
 
     # Loads Game Based On Individual User
