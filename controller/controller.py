@@ -10,6 +10,7 @@ from view.screens.title import SceneTitle
 
 def runGame():
     # Initialize Pygame
+    print(os.getcwd())
     pygame.init()
 
     # Get the current display resolution
