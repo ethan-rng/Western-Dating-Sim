@@ -2,14 +2,13 @@ from models.User import User
 from exceptions import IllegalStats, UserNotFound
 import os, json
 
+
 # CONSTANTS
 MAX_SCORE = 10 
 CHARACTER_BIAS = {
     "Serena": ["charisma", "intel"]
 }
-"""
-TODO: chooseDialogue(self):
-"""
+
 
 # Player Class
 class Player(User):
@@ -91,14 +90,6 @@ class Player(User):
             
         self._attractionScore[character] += newAttractionScore * (bias * 0.1 * 0.5 + 1)
         return self._attractionScore[character]
-    
-    
-    """ Public Method which allows the player to choose dialogue options from a file """
-    # ! WORKING IN PROGRESS
-    def chooseDialogue(self):
-        self._checkPlayer()
-
-        pass
 
 
     """ Public Method which calculates the final score of the player (Sum of all the individuals scores) """

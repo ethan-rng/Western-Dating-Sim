@@ -6,7 +6,6 @@ from models.exceptions import UserNotFound
 
 """
 TODO: jumptoScreens(self, screenName: str) -> bool:
-TODO: debugGame(self) -> bool
 """
 
 class Developer(Player):
@@ -55,7 +54,6 @@ class Developer(Player):
 
 
     """ Public Method which returns a dictionary of various debugging data (throws IncorrectPrivilege exception) """
-    # ! WORKING IN PROGRESS
     def debugGame(self) -> dict:
         self._checkDev()
 

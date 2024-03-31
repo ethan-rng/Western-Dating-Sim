@@ -4,10 +4,6 @@ from typing import List
 import json, os
 from models.exceptions import UserNotFound
 
-"""
-TODO: viewStats(self, username: str) -> bool: {not sure how to do if Developers are not inheriting from Player}
-TODO: viewProgress(self, username: str) -> bool: {not sure what view progress will look like}
-"""
 
 class Instructor(User):
     Players:List['Player'] = []
