@@ -405,6 +405,10 @@ def main_menu(menu_state, controls_keys):
                         menu_state = back_sound_button.draw(screen)
 
                 elif menu_state == "start":
+                    pass
+                
+                
+                elif menu_state == "play":
                     click_sfx.play()
                     # Listen for a click to switch to DialogueBox
                     if event.type == pygame.MOUSEBUTTONDOWN:
