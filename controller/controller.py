@@ -6,6 +6,7 @@ from controller.constants import *
 from view.screens.chapters import *
 
 from view.screens.menu import Menu
+from view.screens.settings.settingsMain import SettingsMain
 
 class runGame:
     def __init__(self) -> None:
@@ -21,6 +22,8 @@ class runGame:
         while True:
             if self.menu_state == "main":
                 self.main_menu()
+            elif self.menu_state == "settings":
+                self.settings_main()
             elif self.menu_state == "chp1":
                 self.chapter1()
             elif self.menu_state == "chp2":
@@ -38,8 +41,14 @@ class runGame:
                 sys.exit()
 
     def main_menu(self):
-        Menu(self.screen)
+        menu = Menu()
+        menu.draw_menu(self.screen)
+        self.menu_state = menu.event_handler()
 
+    def settings_main(self):
+        settings_main = SettingsMain(self.screen)
+        settings_main.draw_settings_main(self.screen)
+        self.menu_state = settings_main.event_handler(self.screen)
     def chapter1(self):
         pass
 
