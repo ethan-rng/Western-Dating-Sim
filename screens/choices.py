@@ -8,8 +8,8 @@ class ChoicesScreen:
         self.button_width = 300
         self.button_height = 50
         self.button_margin = 20
-        self.button_color = (200, 200, 200, 128)  # Semi-transparent gray
-        self.text_color = (0, 0, 0)
+        self.button_color = (0,0,0)  # black button
+        self.text_color = (255,255,255) # white text
         self.buttons = []
 
     def draw_buttons(self):
@@ -34,9 +34,10 @@ class ChoicesScreen:
             self.screen.blit(button_surface, button_rect.topleft)
 
     def display(self):
+        self.selected_choice_index = None  # Reset the selected choice index each time the display is called
         running = True
         while running:
-            
+        
             self.draw_buttons()
             pygame.display.flip()
 
@@ -46,6 +47,8 @@ class ChoicesScreen:
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     for i, button in enumerate(self.buttons):
                         if button.collidepoint(event.pos):
-                            print(f"Button {self.choices[i]} clicked")
-                            # Transition to next screen or action
-                            running = False
+                            self.selected_choice_index = i  # Save the selected choice index
+                            running = False  # Exit the loop
+                            break  # No need to check other buttons
+
+        return self.selected_choice_index
