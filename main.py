@@ -103,6 +103,12 @@ dialogue_lines = [
     "She runs off, and you notice a music sheet with contact info for an exam..",
     "Narrator: She's gone but left a dropped sheet with her contact. Do you return it?"
 ]
+# flag to show choices
+global show_choices
+# Choices_made is an dictionary that remembers the choices
+choices_made = {}
+
+show_choices = False
 current_dialogue_index = 0
 dialogue_images_paths = [
     os.path.join('view', 'assets', 'talbot-1.jpg'),
@@ -126,6 +132,10 @@ for i, img in enumerate(dialogue_background_images):
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
 
 def draw_menu(menu_state: str) -> None:
+    global show_choices
+    global choices_made
+    global current_dialogue_index
+    show_choices = False
     if menu_state == "main":
         #Draw main menu screen
         screen.blit(background_image, (0, 0)) #draws background
@@ -229,6 +239,24 @@ def draw_menu(menu_state: str) -> None:
         dialogue_text = dialogue_lines[current_dialogue_index]  # Get current line of dialogue
         dialogue_box.draw(dialogue_text)
         pygame.display.flip()
+        if current_dialogue_index == 5 and not show_choices:
+            choices_screen = ChoicesScreen(screen, ["Yes", "No"])
+            selected_choice_index = choices_screen.display()  # Display choices and get selected option
+            show_choices = True  # Avoid displaying choices again if we're still on this dialogue point
+            choices_made[current_dialogue_index] = selected_choice_index  # Remember the choice made
+        
+            # Logic to set the next dialogue index based on the choice
+            if selected_choice_index is not None:
+                if selected_choice_index == 0:
+                    # For example, choosing the first option might skip to another dialogue point
+                    current_dialogue_index = 1
+                if selected_choice_index == 1:
+                    # For example, choosing the first option might skip to another dialogue point
+                    current_dialogue_index = 2
+         
+            show_choices = False  # Reset for the next time choices need to be displayed
+
+            pygame.display.flip()
 
 def main_menu(menu_state, controls_keys):
     global current_dialogue_index
@@ -240,6 +268,17 @@ def main_menu(menu_state, controls_keys):
                 pygame.quit()
                 sys.exit()
 
+            if show_choices:
+                choices = ["Yes", "No"]  # Example choices
+                choice_screen = ChoicesScreen(screen, choices)
+                choice_screen.display()  # Display the choices screen
+                selected_choice = choice_screen.get_selected_choice()
+                if selected_choice is not None:
+                    print(f"Player selected: {choices[selected_choice]}")
+                    # Handle the choice here (e.g., modify game state based on the selection)
+                    showing_choices = False  # Reset the flag after handling the choice
+                
+                
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:  # Press ESC to exit menu
                     menu_active = False
