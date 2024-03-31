@@ -1,7 +1,7 @@
 import pygame
 
 class DialogueBox:
-    def __init__(self, screen, font_path=None, font_size=24, box_height=100, padding=10, margin=20, background_color=(0, 0, 0, 128), text_color=(255, 255, 255)):
+    def __init__(self, screen, font_path=None, font_size=24, box_height=130, padding=10, margin=20, background_color=(0, 0, 0, 128), text_color=(255, 255, 255)):
         self.screen = screen
         self.font_size = font_size
         self.box_height = box_height
@@ -15,7 +15,7 @@ class DialogueBox:
 
         # Calculate box dimensions and position
         self.box_width = self.screen.get_width() - 2 * self.margin
-        self.box_top = self.screen.get_height() - self.box_height - self.margin
+        self.box_top = self.screen.get_height() - self.box_height - self.margin - 35
 
     def draw(self, text):
         # Render the dialogue box background

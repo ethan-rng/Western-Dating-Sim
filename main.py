@@ -46,7 +46,7 @@ menu_state = "main"
 # Load images
 path = os.path.join('view', 'assets', 'tower-thumb.jpg')
 background_image = pygame.image.load(path).convert()
-background_image = pygame.transform.scale(background_image, (screen_width+200, screen_height+200))
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 path = os.path.join('view', 'assets', 'rectangle.png')
 grey_rectangle = pygame.image.load(path).convert()
 grey_rectangle = pygame.transform.scale(grey_rectangle, (screen_width // 4, screen_height ))
@@ -86,29 +86,13 @@ back_settings_button = Button(screen_width/2.48, (screen_height/3) + (screen_hei
 controls_keys = {"auto_key": pygame.K_g, "settings_key": pygame.K_t, "pause_key": pygame.K_p, "save_key": pygame.K_s, "load_key": pygame.K_l, "help_key": pygame.K_h}
 
 #load controls settings buttons
-auto_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Auto: " + chr(controls_keys["auto_key"]), WHITE, "auto_ctrl", pygame)
-settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) , (screen_width/4), (screen_height/13), "Settings: " + chr(controls_keys["settings_key"]), WHITE, "settings_ctrl", pygame)
-pause_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Pause: " + chr(controls_keys["pause_key"]), WHITE, "pause_ctrl", pygame)
-save_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Save: " + chr(controls_keys["save_key"]), WHITE, "save_ctrl", pygame)
-load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Load: " + chr(controls_keys["load_key"]), WHITE, "load_ctrl", pygame)
-help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "help_ctrl", pygame)
+auto_button = Button(screen_width/5.4, screen_height/3, (screen_width/4), (screen_height/13), "Auto: " + chr(controls_keys["auto_key"]), WHITE, "controls", pygame)
+settings_button = Button(screen_width - screen_width/2.6, (screen_height/3) , (screen_width/4), (screen_height/13), "Settings: " + chr(controls_keys["settings_key"]), WHITE, "sound", pygame)
+pause_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Pause: " + chr(controls_keys["pause_key"]), WHITE, "video", pygame)
+save_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6), (screen_width/4), (screen_height/13), "Save: " + chr(controls_keys["save_key"]), WHITE, "language", pygame)
+load_button = Button(screen_width/5.4, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Load: " + chr(controls_keys["load_key"]), WHITE, "accessibility", pygame)
+help_button = Button(screen_width - screen_width/2.6, (screen_height/3) + (screen_height/6)*2, (screen_width/4), (screen_height/13), "Help: " + chr(controls_keys["help_key"]), WHITE, "account", pygame)
 back_controls_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
-
-#sound settings variables
-general_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4), (screen_width/1.8,20), "Game Volume", 0.5, 0, 100)
-music_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + screen_height//6), (screen_width/1.8,20), "Music Volume", 0.5, 0, 100)
-sfx_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + (screen_height//6 *2)), (screen_width/1.8,20), "SFX Volume", 0.5, 0, 100)
-back_sound_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
-
-#load help menu buttons
-back_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "main", pygame)
-next_button = Button(6.5*screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Next", GRAY , "help2", pygame)
-back_to_help1_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY , "help", pygame)
-
-#load background images
-story_background_image_path = os.path.join('view', 'assets', 'talbot-1.jpg')
-story_background_image_raw = pygame.image.load(story_background_image_path).convert()
-story_background_image = pygame.transform.scale(story_background_image_raw, (screen_width+200, screen_height+400))
 
 #dialogue
 dialogue_lines = [
@@ -128,6 +112,15 @@ dialogue_images_paths = [
     os.path.join('view', 'assets', 'talbot-5.jpg'),
     os.path.join('view', 'assets', 'talbot-6.jpg')
 ]
+
+#load background images
+
+#story_background_image_path = os.path.join('view', 'assets', 'talbot.jpg')
+#story_background_image_raw = pygame.image.load(story_background_image_path).convert()
+#story_background_image = pygame.transform.scale(story_background_image_raw, (screen_width+200, screen_height+400))
+dialogue_background_images = [pygame.image.load(path).convert() for path in dialogue_images_paths]
+for i, img in enumerate(dialogue_background_images):
+    dialogue_background_images[i] = pygame.transform.scale(img, (screen_width, screen_height))
 
 # Main Menu Items
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
@@ -154,13 +147,6 @@ def draw_menu(menu_state: str) -> None:
         message2 = baby_font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, BLACK)
         screen.blit(message2, (screen_width // 50, screen_height))
         pygame.display.flip()
-        
-    elif menu_state == "start":
-        screen.fill(DARK_GRAY)
-        draw_text("New Game", title_font, BLACK, screen_width/20, screen_height/16)
-        
-
-
         
     elif menu_state == "settings":
         screen.fill(DARK_GRAY)
@@ -195,7 +181,7 @@ def draw_menu(menu_state: str) -> None:
         general_volume_slider.draw(screen)
         music_volume_slider.draw(screen)
         sfx_volume_slider.draw(screen)
-        back_sound_button.draw(screen)
+        back_volume_button.draw(screen)
         pygame.display.flip()
 
     elif menu_state == 'help':
@@ -237,7 +223,8 @@ def draw_menu(menu_state: str) -> None:
         pygame.display.flip()
 
     elif menu_state == "chp1":
-        screen.blit(story_background_image, (0, 0))
+        current_background = dialogue_background_images[current_dialogue_index]
+        screen.blit(current_background, (0, 0))
         dialogue_box = DialogueBox(screen, font_size=50, box_height=200)
         dialogue_text = dialogue_lines[current_dialogue_index]  # Get current line of dialogue
         dialogue_box.draw(dialogue_text)
@@ -374,31 +361,8 @@ def main_menu(menu_state, controls_keys):
                 #sound settings
                 elif menu_state == "sound":
                     click_sfx.play()
-                    mouse_pos = pygame.mouse.get_pos()
-                    mouse = pygame.mouse.get_pressed()
                     
-                    if general_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        general_volume_slider.move_slider(mouse_pos)
-                        general_volume_slider.updateText()
-                        click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
-                    general_volume_slider.draw(screen)
-                    
-                    if music_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        music_volume_slider.move_slider(mouse_pos)
-                        music_volume_slider.updateText()
-                        #add set volume function once music is added
-                    general_volume_slider.draw(screen)
-                    
-                    if sfx_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        sfx_volume_slider.move_slider(mouse_pos)
-                        sfx_volume_slider.updateText()
-                        click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
-                    general_volume_slider.draw(screen)
-                    
-                    
-                    if back_sound_button.draw(screen):
-                        click_sfx.play()
-                        menu_state = back_sound_button.draw(screen)
+                    pass
 
                 elif menu_state == "start":
                     click_sfx.play()
