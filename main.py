@@ -107,6 +107,8 @@ dialogue_lines = [
 global show_choices
 # Choices_made is an dictionary that remembers the choices
 choices_made = {}
+#To refer to choices made...  like for example choices_made.get(5) at the scene #5 would be 0 if picked yes, and 1 if picked no 
+# Key = 5 (index of background), value = Option 1 or 2 (or index 0 or 1 of choices)
 
 show_choices = False
 current_dialogue_index = 0
@@ -128,6 +130,16 @@ dialogue_background_images = [pygame.image.load(path).convert() for path in dial
 for i, img in enumerate(dialogue_background_images):
     dialogue_background_images[i] = pygame.transform.scale(img, (screen_width, screen_height))
 
+# Manage the scene/title
+current_scene_index = 1
+scene_titles = {
+    1: "SCENE 1: Talbot College",            
+    2: "SCENE 2: The Library Encounter",
+    3: "SCENE 3: The Mysterious Forest",
+    4: "SCENE 4: The Hidden Cave",
+    5: "SCENE 5: The Final Showdown",
+    }
+
 # Main Menu Items
 menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
 
@@ -135,6 +147,7 @@ def draw_menu(menu_state: str) -> None:
     global show_choices
     global choices_made
     global current_dialogue_index
+    global current_scene_index 
     show_choices = False
     if menu_state == "main":
         #Draw main menu screen
@@ -223,14 +236,7 @@ def draw_menu(menu_state: str) -> None:
     
 
     elif menu_state == "start":
-        # Set the window caption for the scene
-        pygame.display.set_caption('Scene Title')
-        # Create a SceneTitle instance
-        scene_title = SceneTitle(screen, 'SCENE 1 Talbot College')
-        # Draw the scene title
-        scene_title.draw()
-        # Update the display
-        pygame.display.flip()
+        update_scene(current_scene_index)
 
     elif menu_state == "chp1":
         current_background = dialogue_background_images[current_dialogue_index]
@@ -248,16 +254,27 @@ def draw_menu(menu_state: str) -> None:
             # Logic to set the next dialogue index based on the choice
             if selected_choice_index is not None:
                 if selected_choice_index == 0:
-                    # For example, choosing the first option might skip to another dialogue point
-                    current_dialogue_index = 1
+                    current_scene_index += 1
+                    update_scene(current_scene_index)
                 if selected_choice_index == 1:
                     # For example, choosing the first option might skip to another dialogue point
-                    current_dialogue_index = 2
+                    current_dialogue_index = 0
          
             show_choices = False  # Reset for the next time choices need to be displayed
 
             pygame.display.flip()
 
+def update_scene(scene_index):
+    global current_scene_index, current_dialogue_index
+    current_scene_index = scene_index
+        
+    # Reset dialogue index ??? Can set the dialogue back to 0 everytime there is a new scene 
+    # current_dialogue_index = 0  
+    pygame.display.set_caption(scene_titles[current_scene_index])  
+    scene_title = SceneTitle(screen, scene_titles[current_scene_index] )
+    scene_title.draw()
+    pygame.display.flip()
+    
 def main_menu(menu_state, controls_keys):
     global current_dialogue_index
     menu_active = True
