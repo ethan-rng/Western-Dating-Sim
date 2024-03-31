@@ -12,7 +12,7 @@ class ChoicesScreen:
         self.text_color = (255,255,255) # white text
         self.buttons = []
 
-    def draw_buttons(self):
+    def drawButtons(self):
         self.buttons.clear()
         screen_width, screen_height = self.screen.get_size()
         start_y = (screen_height - (self.button_height * len(self.choices) + self.button_margin * (len(self.choices) - 1))) // 2

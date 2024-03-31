@@ -33,7 +33,7 @@ class Slider:
 
         self.updateText()
         
-    def move_slider(self, mouse_pos):
+    def moveSlider(self, mouse_pos):
         self.button_rect.centerx = mouse_pos[0]
     
     """Public methods that draws out the slider component onto the screen"""
@@ -64,7 +64,7 @@ class Slider:
         self.text_width = self.render.get_width()
         self.text_height = self.render.get_height()
     
-    def get_value(self):
+    def getValue(self):
         val_range = self.slider_right_pos - self.slider_left_pos - 1
         button_val = self.button_rect.centerx - self.slider_left_pos
         

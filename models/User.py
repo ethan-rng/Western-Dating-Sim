@@ -33,17 +33,17 @@ class User:
     # PROTECTED FACING METHODS
     """ Protected helper function which checks if the developer is logged in before allowing access (throws IncorrectPrivilege exception) """
     def _checkDev(self) -> None:
-        if super().LoggedInUser != "developer":
+        if User.LoggedInUser != "developer":
             raise IncorrectPrivilege
     
     """ Protected helper function which checks if the instructor is logged in before allowing access (throws IncorrectPrivilege exception) """
     def _checkInstructor(self) -> None:
-        if super().LoggedInUser != "instructor" and super().LoggedInUser!= "developer":
+        if User.LoggedInUser != "instructor" and super().LoggedInUser!= "developer":
             raise IncorrectPrivilege
         
     """ Protected helper function which checks if the player is logged in before allowing access (throws IncorrectPrivilege exception) """
     def _checkPlayer(self) -> None:
-        if super().LoggedInUser != self.username and super().LoggedInUser != "instructor" and super().LoggedInUser!= "developer":
+        if User.LoggedInUser != self.username and super().LoggedInUser != "instructor" and super().LoggedInUser!= "developer":
             raise IncorrectPrivilege
         
     # PUBLIC METHODS
