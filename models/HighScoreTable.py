@@ -1,6 +1,7 @@
 import os, json
 from models.exceptions import UserNotFound
 
+
 class HighScoreTable:
     def __init__(self) -> None:
         self.scores:dict = self.getScores()
