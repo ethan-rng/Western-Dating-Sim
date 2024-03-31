@@ -12,11 +12,16 @@ class runGame:
     def __init__(self) -> None:
         # Initialize Pygame
         pygame.init()
-        self.screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
         pygame.display.set_caption("Dating Simulator Ver. Western")
+
+        # Initializing Variables 
+        self.screen: pygame.Surface = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
 
         # Controller Variables For The Game
         self.menu_state = "main"
+        self.scene_titles = {
+            
+        }
 
         # Main Loop
         while True:
@@ -50,7 +55,7 @@ class runGame:
         settings_main.draw_settings_main(self.screen)
         self.menu_state = settings_main.event_handler(self.screen)
     def chapter1(self):
-        pass
+        chapter1_scene()
 
     def chapter2(self):
         pass
@@ -66,3 +71,10 @@ class runGame:
 
     def chapter6(self):
         pass
+
+    @staticmethod
+    def updateScene(sceneIndex:int):
+        pygame.display.set_caption(scene_titles[current_scene_index])  
+        scene_title = SceneTitle(screen, scene_titles[current_scene_index] )
+        scene_title.draw()
+        pygame.display.flip()
