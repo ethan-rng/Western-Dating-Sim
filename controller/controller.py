@@ -137,83 +137,85 @@ def runGame():
     # Main Menu Items
     menu_items = ["Start New Game", "Load Game", "Highscores", "Album","Settings", "Help", "Quit"]
 
-def draw_menu(menu_state: str) -> None:
-    if menu_state == "main":
-        #Draw main menu screen
-        screen.blit(background_image, (0, 0)) #draws background
-        grey_rectangle.set_alpha(200) #sets transparency of the grey ractangle
-        screen.blit(grey_rectangle, (0, screen_height // 5)) #draws the grey rectangle
-        pygame.draw.rect(screen, BLACK, (0, screen_height // 4, screen_width // 4, screen_height - screen_height // 5), 4) #draws the border around the grey rectangle
-        screen.blit(logo, (0, 0)) # draws the logo
-        screen.blit(title, (0, screen_height // 5)) # draws the title
-        pygame.draw.rect(screen, BLACK, (0, screen_height // 5, screen_width // 4, screen_height // 4 - screen_height // 5), 4) #draws the border around the title
-        #draws out the menu screen
-        for index, item in enumerate(menu_items):
-            menu_text = font.render(item, True, BLACK)
-            x = screen_width // 8 - (menu_text.get_width() // 2)
-            y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
-            screen.blit(menu_text, (x, y))
-        #write the names of our group
-        message = baby_font.render("Created as a part of CS2212 at Western by Group 29", True, BLACK)
-        screen.blit(message, (screen_width // 50, 39*screen_height//40))
-        message2 = baby_font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, BLACK)
-        screen.blit(message2, (screen_width // 50, screen_height))
-        pygame.display.flip()
-        
-    elif menu_state == "start":
-        screen.fill(DARK_GRAY)
-        draw_text("New Game", title_font, BLACK, screen_width/20, screen_height/16)
-        
-        
-    elif menu_state == "settings":
-        screen.fill(DARK_GRAY)
-        draw_text("Settings", title_font, BLACK, screen_width/20, screen_height/16 )
-        controls_settings_button.draw(screen)
-        sound_settings_button.draw(screen)
-        video_settings_button.draw(screen)
-        language_settings_button.draw(screen)
-        accessibility_settings_button.draw(screen)
-        account_settings_button.draw(screen)
-        back_settings_button.draw(screen)
-        back_controls_button.draw(screen)
-        pygame.display.flip()  
-        
-    elif menu_state == "controls":
-        screen.fill(DARK_GRAY)
-        draw_text("Controls", title_font, BLACK, screen_width/20, screen_height/16 )
-        draw_text("Click on a button, then press a key that is not binded", font, BLACK, screen_width/20, screen_height/16 + screen_height/14)
-        auto_button.draw(screen)
-        settings_button.draw(screen)
-        pause_button.draw(screen)
-        save_button.draw(screen)
-        load_button.draw(screen)
-        help_button.draw(screen)
-        back_controls_button.draw(screen)
-        pygame.display.flip()
-        
-    elif menu_state == "sound":
-        screen.fill(DARK_GRAY)
-        draw_text("Sound Settings", title_font, BLACK, screen_width/20, screen_height/16 )
-        draw_text("Click on each bar to adjust the volume", font, BLACK, screen_width/20, screen_height/16 + screen_height/14)
-        general_volume_slider.draw(screen)
-        music_volume_slider.draw(screen)
-        sfx_volume_slider.draw(screen)
-        back_sound_button.draw(screen)
-        pygame.display.flip()
+    def draw_menu(menu_state: str) -> None:
+        if menu_state == "main":
+            #Draw main menu screen
+            screen.blit(background_image, (0, 0)) #draws background
+            grey_rectangle.set_alpha(200) #sets transparency of the grey ractangle
+            screen.blit(grey_rectangle, (0, screen_height // 5)) #draws the grey rectangle
+            pygame.draw.rect(screen, BLACK, (0, screen_height // 4, screen_width // 4, screen_height - screen_height // 5), 4) #draws the border around the grey rectangle
+            screen.blit(logo, (0, 0)) # draws the logo
+            screen.blit(title, (0, screen_height // 5)) # draws the title
+            pygame.draw.rect(screen, BLACK, (0, screen_height // 5, screen_width // 4, screen_height // 4 - screen_height // 5), 4) #draws the border around the title
+            #draws out the menu screen
+            for index, item in enumerate(menu_items):
+                menu_text = font.render(item, True, BLACK)
+                x = screen_width // 8 - (menu_text.get_width() // 2)
+                y = (screen_height // 2 - (menu_text.get_height() * len(menu_items) // 2) + (index * 75))
+                screen.blit(menu_text, (x, y))
+            #write the names of our group
+            message = baby_font.render("Created as a part of CS2212 at Western by Group 29", True, BLACK)
+            screen.blit(message, (screen_width // 50, 39*screen_height//40))
+            message2 = baby_font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, BLACK)
+            screen.blit(message2, (screen_width // 50, screen_height))
+            pygame.display.flip()
+            
+        elif menu_state == "start":
+            screen.fill(DARK_GRAY)
+            draw_text("New Game", title_font, BLACK, screen_width/20, screen_height/16)
+            
 
-    elif menu_state == 'help':
-        screen.fill(LIGHT_GRAY)
-        screen.blit(help1, (0, screen_height // 2 - help1.get_height() // 2))
-        back_button.draw(screen)
-        next_button.draw(screen)
-        pygame.display.flip()
-    
-    elif menu_state == 'help2':
-        screen.fill(LIGHT_GRAY)
-        screen.blit(help2, (0, 0))
-        back_to_help1_button.draw(screen)
-        pygame.display.flip()
 
+            
+        elif menu_state == "settings":
+            screen.fill(DARK_GRAY)
+            draw_text("Settings", title_font, BLACK, screen_width/20, screen_height/16 )
+            controls_settings_button.draw(screen)
+            sound_settings_button.draw(screen)
+            video_settings_button.draw(screen)
+            language_settings_button.draw(screen)
+            accessibility_settings_button.draw(screen)
+            account_settings_button.draw(screen)
+            back_settings_button.draw(screen)
+            back_controls_button.draw(screen)
+            pygame.display.flip()  
+            
+        elif menu_state == "controls":
+            screen.fill(DARK_GRAY)
+            draw_text("Controls", title_font, BLACK, screen_width/20, screen_height/16 )
+            draw_text("Click on a button, then press a key that is not binded", font, BLACK, screen_width/20, screen_height/16 + screen_height/14)
+            auto_button.draw(screen)
+            settings_button.draw(screen)
+            pause_button.draw(screen)
+            save_button.draw(screen)
+            load_button.draw(screen)
+            help_button.draw(screen)
+            back_controls_button.draw(screen)
+            pygame.display.flip()
+            
+        elif menu_state == "sound":
+            screen.fill(DARK_GRAY)
+            draw_text("Sound Settings", title_font, BLACK, screen_width/20, screen_height/16 )
+            draw_text("Click on each bar to adjust the volume", font, BLACK, screen_width/20, screen_height/16 + screen_height/14)
+            general_volume_slider.draw(screen)
+            music_volume_slider.draw(screen)
+            sfx_volume_slider.draw(screen)
+            back_sound_button.draw(screen)
+            pygame.display.flip()
+
+        elif menu_state == 'help':
+            screen.fill(LIGHT_GRAY)
+            screen.blit(help1, (0, screen_height // 2 - help1.get_height() // 2))
+            back_button.draw(screen)
+            next_button.draw(screen)
+            pygame.display.flip()
+        
+        elif menu_state == 'help2':
+            screen.fill(LIGHT_GRAY)
+            screen.blit(help2, (0, 0))
+            back_to_help1_button.draw(screen)
+            pygame.display.flip()
+        
         elif menu_state == "start":
             # Set the window caption for the scene
             pygame.display.set_caption('Scene Title')
@@ -295,115 +297,113 @@ def draw_menu(menu_state: str) -> None:
                                             auto_button.updateText("Auto: " + chr(event.key))
                                             key_pressed = True  
 
-                    elif settings_button.draw(screen):
-                        click_sfx.play()
-                        key_pressed = False
-                        while key_pressed == False:
-                            for event in pygame.event.get():
-                                if event.type == pygame.KEYDOWN:
-                                    if event.key not in controls_keys.keys():
-                                        # Assign the pygame key to the action in the keys dict.
-                                        controls_keys["settings_key"] = event.key
-                                        settings_button.updateText("Settings: " + chr(event.key))
-                                        key_pressed = True
-                                    
-                    elif pause_button.draw(screen):
-                        click_sfx.play()
-                        key_pressed = False
-                        while key_pressed == False:
-                            for event in pygame.event.get():
-                                if event.type == pygame.KEYDOWN:
-                                    if event.key not in controls_keys.keys():
-                                        # Assign the pygame key to the action in the keys dict.
-                                        controls_keys["pause_key"] = event.key
-                                        pause_button.updateText("Pause: " + chr(event.key))
-                                        key_pressed = True
-                                    
-                    elif save_button.draw(screen):
-                        click_sfx.play()
-                        key_pressed = False
-                        while key_pressed == False:
-                            for event in pygame.event.get():
-                                if event.type == pygame.KEYDOWN:
-                                    if event.key not in controls_keys.keys():
-                                        # Assign the pygame key to the action in the keys dict.
-                                        controls_keys["save_key"] = event.key
-                                        save_button.updateText("Save: " + chr(event.key))
-                                        key_pressed = True
-                                    
-                    elif load_button.draw(screen):
-                        click_sfx.play()
-                        key_pressed = False
-                        while key_pressed == False:
-                            for event in pygame.event.get():
-                                if event.type == pygame.KEYDOWN:
-                                    if event.key not in controls_keys.keys():
-                                        # Assign the pygame key to the action in the keys dict.
-                                        controls_keys["load_key"] = event.key
-                                        load_button.updateText("Load: " + chr(event.key))
-                                        key_pressed = True
-                                    
-                    elif help_button.draw(screen):
-                        click_sfx.play()
-                        key_pressed = False
-                        while key_pressed == False:
-                            for event in pygame.event.get():
-                                if event.type == pygame.KEYDOWN:
-                                    if event.key not in controls_keys.keys():
-                                        # Assign the pygame key to the action in the keys dict.
-                                        controls_keys["help_key"] = event.key
-                                        help_button.updateText("Help: " + chr(event.key))
-                                        key_pressed = True
-                                    
-                    elif back_controls_button.draw(screen):
-                        click_sfx.play()
-                        menu_state = back_controls_button.draw(screen)
-                
-                #sound settings
-                elif menu_state == "sound":
-                    click_sfx.play()
-                    mouse_pos = pygame.mouse.get_pos()
-                    mouse = pygame.mouse.get_pressed()
+                        elif settings_button.draw(screen):
+                            click_sfx.play()
+                            key_pressed = False
+                            while key_pressed == False:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.KEYDOWN:
+                                        if event.key not in controls_keys.keys():
+                                            # Assign the pygame key to the action in the keys dict.
+                                            controls_keys["settings_key"] = event.key
+                                            settings_button.updateText("Settings: " + chr(event.key))
+                                            key_pressed = True
+                                        
+                        elif pause_button.draw(screen):
+                            click_sfx.play()
+                            key_pressed = False
+                            while key_pressed == False:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.KEYDOWN:
+                                        if event.key not in controls_keys.keys():
+                                            # Assign the pygame key to the action in the keys dict.
+                                            controls_keys["pause_key"] = event.key
+                                            pause_button.updateText("Pause: " + chr(event.key))
+                                            key_pressed = True
+                                        
+                        elif save_button.draw(screen):
+                            click_sfx.play()
+                            key_pressed = False
+                            while key_pressed == False:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.KEYDOWN:
+                                        if event.key not in controls_keys.keys():
+                                            # Assign the pygame key to the action in the keys dict.
+                                            controls_keys["save_key"] = event.key
+                                            save_button.updateText("Save: " + chr(event.key))
+                                            key_pressed = True
+                                        
+                        elif load_button.draw(screen):
+                            click_sfx.play()
+                            key_pressed = False
+                            while key_pressed == False:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.KEYDOWN:
+                                        if event.key not in controls_keys.keys():
+                                            # Assign the pygame key to the action in the keys dict.
+                                            controls_keys["load_key"] = event.key
+                                            load_button.updateText("Load: " + chr(event.key))
+                                            key_pressed = True
+                                        
+                        elif help_button.draw(screen):
+                            click_sfx.play()
+                            key_pressed = False
+                            while key_pressed == False:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.KEYDOWN:
+                                        if event.key not in controls_keys.keys():
+                                            # Assign the pygame key to the action in the keys dict.
+                                            controls_keys["help_key"] = event.key
+                                            help_button.updateText("Help: " + chr(event.key))
+                                            key_pressed = True
+                                        
+                        elif back_controls_button.draw(screen):
+                            click_sfx.play()
+                            menu_state = back_controls_button.draw(screen)
                     
-                    if general_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        general_volume_slider.move_slider(mouse_pos)
-                        general_volume_slider.updateText()
-                        click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
-                    general_volume_slider.draw(screen)
-                    
-                    if music_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        music_volume_slider.move_slider(mouse_pos)
-                        music_volume_slider.updateText()
-                        #add set volume function once music is added
-                    general_volume_slider.draw(screen)
-                    
-                    pass
-                    if sfx_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
-                        sfx_volume_slider.move_slider(mouse_pos)
-                        sfx_volume_slider.updateText()
-                        click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
-                    general_volume_slider.draw(screen)
-                    
-                    
-                    if back_sound_button.draw(screen):
+                    #sound settings
+                    elif menu_state == "sound":
                         click_sfx.play()
-                        menu_state = back_sound_button.draw(screen)
+                        mouse_pos = pygame.mouse.get_pos()
+                        mouse = pygame.mouse.get_pressed()
+                        
+                        if general_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
+                            general_volume_slider.move_slider(mouse_pos)
+                            general_volume_slider.updateText()
+                            click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
+                        general_volume_slider.draw(screen)
+                        
+                        if music_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
+                            music_volume_slider.move_slider(mouse_pos)
+                            music_volume_slider.updateText()
+                            #add set volume function once music is added
+                        general_volume_slider.draw(screen)
+                        
+                        pass
+                        if sfx_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
+                            sfx_volume_slider.move_slider(mouse_pos)
+                            sfx_volume_slider.updateText()
+                            click_sfx.set_volume(round((general_volume_slider.get_value()/100) * (sfx_volume_slider.get_value()/100),1))
+                        general_volume_slider.draw(screen)
+                        
+                        
+                        if back_sound_button.draw(screen):
+                            click_sfx.play()
+                            menu_state = back_sound_button.draw(screen)
 
-                
-                elif menu_state == "start":
-                    click_sfx.play()
-                    # Listen for a click to switch to DialogueBox
-                    if event.type == pygame.MOUSEBUTTONDOWN:
-                        # Here you change the state to display the dialogue box
-                        menu_state = "chp1"
+                    elif menu_state == "start":
+                        click_sfx.play()
+                        # Listen for a click to switch to DialogueBox
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            # Here you change the state to display the dialogue box
+                            menu_state = "chp1"
 
-                elif menu_state == "chp1":
-                    click_sfx.play()
-                    current_dialogue_index += 1  # Move to the next dialogue line
-                    if current_dialogue_index >= len(dialogue_lines):  # Loop or end dialogue
-                        current_dialogue_index = 0  # Reset index or change state as needed
-
-                #help menu buttons
+                    elif menu_state == "chp1":
+                        click_sfx.play()
+                        current_dialogue_index += 1  # Move to the next dialogue line
+                        if current_dialogue_index >= len(dialogue_lines):  # Loop or end dialogue
+                            current_dialogue_index = 0  # Reset index or change state as needed
+                    
                 #help menu page 1
                 elif menu_state == "help":
                     if back_button.draw(screen):
@@ -412,13 +412,14 @@ def draw_menu(menu_state: str) -> None:
                     elif next_button.draw(screen):
                         click_sfx.play()
                         menu_state = next_button.draw(screen)
-                
+              
                 #help menu page 2
                 elif menu_state == "help2":
                     if back_to_help1_button.draw(screen):
                         click_sfx.play()
                         menu_state = back_to_help1_button.draw(screen)
-        draw_menu(menu_state)
+            
+            draw_menu(menu_state)
 
     def menu_click(index):
         # This function handles the menu clicks
