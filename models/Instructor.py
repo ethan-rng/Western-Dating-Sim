@@ -4,10 +4,8 @@ from typing import List
 import json, os
 
 """
-TODO
-: Complete the Instructor class implementation
-viewStats(self, username: str) -> bool: {not sure how to do if Developers are not inheriting from Player}
-viewProgress(self, username: str) -> bool: {not sure what view progress will look like}
+TODO: viewStats(self, username: str) -> bool: {not sure how to do if Developers are not inheriting from Player}
+TODO: viewProgress(self, username: str) -> bool: {not sure what view progress will look like}
 """
 
 class Instructor(User):
@@ -28,6 +26,8 @@ class Instructor(User):
 
         return super().login("instructor", password)
 
+    """ Public Method which allows the instructor to view the stats of a specific user (throws IncorrectPrivilege exception) """
+    #! WORKING IN PROGRESS
     def viewStats(self, screen: str) -> bool:
         if super().LoggedInUser != "developer":
             return False
@@ -35,7 +35,8 @@ class Instructor(User):
 
         return True
         
-
+    """ Public Method which allows the instructor to view the progress of a specific user (throws IncorrectPrivilege exception) """
+    #! WORKING IN PROGRESS
     def viewProgress(self, username) -> bool:
         if super().LoggedInUser != "developer":
             return False

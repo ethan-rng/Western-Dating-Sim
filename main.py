@@ -1,8 +1,8 @@
 import pygame
 import sys
 import os
-from view.button import Button
-from view.slider import Slider
+from view.components.button import Button
+from view.components.slider import Slider
 # Initialize Pygame
 pygame.init()
 
