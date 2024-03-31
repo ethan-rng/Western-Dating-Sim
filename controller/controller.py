@@ -3,9 +3,9 @@ import sys
 import os
 from view.components.button import Button
 from view.components.slider import Slider
-from screens.choices import ChoicesScreen
-from screens.dialoguebox import DialogueBox
-from screens.title import SceneTitle
+from view.screens.choices import ChoicesScreen
+from view.screens.dialoguebox import DialogueBox
+from view.screens.title import SceneTitle
 
 # Initialize Pygame
 pygame.init()
