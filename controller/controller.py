@@ -162,8 +162,6 @@ def draw_menu(menu_state: str) -> None:
         screen.fill(DARK_GRAY)
         draw_text("New Game", title_font, BLACK, screen_width/20, screen_height/16)
         
-
-
         
     elif menu_state == "settings":
         screen.fill(DARK_GRAY)
@@ -213,21 +211,6 @@ def draw_menu(menu_state: str) -> None:
         screen.blit(help2, (0, 0))
         back_to_help1_button.draw(screen)
         pygame.display.flip()
-    
-
-    elif menu_state == 'help':
-        screen.fill(LIGHT_GRAY)
-        screen.blit(help1, (0, screen_height // 2 - help1.get_height() // 2))
-        back_button.draw(screen)
-        next_button.draw(screen)
-        pygame.display.flip()
-    
-    elif menu_state == 'help2':
-        screen.fill(LIGHT_GRAY)
-        screen.blit(help2, (0, 0))
-        back_to_help1_button.draw(screen)
-        pygame.display.flip()
-    
 
     elif menu_state == "start":
         # Set the window caption for the scene
@@ -404,6 +387,7 @@ def main_menu(menu_state, controls_keys):
                         click_sfx.play()
                         menu_state = back_sound_button.draw(screen)
 
+                
                 elif menu_state == "start":
                     click_sfx.play()
                     # Listen for a click to switch to DialogueBox
@@ -416,7 +400,22 @@ def main_menu(menu_state, controls_keys):
                     current_dialogue_index += 1  # Move to the next dialogue line
                     if current_dialogue_index >= len(dialogue_lines):  # Loop or end dialogue
                         current_dialogue_index = 0  # Reset index or change state as needed
-        
+
+                #help menu buttons
+                #help menu page 1
+                elif menu_state == "help":
+                    if back_button.draw(screen):
+                        click_sfx.play()
+                        menu_state = back_button.draw(screen)
+                    elif next_button.draw(screen):
+                        click_sfx.play()
+                        menu_state = next_button.draw(screen)
+                
+                #help menu page 2
+                elif menu_state == "help2":
+                    if back_to_help1_button.draw(screen):
+                        click_sfx.play()
+                        menu_state = back_to_help1_button.draw(screen)
         draw_menu(menu_state)
 
 def menu_click(index):
