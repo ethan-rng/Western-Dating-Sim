@@ -3,12 +3,12 @@ import sys
 import os
 
 from controller.constants import *
-from view.screens import *
 from view.screens.chapters import *
-from 
+
+from view.screens.menu import Menu
 
 class runGame:
-    def __init__(self):
+    def __init__(self) -> None:
         # Initialize Pygame
         pygame.init()
         pygame.display.set_caption("Dating Simulator Ver. Western")
