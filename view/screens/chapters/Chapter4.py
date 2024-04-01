@@ -24,16 +24,27 @@ class Chapter4(Chapter):
         self.next_background_index: int = None
         
         self.dialogue_options = {
-            2: ["Ask about her interests", "Ask about her background", "Scroll on your phone"],
-            4: ["Yeah that sounds great", "Sorry, I might be a little busy"]
+            1: ["Tuxedo", "Casual Sweats", "Semi-Formal", "Pajamas"],
+            3: ["Flowers", "Plushie", "Nothing"],
+            5: ["Yes",  "No", "Split the Bill"],
+            6: ["Yeah me too, it was fun.", "It was ok, I guess.", "I had a great time, you wanna do this again?"],
+            8: ["I really enjoyed our time today! I was wondering if you'd be free tomorrow to grab dinner?", "Let's go out tomorrow for dinner. Just the two of us.", "Thanks for today. It was fun. Let's do this again.", "You're actually interesting. Let’s go out again.", "Yo homie, You wanna do this again?"]
         }
 
         self.dialogue_responses = {
-            "Ask about her interests": ("S: Thanks for asking! Music is one of my favourite ways to pass time. I’ve been competing in piano contests since I was young! I also love to draw...wait I can draw a picture of you!", 3,6),
-            "Ask about her background": ("S: I grew up in Markham actually. I was never a sports kid and I did a lot of Olympiads and Kumon growing up. I always did like art though. I can draw a picture of you!", 4,6),
-            "Scroll on your phone": ("S: *Silence*", 5,6),
-            "Yeah that sounds great": ("S: Sounds good!", 7,9),
-            "Sorry, I might be a little busy": ("S: Don’t worry... it won’t take long. ", 8,9)
+            "Tuxedo": ("Looks too formal for a boba date. (-5 Points)", 1,3),
+            "Casual Sweats": ("Perfect for a relaxed vibe. (+5 Points)", 1,3),
+            "Semi-Formal": ("A nice balance, not too casual. (+3 Points)", 1,3),
+            "Pajamas": ("A bit too informal, even for a chill date. (-3 Points)", 1,3),
+            "Flowers": ("A sweet and traditional gesture. (+5 Points)", 3,4),
+            "Plushie": ("Adorable and personal, a great choice. (+10 Points)", 3,4),
+            "Nothing": ("It's okay, but a little effort goes a long way. (0 Points)", 3,4),
+            "Yes": ("S: Thank you so much! I’ll get the next one!", 5,6),
+            "No": ("S: Oh... okay", 5,7),
+            "Split the Bill": ("S: Yeah sounds good", 5,8),
+            "I had a great time, you wanna do this again?": ("S: Yeah for sure!", 9,13),
+            "It was ok, I guess.": ("S: Haha.... ", 9,12),
+            "Yeah me too, it was fun.": ("S: I'm glad. ", 9,11),
         }
         
         self.draw_chapter4()
