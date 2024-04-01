@@ -88,12 +88,16 @@ class Chapter3(Chapter):
                         for choice in self.choices_made.values():
                             if choice == "Yeah it looks like shit.":
                                 self.currPlayer.updateStats("Serena", -5)
+                                print(self.currPlayer.attractionScore["Serena"])
                             elif choice == "Yeah a little, no worries.":
                                 self.currPlayer.updateStats("Serena", 2)
+                                print(self.currPlayer.attractionScore["Serena"])
                             elif choice == "LMFAO, my house is messier":
                                 self.currPlayer.updateStats("Serena", 5)
+                                print(self.currPlayer.attractionScore["Serena"])
                             elif choice == "Your drawing sucks":
                                 self.currPlayer.updateStats("Serena", -10)
+                                print(self.currPlayer.attractionScore["Serena"])
                             elif choice == "Thanks! It looks ok":
                                 self.currPlayer.updateStats("Serena", 0)
                             elif choice == "Wow it looks really nice!":
@@ -111,11 +115,11 @@ class Chapter3(Chapter):
                             else:
                                 raise Exception("Choice Isn't Valid")
                             
-                        if self.currPlayer.attraction >= 20:
+                        if self.currPlayer.attractionScore["Serena"] >= 20:
                             
                             self.currPlayer.level = 4  # Proceed to next chapter
                             return "chp"
-                        elif self.currPlayer.attraction < 20:
+                        elif self.currPlayer.attractionScore["Serena"] < 20:
                             EndingScene(self.screen, "ending-ejected.png", self.currPlayer)
                             return "main"
                 

@@ -196,5 +196,115 @@
             "Serena": 5.5
         },
         "finalScore": 5.5
+    },
+    {
+        "username": "12",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 3.3
+        },
+        "finalScore": 3.3
+    },
+    {
+        "username": "122",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "122",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "435",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "5467",
+        "level": 3,
+        "charisma": 5,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 13.0
+        },
+        "finalScore": 13.0
+    },
+    {
+        "username": "564",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "564",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "465",
+        "level": 3,
+        "charisma": 5,
+        "intel": 1,
+        "attraction": 3,
+        "attractionScore": {
+            "Serena": 13.0
+        },
+        "finalScore": 13.0
+    },
+    {
+        "username": "465",
+        "level": 3,
+        "charisma": 5,
+        "intel": 1,
+        "attraction": 3,
+        "attractionScore": {
+            "Serena": 13.0
+        },
+        "finalScore": 13.0
+    },
+    {
+        "username": "454",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
     }
 ]
