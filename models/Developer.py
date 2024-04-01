@@ -15,7 +15,7 @@ class Developer(Player):
     def __init__(self, password: str) -> None:
         super().__init__()
         super().loadUser("developer")
-        super().login(password)
+        super().login("developer", password)
         self._loadPlayers()
 
     # PRIVATE CLASS METHODS
