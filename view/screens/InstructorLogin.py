@@ -2,13 +2,17 @@ import pygame, os
 from controller.constants import *
 from view.components.Button import Button
 from view.components.InputBox import TextInputBox
+from models.Instructor import Instructor
+from models.exceptions import *
+from hashlib import sha256
 
-class Login:
+
+class InstructorLogin:
     def __init__(self) -> None:
-        self.game_state = "login"
+        self.game_state = "instructor_login"
         self.username = ''
         self.password = ''
-        self.continue_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Continue", WHITE, "start", pygame)
+        self.continue_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Continue", WHITE, "instructor_panel", pygame)
         self.username_input_box = TextInputBox(screen_width//11.5, screen_height//5, screen_width, screen_height/20, "Username:", DARK_GRAY, pygame)
         self.password_input_box = TextInputBox(screen_width//11.5, screen_height//5 + screen_height//10, screen_width, screen_height/20, "Password:", DARK_GRAY, pygame)
         
@@ -46,15 +50,23 @@ class Login:
                         self.password = self.password_input_box.user_text
                         
                     elif self.continue_button.draw(screen):
-                        
-                        if not self.username == '':
-                            if not self.password == '':
-                                self.game_state = self.continue_button.draw(screen)
-                                return self.game_state 
+                        click_sfx.play()
+                        if not self.username == '' and not self.password == '':
+                            if self.username == "instructor":
+                                try:
+                                    instructor: Instructor = Instructor(self.password)
+                                except IncorrectPassword:
+                                    IncorrectPassword(self.username, self.password)
+                                except IncorrectPrivilege:
+                                    IncorrectPrivilege()
+                                else:
+                                    self.game_state = self.continue_button.draw(screen)
+                                    return self.game_state
+                                
+                                
             self.draw_login(screen)
     
     """ Helper function to draw text on the screen """
     def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
         img = font.render(text, True, text_col)
         screen.blit(img, (x,y))
-        

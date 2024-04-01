@@ -7,7 +7,7 @@ from view.components.Slider import Slider
 class SettingsSound:
     def __init__(self) -> None:
         
-        self.menu_state = "sound"
+        self.game_state = "sound"
         
         #sound settings variables
         self.general_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4), (screen_width/1.8,20), "Game Volume", 0.5, 0, 100)
@@ -64,8 +64,8 @@ class SettingsSound:
 
                     if self.back_sound_button.draw(screen):
                         click_sfx.play()
-                        self.menu_state = self.back_sound_button.draw(screen)
-                        return self.menu_state
+                        self.game_state = self.back_sound_button.draw(screen)
+                        return self.game_state
             
             self.draw_settings_sound(screen)
     

@@ -5,6 +5,7 @@ import os
 from controller.constants import *
 from view.screens.chapters import *
 from models.Player import Player
+from models.Instructor import Instructor
 
 # Importing Screens
 from view.screens.Menu import Menu
@@ -16,6 +17,8 @@ from view.screens.help.Help1 import Help1
 from view.screens.help.Help2 import Help2
 from view.screens.NewGame import NewGameScreen
 from view.screens.Login import Login
+from view.screens.InstructorLogin import InstructorLogin
+from view.screens.InstructorPanel import InstructorPanel
 from view.screens.chapters.Chapter1 import Chapter1
 from view.screens.chapters.Chapter2 import Chapter2
 from view.screens.chapters.Chapter3 import Chapter3
@@ -33,14 +36,6 @@ class RunGame:
         # Initializing Variables for PyGame
         self.currPlayer: Player = Player()
         self.screen: pygame.Surface = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
-        self.menu = Menu()
-        self.main_settings = SettingsMain()
-        self.control_settings = SettingsControls()
-        self.sound_settings = SettingsSound()
-        self.help1_page = Help1()
-        self.help2_page = Help2()
-        self.new_game_screen = NewGameScreen()
-        self.login_screen = Login()
 
 
         # Controller Variables For The Game
@@ -60,11 +55,15 @@ class RunGame:
             elif self.game_state == "help2":
                 self.game_state = Help2().event_handler(self.screen)
             elif self.game_state == "settings":
-                self.game_state = self.settings_main().event_handler()
+                self.game_state = SettingsMain().event_handler(self.screen)
             elif self.game_state == "controls":
                 self.game_state = SettingsControls().event_handler(self.screen)
             elif self.game_state == "sound":
                 self.game_state = SettingsSound().event_handler(self.screen)
+            elif self.game_state == "instructor_login":
+                self.game_state = InstructorLogin().event_handler(self.screen)
+            elif self.game_state == "instructor_panel":
+                self.game_state = InstructorPanel().event_handler(self.screen)
             elif self.game_state == "chp" and self.currPlayer.level == 1:
                 self.game_state = Chapter1(self.screen,
                                            self.currPlayer,

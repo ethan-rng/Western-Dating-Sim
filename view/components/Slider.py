@@ -45,6 +45,8 @@ class Slider:
         text_label_rect = text_label_surface.get_rect(center=(screen_width / 6, self.pos[1] + screen_height // 100))
         screen.blit(text_label_surface, text_label_rect)
 
+        text_num_rect.centery = slider_rect.centery
+        
         pygame.draw.rect(screen, "darkgray", self.container_rect)
         pygame.draw.rect(screen, "black", self.button_rect)
 

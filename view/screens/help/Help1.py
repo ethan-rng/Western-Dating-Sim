@@ -7,7 +7,7 @@ from view.components.Button import Button
 
 class Help1:
     def __init__(self) -> None:
-        self.menu_state = "help1"
+        self.game_state = "help1"
 
         # load help1 images
         path = os.path.join('view', 'assets', 'help1.png')
@@ -36,9 +36,9 @@ class Help1:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     click_sfx.play()
                     if self.back_button.draw(screen):
-                        self.menu_state = self.back_button.draw(screen)
+                        self.game_state = self.back_button.draw(screen)
                     elif self.next_button.draw(screen):
-                        self.menu_state = self.next_button.draw(screen)
-                    return self.menu_state
+                        self.game_state = self.next_button.draw(screen)
+                    return self.game_state
 
             self.draw_help1(screen)

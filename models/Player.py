@@ -47,7 +47,7 @@ class Player(User):
     """ Public Method which allows the player to load from a previous game state (throws UserNotFound exception) """
     def loadPlayer(self, username: str) -> None:
         super().loadUser(username)
-
+        
         with open(os.path.join("models", "data", "UserGameStates.json"), "r") as file:
             jsonData = json.load(file)
             for data in jsonData:
@@ -57,7 +57,8 @@ class Player(User):
                     self._intelligence = data["intel"]
                     self._attraction = data["attraction"]
                     self._attractionScore = data["attractionScore"]
-                    break
+                    return
+                
             raise UserNotFound(username)
 
     """ Public Method which saves all progress of the player to the disk """
