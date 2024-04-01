@@ -14,6 +14,7 @@ from view.screens.settings.SettingsSound import SettingsSound
 from view.screens.help.Help1 import Help1
 from view.screens.help.Help2 import Help2
 from view.screens.NewGame import NewGameScreen
+from view.screens.Login import Login
 from view.screens.chapters.Chapter1 import Chapter1
 from view.screens.chapters.Chapter2 import Chapter2
 from view.screens.chapters.Chapter3 import Chapter3
@@ -38,6 +39,7 @@ class RunGame:
         self.help1_page = Help1()
         self.help2_page = Help2()
         self.new_game_screen = NewGameScreen()
+        self.login_screen = Login()
 
 
         # Controller Variables For The Game
@@ -48,6 +50,8 @@ class RunGame:
         while True:
             if self.menu_state == "main":
                 self.main_menu()
+            if self.menu_state == "login":
+                self.menu_state = self.login_screen.event_handler(self.screen)
             elif self.menu_state == "start":
                 self.new_game()
             elif self.menu_state == "help1":
@@ -55,7 +59,7 @@ class RunGame:
             elif self.menu_state == "help2":
                 self.help2()
             elif self.menu_state == "settings":
-                SettingsMain(self.screen)
+                self.settings_main()
             elif self.menu_state == "controls":
                 self.settings_control()
             elif self.menu_state == "sound":

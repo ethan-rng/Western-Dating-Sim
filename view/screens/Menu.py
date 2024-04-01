@@ -80,7 +80,7 @@ class Menu:
     def menu_click(self, index: int) -> None:
         # This function handles the menu clicks
         if index == 0:
-            self.menu_state = "start"
+            self.menu_state = "login"
         elif index == 1:
             self.menu_state = "load"
         #takes you to the highscores table

@@ -65,6 +65,7 @@ class SettingsSound:
                     if self.back_sound_button.draw(screen):
                         click_sfx.play()
                         self.menu_state = self.back_sound_button.draw(screen)
+                        return self.menu_state
             
             self.draw_settings_sound(screen)
     
