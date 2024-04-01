@@ -8,9 +8,9 @@ class HighScoreTable:
 
     # PUBLIC FACING METHODS
     """ Public Method which opens the json file and returns the scores dict """
-    def getScores(self) -> dict:
+    def getScores(self) -> list:
         with open(os.path.join('models', 'data', 'UserGameStates.json'), "r") as file:
-            self.scores = dict(json.load(file))
+            self.scores = list(json.load(file))
             return self.scores
     
     """ Public Method which allows the instructor to view the progress of a specific user (throws UserNotFound exception) """
