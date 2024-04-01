@@ -47,3 +47,7 @@ class Chapter:
             pygame.quit()
             sys.exit()
 
+    """ Public Method Which Allows the Developer to Change Their Stats and View Them """
+    def checkGodMode(self):
+        self.currPlayer
+

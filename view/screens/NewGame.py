@@ -6,7 +6,6 @@ from view.components.InputBox import TextInputBox
 
 
 class NewGameScreen:
-
     def __init__(self) -> None:
         self.intelligence = 0
         self.charisma = 0
