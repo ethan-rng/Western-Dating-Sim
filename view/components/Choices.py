@@ -1,5 +1,6 @@
 import pygame
 
+
 class ChoicesScreen:
     def __init__(self, screen, choices):
         self.screen = screen
@@ -8,14 +9,16 @@ class ChoicesScreen:
         self.button_width = 300
         self.button_height = 50
         self.button_margin = 20
-        self.button_color = (0,0,0)  # black button
-        self.text_color = (255,255,255) # white text
+        self.button_color = (0, 0, 0)  # black button
+        self.text_color = (255, 255, 255)  # white text
         self.buttons = []
+        self.selected_choice_index = 0
 
-    def drawButtons(self):
+    def draw_buttons(self):
         self.buttons.clear()
         screen_width, screen_height = self.screen.get_size()
-        start_y = (screen_height - (self.button_height * len(self.choices) + self.button_margin * (len(self.choices) - 1))) // 2
+        start_y = (screen_height - (
+                self.button_height * len(self.choices) + self.button_margin * (len(self.choices) - 1))) // 2
 
         for i, choice in enumerate(self.choices):
             button_x = (screen_width - self.button_width) // 2
@@ -33,11 +36,11 @@ class ChoicesScreen:
             button_surface.blit(text, text_rect)
             self.screen.blit(button_surface, button_rect.topleft)
 
-    def display(self):
+    def display(self) -> int:
         self.selected_choice_index = None  # Reset the selected choice index each time the display is called
         running = True
         while running:
-        
+
             self.draw_buttons()
             pygame.display.flip()
 

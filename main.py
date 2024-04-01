@@ -1,4 +1,4 @@
-from controller.controller import runGame
+from controller.controller import RunGame
 
 """
     TODO: probably download and setup virtual environment
@@ -6,4 +6,4 @@ from controller.controller import runGame
 
 if __name__ == '__main__':
     # ! Setup Virtual Environment automatically
-    runGame()
+    RunGame()

@@ -1,4 +1,4 @@
-from exceptions import UserAlreadyExists, UserNotFound, IncorrectPassword, AdminLevelAccount, IncorrectPrivilege
+from models.exceptions import DuplicateUser, UserNotFound, IncorrectPassword, AdminLevelAccount, IncorrectPrivilege
 from typing import List
 from hashlib import sha256
 import os, json

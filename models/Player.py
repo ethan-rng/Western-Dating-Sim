@@ -1,5 +1,5 @@
 from models.User import User
-from exceptions import IllegalStats, UserNotFound
+from models.exceptions import IllegalStats, UserNotFound
 import os, json
 
 

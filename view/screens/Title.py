@@ -1,5 +1,6 @@
 import pygame
 
+
 class SceneTitle:
     def __init__(self, screen, text, font_size=74, bg_color=(0, 0, 0), text_color=(255, 255, 255), box_color=(0, 0, 0)):
         self.screen = screen

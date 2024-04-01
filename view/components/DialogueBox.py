@@ -1,5 +1,6 @@
 import pygame
 
+
 class DialogueBox:
     def __init__(self, screen, font_path=None, font_size=24, box_height=130, padding=10, margin=20, background_color=(0, 0, 0, 128), text_color=(255, 255, 255)):
         self.screen = screen
