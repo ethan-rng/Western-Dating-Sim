@@ -49,6 +49,6 @@ class Chapter:
             sys.exit()
 
     """ Public Method Which Allows the Developer to Change Their Stats and View Them """
-    def checkGodMode(self):
-        if
+    #def checkGodMode(self):
+     #   if
 

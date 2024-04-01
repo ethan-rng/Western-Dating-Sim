@@ -120,7 +120,9 @@ class RunGame:
                                                "You agree to meet up at UCC to return the sheet music.",
                                                "She thanks you, and you guys decide to grab something to eat at the Spoke..",
                                                "What do you talk about in line?",
-                                               "How do you respond?"
+                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
+                                               "How do you respond?",
+                                               "Let’s meet at my place tomorrow at 1pm!"
                                            ],
                                            [
                                                os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
@@ -129,8 +131,10 @@ class RunGame:
                                                os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
                                                os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
                                                os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
                                            ],
                                            self.controls
                                            ).event_handler()
