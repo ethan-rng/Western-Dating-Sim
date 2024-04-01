@@ -76,8 +76,27 @@ class RunGame:
                                            ).event_handler()
 
             elif self.game_state == "chp" and self.currPlayer.level == 2:
-                pass
-                # Chapter2(self.screen, self.GameSession.player)
+                self.game_state = Chapter2(self.screen,
+                                           self.currPlayer,
+                                           "Chapter 2",
+                                           [
+                                               "You agree to meet up at UCC to return the sheet music.",
+                                               "She thanks you, and you guys decide to grab something to eat at the Spoke..",
+                                               "What do you talk about in line?",
+                                               "How do you respond?"
+                                           ],
+                                           [
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.2.jpg'),
+                                           ],
+                                           self.controls
+                                           ).event_handler()
             elif self.game_state == "chp" and self.currPlayer.level == 3:
                 pass
                 # Chapter3(self.screen, self.GameSession.player)
