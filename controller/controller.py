@@ -235,24 +235,16 @@ class RunGame:
                                            self.currPlayer,
                                            "Chapter 5",
                                            [
-                                               "You agree to meet up at UCC to return the sheet music.",
-                                               "She thanks you, and you guys decide to grab something to eat at the Spoke..",
-                                               "What do you talk about in line?",
-                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
-                                               "How do you respond?",
-                                               "Let’s meet at my place tomorrow at 1pm!"
+                                               "You've decided it's time to see if Serena wants to take things to the next level. You meet at UC Hill.",
+                                               "So, what's up?"
+            
+                                    
                                            ],
                                            [
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
+                                               os.path.join('view', 'assets', 'chp5', 'uchill-1.jpg'),
+                                               os.path.join('view', 'assets', 'chp5', 'uchill-2.jpg'),
+                                               os.path.join('view', 'assets', 'chp5', 'uchill-2.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp5', 'uchill-2.2.jpg'),
                                            ],
                                            self.controls
                                            ).event_handler()

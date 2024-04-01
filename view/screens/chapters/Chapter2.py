@@ -109,7 +109,7 @@ class Chapter2(Chapter):
                             else:
                                 raise Exception("Choice Isn't Valid")
 
-                        self.currPlayer.level = 3  # Proceed to next chapter
+                        self.currPlayer.level = 5  # Proceed to next chapter
                         self.currPlayer.saveProgress()
                         return "chp"
 
