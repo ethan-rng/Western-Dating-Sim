@@ -1,7 +1,7 @@
 from controller.constants import *
 import pygame
 import sys
-from view.components.button import Button
+from view.components.Button import Button
 
 class SettingsControls:
     

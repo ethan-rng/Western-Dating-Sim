@@ -1,8 +1,8 @@
 from controller.constants import *
 import pygame
 import sys
-from view.components.button import Button
-from view.components.slider import Slider
+from view.components.Button import Button
+from view.components.Slider import Slider
 
 class SettingsSound:
     def __init__(self) -> None:

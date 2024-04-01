@@ -9,11 +9,11 @@ from controller.GameSession import GameSession
 # Importing Screens
 from view.screens.Menu import Menu
 from view.screens.settings.SettingsMain import SettingsMain
-from view.screens.settings.settingsControls import SettingsControls
-from view.screens.settings.settingsSound import SettingsSound
-from view.screens.help.help1 import Help1
-from view.screens.help.help2 import Help2
-from view.screens.newGame import NewGameScreen
+from view.screens.settings.SettingsControls import SettingsControls
+from view.screens.settings.SettingsSound import SettingsSound
+from view.screens.help.Help1 import Help1
+from view.screens.help.Help2 import Help2
+from view.screens.NewGame import NewGameScreen
 from view.screens.chapters.Chapter1 import Chapter1
 from view.screens.chapters.Chapter2 import Chapter2
 from view.screens.chapters.Chapter3 import Chapter3
@@ -122,8 +122,6 @@ class RunGame:
     
     def settings_sound(self):
         self.menu_state = self.sound_settings.event_handler(self.screen)
-    
-
         
     def chapter1(self):
         chapter1_scene()

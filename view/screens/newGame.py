@@ -1,7 +1,7 @@
 import pygame, os
 from controller.constants import *
-from view.components.button import Button
-from view.components.slider import Slider
+from view.components.Button import Button
+from view.components.Slider import Slider
 from view.components.inputBox import TextInputBox
 
 
