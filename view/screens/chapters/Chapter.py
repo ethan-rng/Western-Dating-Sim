@@ -50,6 +50,9 @@ class Chapter:
 
     """ Public Method Which Allows the Developer to Change Their Stats and View Them """
     def checkGodMode(self, event: pygame.event.Event) -> None:
+
+        return
+
         if type(self.currPlayer) == "<class 'models.Developer.Developer'>":
             if event.type == pygame.KEYDOWN and (event.key == pygame.K_LCTRL or event.key == pygame.K_RCTRL):
                 if event.key == pygame.K_1:
