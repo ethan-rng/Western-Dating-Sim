@@ -10,7 +10,6 @@ import pygame
 from typing import List
 import sys
 
-
 class Chapter2(Chapter):
     def __init__(self, screen: pygame.Surface, currPlayer: Player,
                  title: str, dialogueLines: List[str], dialogueImagePaths: List[str], controls: dict):
@@ -28,6 +27,7 @@ class Chapter2(Chapter):
             4: ["Yeah that sounds great", "Sorry, I might be a little busy"]
         }
 
+        # 1st number is the index of the image, 2nd number is the index of the next image after 
         self.dialogue_responses = {
             "Ask about her interests": ("S: Thanks for asking! Music is one of my favourite ways to pass time. I’ve been competing in piano contests since I was young! I also love to draw...wait I can draw a picture of you!", 3,6),
             "Ask about her background": ("S: I grew up in Markham actually. I was never a sports kid and I did a lot of Olympiads and Kumon growing up. I always did like art though. I can draw a picture of you!", 4,6),
@@ -40,12 +40,14 @@ class Chapter2(Chapter):
 
     def draw_chapter2(self):
         while True:
+            # Sets the background of the scene, normal dialogue and background
             current_background = self.dialogueImages[self.current_scene_index]
             self.screen.blit(current_background, (0, 0))
             dialogue_box = DialogueBox(self.screen, font_size=50, box_height=200)
             dialogue_text = self.dialogueLines[self.current_dialogue_index]
             dialogue_box.draw(dialogue_text)
 
+            # until it reaches an index with a choice that needs to be made. and the choice isnt shown yet
             if not self.show_choices and self.current_dialogue_index in self.dialogue_options:
                     # Dialogue options are available for this index, index 2 and 4
                     # Show choices and display
@@ -70,7 +72,6 @@ class Chapter2(Chapter):
                     dialogue_box.draw(response_text)
                     self.selected_choice_index = None
             pygame.display.flip()          
-        
             return ""
 
     def event_handler(self):
@@ -78,9 +79,6 @@ class Chapter2(Chapter):
             for event in pygame.event.get():
                 self.checkQuitGame(event)
                 if event.type == pygame.MOUSEBUTTONDOWN:            
-           
-                
-                   
                     self.current_dialogue_index += 1 
                     if self.current_dialogue_index >= len(self.dialogueLines)-1:  # Check if dialogue is over, next chapter
                         self.currPlayer.level = 3  # Proceed to next chapter
