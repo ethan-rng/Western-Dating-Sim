@@ -124,12 +124,12 @@ choices_made = {}
 show_choices = False
 current_dialogue_index = 0
 dialogue_images_paths = [
-    os.path.join('view', 'assets', 'talbot-1.jpg'),
-    os.path.join('view', 'assets', 'talbot-2.jpg'),
-    os.path.join('view', 'assets', 'talbot-3.jpg'),
-    os.path.join('view', 'assets', 'talbot-4.jpg'),
-    os.path.join('view', 'assets', 'talbot-5.jpg'),
-    os.path.join('view', 'assets', 'talbot-6.jpg')
+    os.path.join('view', 'assets', 'chp1', 'talbot-1.jpg'),
+    os.path.join('view', 'assets', 'chp1', 'talbot-2.jpg'),
+    os.path.join('view', 'assets', 'chp1', 'talbot-3.jpg'),
+    os.path.join('view', 'assets', 'chp1', 'talbot-4.jpg'),
+    os.path.join('view', 'assets', 'chp1', 'talbot-5.jpg'),
+    os.path.join('view', 'assets', 'chp1', 'talbot-6.jpg')
 ]
 
 #load background images
