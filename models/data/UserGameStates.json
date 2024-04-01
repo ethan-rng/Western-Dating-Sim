@@ -1,4 +1,4 @@
-[    
+[
     {
         "username": "ggg",
         "level": 1,
@@ -130,5 +130,71 @@
             "Serena": 6.5
         },
         "finalScore": 6.5
+    },
+    {
+        "username": "123",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0.0
+        },
+        "finalScore": 0.0
+    },
+    {
+        "username": "123",
+        "level": 5,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0.0
+        },
+        "finalScore": 0.0
+    },
+    {
+        "username": "1",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "3",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "345",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "456",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 5.5
+        },
+        "finalScore": 5.5
     }
 ]
