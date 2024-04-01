@@ -42,13 +42,36 @@ class Chapter:
             pygame.display.flip()
 
     """ Public Method Which Just Detects If The Game Has Been Quit (to be called in the beginning of the event loop)"""
-    def checkQuitGame(self, event: pygame.event.Event):
+    def checkQuitGame(self, event: pygame.event.Event) -> None:
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
             self.currPlayer.saveProgress()
             pygame.quit()
             sys.exit()
 
     """ Public Method Which Allows the Developer to Change Their Stats and View Them """
-    #def checkGodMode(self):
-     #   if
+    def checkGodMode(self, event: pygame.event.Event) -> None:
+
+        return
+
+        if type(self.currPlayer) == "<class 'models.Developer.Developer'>":
+            if event.type == pygame.KEYDOWN and (event.key == pygame.K_LCTRL or event.key == pygame.K_RCTRL):
+                if event.key == pygame.K_1:
+                    self.currPlayer.jumpToScreen(1)
+
+                elif event.key == pygame.K_2:
+                    self.currPlayer.jumpToScreen(2)
+
+                elif event.key == pygame.K_3:
+                    self.currPlayer.jumpToScreen(3)
+
+                elif event.key == pygame.K_4:
+                    self.currPlayer.jumpToScreen(4)
+
+                elif event.key == pygame.K_5:
+                    self.currPlayer.jumpToScreen(5)
+
+                elif event.key == pygame.K_6:
+                    self.currPlayer.jumpToScreen(6)
+
+
 

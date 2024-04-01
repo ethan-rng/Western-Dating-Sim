@@ -5,31 +5,34 @@ from view.components.Slider import Slider
 from view.components.InputBox import TextInputBox
 from models.Player import Player
 from models.exceptions import *
+from models.Developer import Developer
 
 
 class NewGameScreen:
     def __init__(self, currPlayer: Player) -> None:
         self.currPlayer: Player = currPlayer
-        self.intelligence: int = 5
-        self.charisma: int = 5
-        self.attractiveness: int = 5
+        self.intelligence: int = 1
+        self.charisma: int = 1
+        self.attractiveness: int = 1
 
         self.continue_button = Button(screen_width / 2.48, (screen_height / 3) + (screen_height / 6) * 3,
                                       (screen_width / 4), (screen_height / 13), "Continue", WHITE, "chp", pygame)
         self.intelligence_slider = Slider(
             (screen_width - screen_width / 2.8, screen_height // 4 + (screen_height // 8)), (screen_width / 1.8, 20),
-            "Intelligence", 0.5, 0, 10)
+            "Intelligence", 0.1, 0, 10)
         self.charisma_slider = Slider(
             (screen_width - screen_width / 2.8, screen_height // 4 + (screen_height // 8) * 2),
-            (screen_width / 1.8, 20), "Charisma", 0.5, 0, 10)
+            (screen_width / 1.8, 20), "Charisma", 0.1, 0, 10)
         self.attractiveness_slider = Slider(
             (screen_width - screen_width / 2.8, screen_height // 4 + (screen_height // 8) * 3),
-            (screen_width / 1.8, 20), "Attractiveness", 0.5, 0, 10)
+            (screen_width / 1.8, 20), "Attractiveness", 0.1, 0, 10)
 
         self.error_message: str = ""
 
     def draw_newgame_screen(self, screen: pygame.Surface) -> None:
         screen.fill(DARK_GRAY)
+        self.draw_text("New Game", title_font, BLACK, screen_width/20, screen_height/16, screen)
+        self.draw_text("Allocate you stat points (up to 10)", font, BLACK, screen_width/20, screen_height/16 + screen_height/12, screen)
         self.continue_button.draw(screen)
         self.intelligence_slider.draw(screen)
         self.charisma_slider.draw(screen)
@@ -37,8 +40,8 @@ class NewGameScreen:
 
         # Drawing Error Message For Illegal Stat Combo
         if self.error_message:
-            font = pygame.font.SysFont(None, 80)
-            text_surface = font.render(self.error_message, True, RED)
+            error_font = pygame.font.SysFont(None, 80)
+            text_surface = error_font.render(self.error_message, True, RED)
             # Calculate x position to center the text
             text_x = (screen_width - text_surface.get_width()) / 2
             text_y = (screen_height * 9) / 13
@@ -48,7 +51,6 @@ class NewGameScreen:
 
     def event_handler(self, screen: pygame.Surface, username: str, password: str) -> str:
         newgame_active = True
-        event_list = pygame.event.get()
 
         while newgame_active:
             for event in pygame.event.get():
@@ -88,10 +90,17 @@ class NewGameScreen:
                         try:
                             self.currPlayer.createPlayer(username, password, self.charisma, self.intelligence,
                                                          self.attractiveness)
-                            self.currPlayer.login(password)
+                            self.currPlayer.login(username, password)
                             return self.menu_state
 
+                        except IncorrectPassword:
+                            self.error_message = "Wrong Password for the Developer Account"
                         except IllegalStats:
                             self.error_message = "Total Stats Must Add to 10 or Lower"
 
             self.draw_newgame_screen(screen)
+            
+    """ Helper function to draw text on the screen """
+    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
+        img = font.render(text, True, text_col)
+        screen.blit(img, (x,y))

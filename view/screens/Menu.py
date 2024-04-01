@@ -75,7 +75,7 @@ class Menu:
                         if item_rect.collidepoint(event.pos):
                             click_sfx.play()
                             self.menu_click(index)
-                            return self.menu_state
+                            return self.game_state
 
             self.draw_menu(screen)
 
@@ -83,21 +83,21 @@ class Menu:
     def menu_click(self, index: int) -> None:
         # This function handles the menu clicks
         if index == 0:
-            self.menu_state = "login"
+            self.game_state = "login"
         elif index == 1:
-            self.menu_state = "load"
+            self.game_state = "load"
         # takes you to the highscores table
         elif index == 2:
-            self.menu_state = "highscores"
+            self.game_state = "highscores"
         # takes you to the albums
         elif index == 3:
-            self.menu_state = "album"
+            self.game_state = "album"
         # takes you to settings
         elif index == 4:
-            self.menu_state = "settings"
+            self.game_state = "settings"
         # takes you to help menu
         elif index == 5:
-            self.menu_state = "help1"
+            self.game_state = "help1"
         # quits the game
         elif index == 6:
             pygame.quit()

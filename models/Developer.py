@@ -6,8 +6,6 @@ from models.exceptions import UserNotFound
 
 """
 TODO: jumptoScreens(self, screenName: str) -> bool:
-TODO: debug(self, screenName: str) -> bool:
-
 """
 
 
@@ -16,54 +14,28 @@ class Developer(Player):
 
     def __init__(self, password: str) -> None:
         super().__init__()
-        super().login("developer", password)
-        Developer._loadPlayers()
+        super().loadUser("developer")
+        super().login(password)
+        self._loadPlayers()
 
     # PRIVATE CLASS METHODS
     def _loadPlayers(self) -> None:
-        with open(os.path.join('models', 'data', 'Developers.json'), "r") as file:
+        with open(os.path.join('models', 'data', 'UserGameStates.json'), "r") as file:
             jsonData = json.load(file)
             Developer.Players = []
 
-            for data in jsonData:
+            print(jsonData)
+            for i, data in enumerate(jsonData):
                 Developer.Players.append(Player().loadPlayer(data["username"]))
 
     # PUBLIC FACING METHODS
-    """ Public Method which allows the change any user's stats (throws IncorrectPrivilege, KeyError and UserNotFound exception) """
-
-    def modifyUserStats(self, username: str, character: str, stat: int, attrib: str = ""):
+    """" Public Facing Method which allows the user to skip levels """
+    def jumptoScreen(self, newLevel: int) -> None:
         self._checkDev()
+        if newLevel >= 1 and newLevel >= 6:
+            self.level = newLevel
+            return
 
-        # Handling Non Existing Username
-        for player in Developer.Players:
-            if player.username == username:
-                if character == "self":
-                    if attrib == "charisma":
-                        player.charisma = stat
-                    elif attrib == "intel":
-                        player.intelligence = stat
-                    elif attrib == "attraction":
-                        player.attraction = stat
-                    elif attrib == "level":
-                        player.level = stat
-                    else:
-                        raise KeyError(attrib)
-                else:
-                    # Will raise KeyError if character does not exist
-                    player.attractionScore[character] = stat
+        raise IndexError
 
-                player.saveProgress()
 
-        raise UserNotFound(username)
-
-    """ Public Method which returns a dictionary of various debugging data (throws IncorrectPrivilege exception) """
-
-    # ! WORKING IN PROGRESS
-    def debugGame(self) -> dict:
-        self._checkDev()
-
-    """ Public Method which allows the developer to jump to a specific screen (throws IncorrectPrivilege exception) """
-
-    # ! WORKING IN PROGRESS
-    def jumptoScreen(self, screen: str) -> None:
-        self._checkDev()

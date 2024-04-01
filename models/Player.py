@@ -1,5 +1,6 @@
 from models.User import User
 from models.exceptions import IllegalStats, UserNotFound
+from typing import List
 import os, json
 
 # CONSTANTS
@@ -11,25 +12,41 @@ CHARACTER_BIAS = {
 
 # Player Class
 class Player(User):
+    Players: List[dict] = []
+
     def __init__(self) -> None:
         super().__init__()
+        if not Player.Players:
+            with open(os.path.join("models", "data", "UserGameStates.json"), "r") as file:
+                jsonData = json.load(file)
+                for data in jsonData:
+                    Player.Players.append({
+                        "username": data["username"],
+                        "level": data["level"],
+                        "charisma": data["charisma"],
+                        'intel': data["intel"],
+                        "attraction": data["attraction"],
+                        "attractionScore": data["attractionScore"],
+                        "finalScore": data["finalScore"],
+                    })
 
-        self._attraction: int = 0
-        self._charisma: int = 0
-        self._intelligence: int = 0
-        self._level: int = 1
+        # Base Stats
+        self._level = 1
+        self._charisma = 0
+        self._intelligence = 0
+        self._attraction = 0
 
-        self._attractionScore: dict = {
+        # Individual Attraction Score
+        self._attractionScore = {
             "Serena": 0,
         }
 
     # PUBLIC FACING METHODS
     """ Public Method which creates a new player account (throws AdminLevelAccount DuplicateUser, IllegalStats) """
     def createPlayer(self, username: str, password: str, charisma: int, intel: int, attraction: int) -> None:
-        # Stats for Individual Players
-        totalScore = charisma + intel + attraction
 
-        if totalScore > MAX_SCORE or (charisma < 0 or intel < 0 or attraction < 0):
+        # Stats for Individual Players
+        if charisma + intel + attraction > MAX_SCORE or (charisma < 0 or intel < 0 or attraction < 0):
             raise IllegalStats(charisma, intel, attraction)
 
         super().createUser(username, password)
@@ -46,19 +63,20 @@ class Player(User):
         }
 
     """ Public Method which allows the player to load from a previous game state (throws UserNotFound exception) """
+
     def loadPlayer(self, username: str) -> None:
         super().loadUser(username)
-
         with open(os.path.join("models", "data", "UserGameStates.json"), "r") as file:
             jsonData = json.load(file)
             for data in jsonData:
                 if data["username"] == username:
-                    self.level = data["level"]
+                    self._level = data["level"]
                     self._charisma = data["charisma"]
                     self._intelligence = data["intel"]
                     self._attraction = data["attraction"]
                     self._attractionScore = data["attractionScore"]
-                    break
+                    return
+                
             raise UserNotFound(username)
 
     """ Public Method which saves all progress of the player to the disk """
@@ -66,20 +84,18 @@ class Player(User):
         with open(os.path.join("models", "data", "UserGameStates.json"), "w") as file:
             playerData = {
                 "username": self.username,
-                "level": self.level,
+                "level": self._level,
                 "charisma": self._charisma,
                 "intel": self._intelligence,
                 "attraction": self._attraction,
                 "attractionScore": self._attractionScore,
                 "finalScore": self.getFinalScore(),
             }
+            Player.Players.append(playerData)
+            json.dump(Player.Players, file, ensure_ascii=False, indent=4)
 
-            json.dump(playerData, file, ensure_ascii=False, indent=4)
-
-    """ Public Method which allows the player to update their stats after an interaction (throws IncorrectPrivilege, KeyError) """
+    """ Public Method which allows the player to update their stats after an interaction (throws IncorrectPrivilege, KeyError)"""
     def updateStats(self, character: str, newAttractionScore: int) -> int:
-        self._checkPlayer()
-
         # Checking If AttractionScore is Maxed Out or Mined Out
         if self._attractionScore[character] >= 100 and newAttractionScore > 0:
             print(f"Attraction Score Maxed Out With {character}")
@@ -105,7 +121,7 @@ class Player(User):
     def getFinalScore(self) -> int:
         finalScore = 0
         for score in self._attractionScore.values():
-            score += finalScore
+            finalScore += score
 
         return finalScore
 
@@ -120,40 +136,32 @@ class Player(User):
 
     @property
     def charisma(self):
-        self._checkInstructor()
         return self._charisma
 
     @charisma.setter
     def charisma(self, value):
-        self._checkDev()
         self._charisma = value
 
     @property
     def intelligence(self):
-        self._checkInstructor()
         return self._intelligence
 
     @intelligence.setter
     def intelligence(self, value):
-        self._checkDev()
         self._intelligence = value
 
     @property
     def attraction(self):
-        self._checkInstructor()
         return self._attraction
 
     @attraction.setter
     def attraction(self, value):
-        self._checkDev()
         self._attraction = value
 
     @property
     def attractionScore(self):
-        self._checkInstructor()
         return self._attractionScore
 
     @attractionScore.setter
     def attractionScore(self, value):
-        self._checkDev()
         self._attractionScore = value
