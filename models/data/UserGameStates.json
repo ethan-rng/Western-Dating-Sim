@@ -20,5 +20,71 @@
             "Serena": 0
         },
         "finalScore": 0
+    },
+    {
+        "username": "tester",
+        "level": 1,
+        "charisma": 3,
+        "intel": 2,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "fsadfasf",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "asdlfkasdfasdfasd",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "asdlfkasdfasdfasd",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "fasdf",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 29.7
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "fasdf",
+        "level": 4,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 29.7
+        },
+        "finalScore": 29.7
     }
 ]
