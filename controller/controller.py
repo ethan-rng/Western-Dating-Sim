@@ -122,7 +122,9 @@ class RunGame:
                                                "You agree to meet up at UCC to return the sheet music.",
                                                "She thanks you, and you guys decide to grab something to eat at the Spoke..",
                                                "What do you talk about in line?",
-                                               "How do you respond?"
+                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
+                                               "How do you respond?",
+                                               "Let’s meet at my place tomorrow at 1pm!"
                                            ],
                                            [
                                                os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
@@ -131,23 +133,121 @@ class RunGame:
                                                os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
                                                os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
                                                os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
                                            ],
                                            self.controls
                                            ).event_handler()
 
             elif self.game_state == "chp" and self.currPlayer.level == 3:
-                pass
+                self.game_state = Chapter3(self.screen,
+                                           self.currPlayer,
+                                           "Chapter 3",
+                                           [
+                                               "You agree to meet up at UCC to return the sheet music.",
+                                               "She thanks you, and you guys decide to grab something to eat at the Spoke..",
+                                               "What do you talk about in line?",
+                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
+                                               "How do you respond?",
+                                               "Let’s meet at my place tomorrow at 1pm!"
+                                           ],
+                                           [
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
+                                           ],
+                                           self.controls
+                                           ).event_handler()
                 # Chapter3(self.screen, self.GameSession.player)
             elif self.game_state == "chp" and self.currPlayer.level == 4:
-                pass
+                    self.game_state = Chapter4(self.screen,
+                                           self.currPlayer,
+                                           "Chapter 4",
+                                           [
+                                               "You agree to meet up at UCC to return the sheet music.",
+                                               "She thanks you, and you guys decide to grab something to eat at the Spoke..",
+                                               "What do you talk about in line?",
+                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
+                                               "How do you respond?",
+                                               "Let’s meet at my place tomorrow at 1pm!"
+                                           ],
+                                           [
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
+                                           ],
+                                           self.controls
+                                           ).event_handler()
                 # Chapter4(self.screen, self.GameSession.player)
             elif self.game_state == "chp" and self.currPlayer.level == 5:
-                pass
+                    self.game_state = Chapter5(self.screen,
+                                           self.currPlayer,
+                                           "Chapter 5",
+                                           [
+                                               "You agree to meet up at UCC to return the sheet music.",
+                                               "She thanks you, and you guys decide to grab something to eat at the Spoke..",
+                                               "What do you talk about in line?",
+                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
+                                               "How do you respond?",
+                                               "Let’s meet at my place tomorrow at 1pm!"
+                                           ],
+                                           [
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
+                                           ],
+                                           self.controls
+                                           ).event_handler()
                 # Chapter5(self.screen, self.GameSession.player)
             elif self.game_state == "chp" and self.currPlayer.level == 6:
-                pass
+                    self.game_state = Chapter6(self.screen,
+                                           self.currPlayer,
+                                           "Chapter 6",
+                                           [
+                                               "You agree to meet up at UCC to return the sheet music.",
+                                               "She thanks you, and you guys decide to grab something to eat at the Spoke..",
+                                               "What do you talk about in line?",
+                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
+                                               "How do you respond?",
+                                               "Let’s meet at my place tomorrow at 1pm!"
+                                           ],
+                                           [
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
+                                           ],
+                                           self.controls
+                                           ).event_handler()
                 # Chapter6(self.screen, self.GameSession.player)
             else:
                 print(self.game_state)
