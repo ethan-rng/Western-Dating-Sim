@@ -1,25 +1,26 @@
-[
+[    
     {
-    "username": "",
-    "level": 1,
-    "charisma": 0,
-    "intel": 0,
-    "attraction": 0,
-    "attractionScore": {
-        "Kelly": 0
-    },
-    "finalScore": 0
-    },
-    {
-        "username": "",
+        "username": "ggg",
         "level": 1,
+        "charisma": 2,
+        "intel": 5,
+        "attraction": 2,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "ASDF",
+        "level": 2,
         "charisma": 0,
         "intel": 0,
         "attraction": 0,
         "attractionScore": {
-            "Kelly": 0
+            "Serena": 0
         },
         "finalScore": 0
     }
-    
+
+
 ]

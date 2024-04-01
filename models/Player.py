@@ -25,13 +25,14 @@ class Player(User):
 
     # PUBLIC FACING METHODS
     """ Public Method which creates a new player account (throws AdminLevelAccount DuplicateUser, IllegalStats) """
-
     def createPlayer(self, username: str, password: str, charisma: int, intel: int, attraction: int) -> None:
-        super().createUser(username, password)
-
         # Stats for Individual Players
-        if charisma + intel + attraction > MAX_SCORE or (charisma < 0 or intel < 0 or attraction < 0):
+        totalScore = charisma + intel + attraction
+
+        if totalScore > MAX_SCORE or (charisma < 0 or intel < 0 or attraction < 0):
             raise IllegalStats(charisma, intel, attraction)
+
+        super().createUser(username, password)
 
         # Base Stats
         self._level = 1
@@ -76,7 +77,7 @@ class Player(User):
 
             json.dump(playerData, file, ensure_ascii=False, indent=4)
 
-    """ Public Method which allows the player to update their stats after an interaction (throws IncorrectPrivilege, KeyError)"""
+    """ Public Method which allows the player to update their stats after an interaction (throws IncorrectPrivilege, KeyError) """
     def updateStats(self, character: str, newAttractionScore: int) -> int:
         self._checkPlayer()
 

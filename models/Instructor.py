@@ -21,12 +21,10 @@ class Instructor(User):
             for data in jsonData:
                 new_player = Player()
                 new_player.loadPlayer(data["username"])
-                print(new_player)
                 Instructor.Players.append(new_player)
-                print(Instructor.Players)
 
     # PUBLIC METHODS
-    """ Public Method which allows the instructor to view the stats of a specific user (throws IncorrectPrivilege exception) """
+    """ Public Method which allows the instructor to view the stats of a specific user (throws UserNotFound, IncorrectPrivilege exception) """
     def viewStats(self, username: str) -> dict:
         print(Instructor.Players)
         self._checkInstructor()

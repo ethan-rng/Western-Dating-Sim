@@ -10,9 +10,9 @@ class SettingsSound:
         self.game_state = "sound"
         
         #sound settings variables
-        self.general_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4), (screen_width/1.8,20), "Game Volume", 0.5, 0, 100)
-        self.music_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + screen_height//6), (screen_width/1.8,20), "Music Volume", 0.5, 0, 100)
-        self.sfx_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + (screen_height//6 *2)), (screen_width/1.8,20), "SFX Volume", 0.5, 0, 100)
+        self.general_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4), (screen_width/1.8,20), "Game Volume", 0.52, 0, 100)
+        self.music_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + screen_height//6), (screen_width/1.8,20), "Music Volume", 0.52, 0, 100)
+        self.sfx_volume_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + (screen_height//6 *2)), (screen_width/1.8,20), "SFX Volume", 0.52, 0, 100)
         self.back_sound_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "settings", pygame)
     
     def draw_settings_sound(self, screen:pygame.Surface) -> None:
@@ -52,7 +52,7 @@ class SettingsSound:
                     if self.music_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:
                         self.music_volume_slider.moveSlider(mouse_pos)
                         self.music_volume_slider.updateText()
-                        #add set volume function once music is added
+                        pygame.mixer.music.set_volume(self.music_volume_slider.getValue()/100)
                     self.music_volume_slider.draw(screen)
 
                     if self.sfx_volume_slider.container_rect.collidepoint(mouse_pos) and mouse[0]:

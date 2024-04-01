@@ -77,7 +77,7 @@ class InstructorPanel:
         attraction_label_rect = attraction_label_surface.get_rect(x = self.view_attraction_rect.x + 10, centery = self.view_attraction_rect.centery)
         screen.blit(attraction_label_surface, (attraction_label_rect))
         attraction_text_surface = font.render(self.attraction_text, True, BLACK)
-        attraction_text_rect = attraction_text_surface.get_rect(x = self.view_attraction_rect.right - self.view_attraction_rect.width/4, centery = self.view_attraction_rect.centery)
+        attraction_text_rect = attraction_text_surface.get_rect(x = self.view_attraction_rect.right - self.view_attraction_rect.width/3.2, centery = self.view_attraction_rect.centery)
         screen.blit(attraction_text_surface, attraction_text_rect)
         pygame.display.flip()
         

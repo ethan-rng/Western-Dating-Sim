@@ -1,9 +1,7 @@
-import json
-import os
-from hashlib import sha256
+from models.exceptions import DuplicateUser, UserNotFound, IncorrectPassword, AdminLevelAccount, IncorrectPrivilege
 from typing import List
-
-from models.exceptions import UserNotFound, IncorrectPassword, AdminLevelAccount, IncorrectPrivilege, DuplicateUser
+from hashlib import sha256
+import os, json
 
 
 class User:
@@ -12,7 +10,7 @@ class User:
 
     def __init__(self) -> None:
         # Loading Users From Memory (only gets run on the first instance the class is called)
-        if not User.Users:
+        if User.Users == []:
             with open(os.path.join("models", "data", "UserPasswords.json"), "r") as file:
                 jsonData = json.load(file)
 
@@ -25,40 +23,43 @@ class User:
         self.username = ""
         self._password = ""
 
-    # PRIVATE METHODS
-    """ Private method which checks if a user exists (throws UserNotFound exception) """
-    @staticmethod
-    def _userExists(username: str) -> bool:
-        for user in User.Users:
-            if user["username"] == username:
-                return True
-        return False
+
 
     # PROTECTED FACING METHODS
     """ Protected helper function which checks if the developer is logged in before allowing access (throws IncorrectPrivilege exception) """
+
     def _checkDev(self) -> None:
         if User.LoggedInUser != "developer":
             raise IncorrectPrivilege
 
     """ Protected helper function which checks if the instructor is logged in before allowing access (throws IncorrectPrivilege exception) """
+
     def _checkInstructor(self) -> None:
         if User.LoggedInUser != "instructor" and User.LoggedInUser != "developer":
             raise IncorrectPrivilege
 
     """ Protected helper function which checks if the player is logged in before allowing access (throws IncorrectPrivilege exception) """
+
     def _checkPlayer(self) -> None:
         if User.LoggedInUser != self.username and User.LoggedInUser != "instructor" and User.LoggedInUser != "developer":
             raise IncorrectPrivilege
 
     # PUBLIC METHODS
+    """ Public method which checks if a user exists (throws UserNotFound exception) """
+    def userExists(self, username: str) -> bool:
+        for user in User.Users:
+            if user["username"] == username:
+                return True
+        return False
     """ Public facing method which makes a new player account (throws AdminLevelAccount and UserAlreadyExists exceptions) """
+
     def createUser(self, username, password) -> None:
         # Handling Dev and Instructor Account Creation
         if username == "developer" or username == "instructor":
             raise AdminLevelAccount
 
         # Handling Duplicate Account Creation
-        if self._userExists(username):
+        if self.userExists(username):
             raise DuplicateUser(username)
 
         # Updating Instance Variable Values
@@ -69,9 +70,8 @@ class User:
         User.Users.append({"username": self.username, "password": self._password})
 
         # Updating users.json
-        with open(os.path.join("models", "data", "UserPasswords.json"), 'r', encoding='utf-8') as file:
-            data = json.load(file)
-            data.update({"username": self.username, "password": self._password})
+        with open(os.path.join("models", "data", "UserPasswords.json"), 'w', encoding='utf-8') as file:
+            json.dump(User.Users, file, indent=4)
 
     """ Public facing method which loads an existing user and their password to log into (throws UserNotFound exception)"""
     def loadUser(self, username: str) -> None:
@@ -95,13 +95,12 @@ class User:
                 User.LoggedInUser = "instructor"
                 
         elif self._password == sha256(password.encode()).hexdigest() and (
-                self._userExists(username)):
+                self.userExists(username)):
             User.LoggedInUser = self
         else:
             raise IncorrectPassword(self.username, password)
 
     """ Public facing method which logs out a user """
-
     def logout(self) -> None:
         User.LoggedInUser = None
         self.username = ""

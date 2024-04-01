@@ -79,8 +79,7 @@ class Menu:
 
             self.draw_menu(screen)
 
-    """Public method that handles menu clicks"""
-
+    """ Public method that handles menu clicks """
     def menu_click(self, index: int) -> None:
         # This function handles the menu clicks
         if index == 0:
