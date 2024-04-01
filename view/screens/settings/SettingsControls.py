@@ -8,7 +8,7 @@ class SettingsControls:
 
     def __init__(self) -> None:
 
-        self.menu_state = "controls"
+        self.game_state = "controls"
 
         # controls settings variables
         self.controls_keys = {"auto_key": pygame.K_g, "settings_key": pygame.K_t, "pause_key": pygame.K_p,
@@ -137,8 +137,8 @@ class SettingsControls:
 
                     elif self.back_controls_button.draw(screen):
                         click_sfx.play()
-                        self.menu_state = self.back_controls_button.draw(screen)
-                        return self.menu_state
+                        self.game_state = self.back_controls_button.draw(screen)
+                        return self.game_state
 
             self.draw_settings_controls(screen)
 

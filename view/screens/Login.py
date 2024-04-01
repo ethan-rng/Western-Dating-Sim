@@ -11,8 +11,7 @@ from models.Player import Player
 
 class Login:
     def __init__(self) -> None:
-        self.menu_state = "login"
-
+        self.game_state = "login"
         self.username = ''
         self.password = ''
         self.continue_button = Button(screen_width / 2.48, (screen_height / 3) + (screen_height / 6) * 3,
@@ -25,6 +24,7 @@ class Login:
 
     def draw_login(self, screen: pygame.Surface) -> None:
         screen.fill(DARK_GRAY)
+        self.draw_text("Login", title_font, BLACK, screen_width/20, screen_height/16, screen)
         self.continue_button.draw(screen)
         self.username_input_box.draw(screen)
         self.password_input_box.draw(screen)
@@ -53,14 +53,17 @@ class Login:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.username_input_box.draw(screen):
+                        click_sfx.play()
                         self.username_input_box.event_handler(screen)
                         self.username = self.username_input_box.user_text
 
                     elif self.password_input_box.draw(screen):
+                        click_sfx.play()
                         self.password_input_box.event_handler(screen)
                         self.password = self.password_input_box.user_text
 
                     elif self.continue_button.draw(screen):
+                        click_sfx.play()
                         if not self.username == '' and not self.password == '':
                             try:
                                 if isLogin:
@@ -87,5 +90,11 @@ class Login:
                             self.error_message = "Please Fill In An Username and A Password"
 
             self.draw_login(screen)
-
         return tuple(self.menu_state)
+    
+    """ Helper function to draw text on the screen """
+    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
+        img = font.render(text, True, text_col)
+        screen.blit(img, (x,y))
+
+        

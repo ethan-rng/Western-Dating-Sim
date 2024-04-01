@@ -75,8 +75,9 @@ class Player(User):
                     self._intelligence = data["intel"]
                     self._attraction = data["attraction"]
                     self._attractionScore = data["attractionScore"]
-                    break
-                raise UserNotFound(username)
+                    return
+                
+            raise UserNotFound(username)
 
     """ Public Method which saves all progress of the player to the disk """
     def saveProgress(self) -> None:

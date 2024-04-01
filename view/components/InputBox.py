@@ -48,9 +48,13 @@ class TextInputBox:
         screen.blit(text_surface, (self.input_rect.x + 6, self.input_rect.y + 10))
         screen.blit(text_label_surface, text_label_rect)
 
+        if self.label == "Player Username:":
+            self.input_rect.w = max(screen_width / 4, text_surface.get_width() + 10)
+            self.input_rect.x = input_box_rect.x * 5
         # set width of textfield so that text cannot get
         # outside of user's text input
-        self.input_rect.w = max(screen_width / 1.35, text_surface.get_width() + 10)
+        else:
+            self.input_rect.w = max(screen_width / 1.35, text_surface.get_width() + 10)
 
     def updateText(self, screen: pygame.Surface) -> None:
         pygame.draw.rect(screen, self.color, self.input_rect)

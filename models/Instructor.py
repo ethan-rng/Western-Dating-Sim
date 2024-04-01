@@ -14,17 +14,19 @@ class Instructor(User):
         Instructor._loadPlayers()
 
     # PRIVATE CLASS METHODS
-    def _loadPlayers(self) -> None:
+    def _loadPlayers() -> None:
         with open(os.path.join('models', 'data', 'UserGameStates.json'), "r") as file:
             jsonData = json.load(file)
             Instructor.Players = []
-
             for data in jsonData:
-                Instructor.Players.append(Player().loadPlayer(data["username"]))
+                new_player = Player()
+                new_player.loadPlayer(data["username"])
+                Instructor.Players.append(new_player)
 
     # PUBLIC METHODS
     """ Public Method which allows the instructor to view the stats of a specific user (throws UserNotFound, IncorrectPrivilege exception) """
     def viewStats(self, username: str) -> dict:
+        print(Instructor.Players)
         self._checkInstructor()
         Instructor._loadPlayers()
 

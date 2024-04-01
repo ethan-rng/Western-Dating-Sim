@@ -75,17 +75,27 @@ class User:
 
     """ Public facing method which loads an existing user and their password to log into (throws UserNotFound exception)"""
     def loadUser(self, username: str) -> None:
+        found = False
         for user in User.Users:
             if user["username"] == username:
                 self.username = username
                 self._password = user["password"]
                 return
+                
         raise UserNotFound(username)
 
     """ Public facing method which logs in a user (throws IncorrectPassword exceptions) """
-    def login(self, password: str) -> None:
-        if self._password == sha256(password.encode()).hexdigest() and (
-                self.userExists(self.username) or self.username == "developer" or self.username == "instructor"):
+    def login(self, username: str, password: str) -> None:
+        if username == "developer":
+            if User.Users[0]["password"] == sha256(password.encode()).hexdigest():
+                User.LoggedInUser = "developer"
+                
+        elif username == "instructor":
+            if User.Users[1]["password"] == sha256(password.encode()).hexdigest():
+                User.LoggedInUser = "instructor"
+                
+        elif self._password == sha256(password.encode()).hexdigest() and (
+                self.userExists(username)):
             User.LoggedInUser = self
         else:
             raise IncorrectPassword(self.username, password)
