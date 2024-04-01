@@ -24,16 +24,12 @@ class Chapter5(Chapter):
         self.next_background_index: int = None
         
         self.dialogue_options = {
-            2: ["Ask about her interests", "Ask about her background", "Scroll on your phone"],
-            4: ["Yeah that sounds great", "Sorry, I might be a little busy"]
+            1: ["I really like you. Will you be my girlfriend?", "I've had a great time getting to know you, I was wondering if you want to make this official?", "So, I was thinking, we get along pretty well, huh? Maybe we should start going out for real?", "I kinda like you more than just a friend. Do you wanna be my girlfriend?"],
         }
 
         self.dialogue_responses = {
-            "Ask about her interests": ("S: Thanks for asking! Music is one of my favourite ways to pass time. I’ve been competing in piano contests since I was young! I also love to draw...wait I can draw a picture of you!", 3,6),
-            "Ask about her background": ("S: I grew up in Markham actually. I was never a sports kid and I did a lot of Olympiads and Kumon growing up. I always did like art though. I can draw a picture of you!", 4,6),
-            "Scroll on your phone": ("S: *Silence*", 5,6),
-            "Yeah that sounds great": ("S: Sounds good!", 7,9),
-            "Sorry, I might be a little busy": ("S: Don’t worry... it won’t take long. ", 8,9)
+            "Yes": ("Yes, I’d love that!", 2,4),
+            "No": ("Oh, sorry. I never thought of you that way. I prefer to be friends...", 3,4),
         }
         
         self.draw_chapter5()
@@ -80,7 +76,7 @@ class Chapter5(Chapter):
                 if event.type == pygame.MOUSEBUTTONDOWN:            
 
                     self.current_dialogue_index += 1 
-                    if self.current_dialogue_index >= len(self.dialogueLines)-1:  # Check if dialogue is over, next chapter
+                    if self.current_dialogue_index >= len(self.dialogueLines):  # Check if dialogue is over, next chapter
                         self.currPlayer.level = 6  # Proceed to next chapter
                         return "chp"
                 
