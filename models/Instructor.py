@@ -6,15 +6,15 @@ from models.exceptions import UserNotFound
 
 
 class Instructor(User):
-    Players:List['Player'] = []
+    Players: List['Player'] = []
 
-    def __init__(self, password:str) -> None:
+    def __init__(self, password: str) -> None:
         super().__init__()
         super().login("instructor", password)
-        Instructor._loadPlayers()            
+        Instructor._loadPlayers()
 
     # PRIVATE CLASS METHODS
-    def _loadPlayers() -> None:
+    def _loadPlayers(self) -> None:
         with open(os.path.join('models', 'data', 'UserGameStates.json'), "r") as file:
             jsonData = json.load(file)
             Instructor.Players = []
@@ -24,7 +24,7 @@ class Instructor(User):
 
     # PUBLIC METHODS
     """ Public Method which allows the instructor to view the stats of a specific user (throws IncorrectPrivilege exception) """
-    def viewStats(self, username:str) -> dict:
+    def viewStats(self, username: str) -> dict:
         self._checkInstructor()
         Instructor._loadPlayers()
 
@@ -35,12 +35,11 @@ class Instructor(User):
                     "intelligence": player.intelligence,
                     "attraction": player.attraction
                 }
-            
+
         raise UserNotFound(username)
 
-        
     """ Public Method which allows the instructor to view the progress of a specific user (throws IncorrectPrivilege exception) """
-    def viewProgress(self, username:str) -> dict:
+    def viewProgress(self, username: str) -> dict:
         self._checkInstructor()
         Instructor._loadPlayers()
 
@@ -49,9 +48,5 @@ class Instructor(User):
                 return {
                     "level": player.level,
                     "attractionScore": player.attractionScore,
-               }
-            
+                }
         raise UserNotFound(username)
-
-
-        

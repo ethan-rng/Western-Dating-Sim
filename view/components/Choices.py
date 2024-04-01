@@ -39,8 +39,8 @@ class ChoicesScreen:
     def display(self) -> int:
         self.selected_choice_index = None  # Reset the selected choice index each time the display is called
         running = True
+        
         while running:
-
             self.draw_buttons()
             pygame.display.flip()
 
