@@ -26,7 +26,6 @@ class Instructor(User):
     # PUBLIC METHODS
     """ Public Method which allows the instructor to view the stats of a specific user (throws UserNotFound, IncorrectPrivilege exception) """
     def viewStats(self, username: str) -> dict:
-        print(Instructor.Players)
         self._checkInstructor()
         Instructor._loadPlayers()
 

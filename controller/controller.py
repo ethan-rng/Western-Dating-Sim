@@ -74,7 +74,10 @@ class RunGame:
                     # Used to Persist to Next Stage
                     username = loginOutcome[1]
                     password = loginOutcome[2]
-
+                    
+            elif self.game_state == "load":
+                self.game_state = self.login_screen.event_handler(self.screen, self.currPlayer, True)[0]
+                    
             elif self.game_state == "start":
                 self.game_state = NewGameScreen(self.currPlayer).event_handler(self.screen, username, password)
 
