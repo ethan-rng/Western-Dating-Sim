@@ -1,5 +1,6 @@
 from typing import List
 import os
+import threading
 import pygame
 from controller.constants import *
 from models.Player import Player
@@ -49,5 +50,5 @@ class Chapter:
 
     """ Public Method Which Allows the Developer to Change Their Stats and View Them """
     def checkGodMode(self):
-        self.currPlayer
+        if
 
