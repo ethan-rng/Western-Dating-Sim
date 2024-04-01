@@ -86,5 +86,27 @@
             "Serena": 29.7
         },
         "finalScore": 29.7
+    },
+    {
+        "username": "123",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 33.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "123",
+        "level": 4,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 33.0
+        },
+        "finalScore": 33.0
     }
 ]
