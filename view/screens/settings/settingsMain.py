@@ -6,7 +6,7 @@ from view.components.button import Button
 class SettingsMain:
     
     
-    def __init__(self, screen: pygame.Surface) -> None:
+    def __init__(self) -> None:
         
         self.menu_state = "settings"
         
@@ -28,8 +28,8 @@ class SettingsMain:
         self.language_settings_button.draw(screen)
         self.accessibility_settings_button.draw(screen)
         self.back_settings_button.draw(screen)
-        pygame.display.flip() 
-    
+        pygame.display.flip()
+        
     def event_handler(self,screen:pygame.Surface) -> str: 
         settings_main_active = True
         while settings_main_active:
@@ -41,7 +41,7 @@ class SettingsMain:
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:  # Press ESC to exit menu
-                        menu_active = False
+                        settings_main_active = False
                         
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.controls_settings_button.draw(screen):
@@ -68,7 +68,9 @@ class SettingsMain:
                         click_sfx.play()
                         self.menu_state = self.back_settings_button.draw(screen) 
                         return self.menu_state
-            
+                    
+            self.draw_settings_main(screen)
+    
     """ Helper function to draw text on the screen """
     def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
         img = font.render(text, True, text_col)

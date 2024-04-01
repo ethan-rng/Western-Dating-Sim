@@ -48,8 +48,9 @@ class Menu:
         message2 = baby_font.render("Jasper, Aaron, Lecia, Ethan, Jasmine", True, BLACK)
         screen.blit(message2, (screen_width // 50, screen_height))
         pygame.display.flip()
+        
 
-    def event_handler(self):
+    def event_handler(self, screen: pygame.Surface):
         menu_active = True
         while menu_active:  
             #checks for the actions of the player
@@ -72,9 +73,9 @@ class Menu:
                         if item_rect.collidepoint(event.pos):
                             click_sfx.play()
                             self.menu_click(index)
-                            print(self.menu_state)
                             return self.menu_state
-    
+            
+            self.draw_menu(screen)
     """Public method that handles menu clicks"""
     def menu_click(self, index: int) -> None:
         # This function handles the menu clicks
@@ -93,7 +94,7 @@ class Menu:
             self.menu_state = "settings"
         #takes you to help menu
         elif index == 5:
-            self.menu_state = "help"
+            self.menu_state = "help1"
         #quits the game
         elif index == 6:
             pygame.quit()

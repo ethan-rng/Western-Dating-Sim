@@ -59,7 +59,7 @@ class Slider:
 
         
     def updateText(self):
-        self.text = str(self.get_value())
+        self.text = str(self.getValue())
         self.render = font.render(self.text, True, 'black')
         self.text_width = self.render.get_width()
         self.text_height = self.render.get_height()
