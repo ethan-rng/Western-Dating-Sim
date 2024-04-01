@@ -30,7 +30,7 @@ class Chapter1(Chapter):
         dialogue_box.draw(dialogue_text)
         pygame.display.flip()
 
-        if self.current_dialogue_index == 5 and not self.show_choices:
+        if self.current_dialogue_index == 6 and not self.show_choices:
             self.show_choices = True  # Prepare to display choices
         return ""
 
@@ -47,7 +47,7 @@ class Chapter1(Chapter):
                     self.current_dialogue_index += 1
 
                     # Check if we need to show choices
-                    if self.current_dialogue_index == 5 and not self.show_choices:
+                    if self.current_dialogue_index == 6 and not self.show_choices:
                         choices_screen = ChoicesScreen(self.screen, ["Yes", "No"])
                         selected_choice_index = choices_screen.display()
                         self.show_choices = True

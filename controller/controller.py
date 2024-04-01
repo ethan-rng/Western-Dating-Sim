@@ -74,7 +74,10 @@ class RunGame:
                     # Used to Persist to Next Stage
                     username = loginOutcome[1]
                     password = loginOutcome[2]
-
+                    
+            elif self.game_state == "load":
+                self.game_state = self.login_screen.event_handler(self.screen, self.currPlayer, True)[0]
+                    
             elif self.game_state == "start":
                 self.game_state = NewGameScreen(self.currPlayer).event_handler(self.screen, username, password)
 
@@ -153,24 +156,40 @@ class RunGame:
                                            self.currPlayer,
                                            "Chapter 3",
                                            [
-                                               "You agree to meet up at UCC to return the sheet music.",
-                                               "She thanks you, and you guys decide to grab something to eat at the Spoke..",
-                                               "What do you talk about in line?",
-                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
+                                               "S: Sorry, it is really messy in here. ",
                                                "How do you respond?",
-                                               "Let’s meet at my place tomorrow at 1pm!"
+                                               "S: Haha. Yeah. Come follow me.",
+                                               "She laughs, appreciating the joke, and leads you into her drawing room. You take a seat on a stool, feeling shy under her intense focus. After an hour, she’s finished.",
+                                               "S: Here, I finished take a look.",
+                                               "How do you respond?",
+                                               "S: Thanks you so much again for bringing back my music score and modeling for me.",
+                                               "You look around the room, and notice family pictures.",
+                                               "Wow you and your family must be close!",
+                                               "S: Yeah, I love spending time with them. I have an older brother who is annoying.. Haha",
+                                               "How do you respond?",
+                                               "As it gets late, the visit comes to an end",
+                                               "S: Alright, it’s probably time for you to go. Get home safe!",
+                                               "After some time to think, you decide to call Serena.. ",
+                                               "Y/N: Hi Serena, I really enjoyed today. Do you want to get Boba sometime?"
                                            ],
                                            [
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-1.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-2.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-3.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-4.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-5.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-6.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-7.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-8.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-9.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-10.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-11.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-12.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-13.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-14.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-15.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-15.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp3', 'herplace-15.2.jpg'),
                                            ],
                                            self.controls
                                            ).event_handler()
@@ -180,24 +199,33 @@ class RunGame:
                                            self.currPlayer,
                                            "Chapter 4",
                                            [
-                                               "You agree to meet up at UCC to return the sheet music.",
-                                               "She thanks you, and you guys decide to grab something to eat at the Spoke..",
-                                               "What do you talk about in line?",
-                                               "Oh! I have an idea. As thanks for helping me get my sheet music back, I can draw a picture of you!",
-                                               "How do you respond?",
-                                               "Let’s meet at my place tomorrow at 1pm!"
+                                               "What should I wear?",
+                                               "What should I wear?",
+                                               "Hm... now what should I bring?",
+                                               "Hm... now what should I bring?",
+                                               "You and Serena get boba together, chatting about your hobbies, dreams, and what you're looking for in a relationship. As the date winds down, the bill arrives.",
+                                               "Do you pay the bill?",
+                                               "S: I had a lot of fun today!",
+                                               "Feeling positive about the day, you decide to text Serena.",
+                                               "Feeling positive about the day, you decide to text Serena."
                                            ],
                                            [
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-3.2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-4.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.1.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-5.2.jpg'),
-                                               os.path.join('view', 'assets', 'chp2', 'spoke-6.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-1.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-2.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-3.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-4.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-5.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-6.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-6.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-6.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-6.3.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-7.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-8.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-8.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-8.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-8.3.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-9.jpg'),
+                                               os.path.join('view', 'assets', 'chp4', 'date-10.jpg')
                                            ],
                                            self.controls
                                            ).event_handler()

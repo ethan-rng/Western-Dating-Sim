@@ -14,7 +14,7 @@ import sys
 class Chapter6(Chapter):
     def __init__(self, screen: pygame.Surface, currPlayer: Player,
                  title: str, dialogueLines: List[str], dialogueImagePaths: List[str], controls: dict):
-        super().__init__(5, screen, currPlayer, dialogueLines, dialogueImagePaths, controls)
+        super().__init__(6, screen, currPlayer, dialogueLines, dialogueImagePaths, controls)
 
         self.show_choices: bool = False
         self.choices_made: dict = {}

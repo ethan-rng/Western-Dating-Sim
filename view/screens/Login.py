@@ -38,7 +38,7 @@ class Login:
             screen.blit(text_surface, (text_x, text_y))
         pygame.display.flip()
 
-    def event_handler(self, screen: pygame.Surface, currPlayer: Player, isLogin: bool) -> tuple[str, str, str] | tuple[str]:
+    def event_handler(self, screen: pygame.Surface, currPlayer: Player, isLogin: bool) -> tuple[str, str, str] | str:
         newgame_active = True
 
         while newgame_active:
@@ -67,15 +67,17 @@ class Login:
                         if not self.username == '' and not self.password == '':
                             try:
                                 if isLogin:
-                                    currPlayer.loadPlayer(self.username)
-                                    currPlayer.login(self.password)
+                                    currPlayer.loadPlayer(self.username)                  
+                                    currPlayer.login(self.username, self.password)
+                                    self.game_state = "chp"
+                                    return self.game_state, self.username, self.password
                                 else:
                                     if currPlayer.userExists(self.username):
                                         raise DuplicateUser(self.username)
 
-                                self.menu_state = self.continue_button.draw(screen)
-                                self.error_message = ""  # Clear the error message on successful action
-                                return self.menu_state, self.username, self.password
+                                    self.game_state = self.continue_button.draw(screen)
+                                    self.error_message = ""  # Clear the error message on successful action
+                                    return self.game_state, self.username, self.password
 
                             except DuplicateUser:
                                 self.error_message = "Please Pick A Username That Hasn't Been Picked"
@@ -90,8 +92,8 @@ class Login:
                             self.error_message = "Please Fill In An Username and A Password"
 
             self.draw_login(screen)
-        return tuple(self.menu_state)
-    
+        return "chp"
+        
     """ Helper function to draw text on the screen """
     def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
         img = font.render(text, True, text_col)

@@ -15,10 +15,11 @@ RED = (255, 0, 0)
 # CONSTANTS FOR CHAPTERS
 SCENE_TITLES = {
     1: "SCENE 1: Talbot College",
-    2: "SCENE 2: The Library Encounter",
-    3: "SCENE 3: The Mysterious Forest",
-    4: "SCENE 4: The Hidden Cave",
-    5: "SCENE 5: The Final Showdown",
+    2: "SCENE 2: The UCC",
+    3: "SCENE 3: Her Place",
+    4: "SCENE 4: Date",
+    5: "SCENE 5: UC Hill",
+    6: "SCENE 6: Argument",
 }
 
 # CONSTANTS FOR THE GUI

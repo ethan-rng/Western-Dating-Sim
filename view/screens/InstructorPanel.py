@@ -81,7 +81,7 @@ class InstructorPanel:
         screen.blit(attraction_text_surface, attraction_text_rect)
         pygame.display.flip()
         
-    def event_handler(self, screen) -> str:
+    def event_handler(self, screen: pygame.Surface) -> str:
         newgame_active = True
         while newgame_active:  
             #checks for the actions of the player
