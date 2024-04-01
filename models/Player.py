@@ -2,9 +2,8 @@ from models.User import User
 from models.exceptions import IllegalStats, UserNotFound
 import os, json
 
-
 # CONSTANTS
-MAX_SCORE = 10 
+MAX_SCORE = 10
 CHARACTER_BIAS = {
     "Serena": ["charisma", "intel"]
 }
@@ -12,20 +11,30 @@ CHARACTER_BIAS = {
 
 # Player Class
 class Player(User):
-    def __init__(self) -> None:    
+    def __init__(self) -> None:
         super().__init__()
+
+        self._attraction: int = 0
+        self._charisma: int = 0
+        self._intelligence: int = 0
+        self._level: int = 1
+
+        self._attractionScore: dict = {
+            "Serena": 0,
+        }
 
     # PUBLIC FACING METHODS
     """ Public Method which creates a new player account (throws AdminLevelAccount DuplicateUser, IllegalStats) """
-    def createPlayer(self, username:str, password:str, charisma:int, intel:int, attraction:int) -> None:
+
+    def createPlayer(self, username: str, password: str, charisma: int, intel: int, attraction: int) -> None:
         super().createUser(username, password)
 
         # Stats for Individual Players
         if charisma + intel + attraction > MAX_SCORE or (charisma < 0 or intel < 0 or attraction < 0):
             raise IllegalStats(charisma, intel, attraction)
-        
+
         # Base Stats
-        self._level = 0
+        self._level = 1
         self._charisma = charisma
         self._intelligence = intel
         self._attraction = attraction
@@ -36,14 +45,14 @@ class Player(User):
         }
 
     """ Public Method which allows the player to load from a previous game state (throws UserNotFound exception) """
-    def loadPlayer(self, username:str) -> None:
+    def loadPlayer(self, username: str) -> None:
         super().loadUser(username)
 
         with open(os.path.join("models", "data", "UserGameStates.json"), "r") as file:
             jsonData = json.load(file)
             for data in jsonData:
                 if data["username"] == username:
-                    self._level = data["level"]
+                    self.level = data["level"]
                     self._charisma = data["charisma"]
                     self._intelligence = data["intel"]
                     self._attraction = data["attraction"]
@@ -56,7 +65,7 @@ class Player(User):
         with open(os.path.join("models", "data", "UserGameStates.json"), "w") as file:
             playerData = {
                 "username": self.username,
-                "level": self._level,
+                "level": self.level,
                 "charisma": self._charisma,
                 "intel": self._intelligence,
                 "attraction": self._attraction,
@@ -67,7 +76,7 @@ class Player(User):
             json.dump(playerData, file, ensure_ascii=False, indent=4)
 
     """ Public Method which allows the player to update their stats after an interaction (throws IncorrectPrivilege, KeyError)"""
-    def updateStats(self, character:str, newAttractionScore:int) -> int:
+    def updateStats(self, character: str, newAttractionScore: int) -> int:
         self._checkPlayer()
 
         # Checking If AttractionScore is Maxed Out or Mined Out
@@ -77,7 +86,7 @@ class Player(User):
         if self._attractionScore[character] <= 0 and newAttractionScore < 0:
             print(f"Attraction Score Minimized With {character}")
             return 0
-        
+
         # Calculating New Attraction Score After Factoring Player Bias
         bias = 0
         for characterBias in CHARACTER_BIAS[character]:
@@ -87,31 +96,25 @@ class Player(User):
                 bias += self._intelligence
             elif characterBias == "attraction":
                 bias += self._attraction
-            
+
         self._attractionScore[character] += newAttractionScore * (bias * 0.1 * 0.5 + 1)
         return self._attractionScore[character]
 
-
     """ Public Method which calculates the final score of the player (Sum of all the individuals scores) """
     def getFinalScore(self) -> int:
-        self._checkPlayer()
-
         finalScore = 0
         for score in self._attractionScore.values():
             score += finalScore
-        
-        return finalScore
 
+        return finalScore
 
     # SETTERS AND GETTERS
     @property
     def level(self):
-        self._checkInstructor()
         return self._level
-    
+
     @level.setter
     def level(self, value):
-        self._checkDev()
         self._level = value
 
     @property
@@ -153,4 +156,3 @@ class Player(User):
     def attractionScore(self, value):
         self._checkDev()
         self._attractionScore = value
-
