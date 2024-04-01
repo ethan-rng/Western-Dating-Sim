@@ -1,4 +1,4 @@
-[    
+[
     {
         "username": "ggg",
         "level": 1,
@@ -20,7 +20,93 @@
             "Serena": 0
         },
         "finalScore": 0
+    },
+    {
+        "username": "",
+        "level": 1,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "",
+        "level": 1,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "",
+        "level": 1,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "",
+        "level": 1,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "",
+        "level": 1,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "",
+        "level": 1,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "",
+        "level": 1,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "ASDF",
+        "level": 3,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
     }
-
-
 ]
