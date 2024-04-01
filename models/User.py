@@ -87,8 +87,8 @@ class User:
         if self._password == sha256(password.encode()).hexdigest() and (
                 self.userExists(self.username) or self.username == "developer" or self.username == "instructor"):
             User.LoggedInUser = self
-            return
-        raise IncorrectPassword(self.username, password)
+        else:
+            raise IncorrectPassword(self.username, password)
 
     """ Public facing method which logs out a user """
     def logout(self) -> None:

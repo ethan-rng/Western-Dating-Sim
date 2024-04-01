@@ -51,8 +51,8 @@ class RunGame:
         self.login_screen = Login()
 
         # Controller Variables For The Game
-        self.game_state = "chp"
-        self.currPlayer.level = 2
+        self.game_state = "main"
+        # self.currPlayer.level = 2 # comment out to do normal game
         self.controls = {}  # issue
 
         # For Creating User
@@ -89,6 +89,8 @@ class RunGame:
                 self.game_state = SettingsControls().event_handler(self.screen)
             elif self.game_state == "sound":
                 self.game_state = SettingsSound().event_handler(self.screen)
+            elif self.game_state == "load":
+                self.game_state = Login()
             elif self.game_state == "chp" and self.currPlayer.level == 1:
                 self.game_state = Chapter1(self.screen,
                                            self.currPlayer,
@@ -134,6 +136,7 @@ class RunGame:
                                            ],
                                            self.controls
                                            ).event_handler()
+
             elif self.game_state == "chp" and self.currPlayer.level == 3:
                 pass
                 # Chapter3(self.screen, self.GameSession.player)

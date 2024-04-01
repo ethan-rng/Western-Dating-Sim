@@ -5,6 +5,7 @@ from view.components.Slider import Slider
 from view.components.InputBox import TextInputBox
 from models.Player import Player
 from models.exceptions import *
+from models.Developer import Developer
 
 
 class NewGameScreen:
@@ -91,6 +92,8 @@ class NewGameScreen:
                             self.currPlayer.login(password)
                             return self.menu_state
 
+                        except IncorrectPassword:
+                            self.error_message = "Wrong Password for the Developer Account"
                         except IllegalStats:
                             self.error_message = "Total Stats Must Add to 10 or Lower"
 
