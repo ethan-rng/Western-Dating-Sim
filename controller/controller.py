@@ -44,7 +44,8 @@ class RunGame:
 
 
         # Controller Variables For The Game
-        self.game_state = "main"
+        self.game_state = "chp"
+        self.currPlayer.level = 2
         self.controls = {}  # issue
 
         # Main Loop (Determines Which Screen To Display)
