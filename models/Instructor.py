@@ -23,7 +23,7 @@ class Instructor(User):
                 Instructor.Players.append(Player().loadPlayer(data["username"]))
 
     # PUBLIC METHODS
-    """ Public Method which allows the instructor to view the stats of a specific user (throws IncorrectPrivilege exception) """
+    """ Public Method which allows the instructor to view the stats of a specific user (throws UserNotFound, IncorrectPrivilege exception) """
     def viewStats(self, username: str) -> dict:
         self._checkInstructor()
         Instructor._loadPlayers()

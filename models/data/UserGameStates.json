@@ -1,9 +1,9 @@
 {
-    "username": "",
+    "username": "sdfgsdfgdsfgdsfgdsfgsdf",
     "level": 1,
-    "charisma": 0,
-    "intel": 0,
-    "attraction": 0,
+    "charisma": 2,
+    "intel": 5,
+    "attraction": 2,
     "attractionScore": {
         "Serena": 0
     },
