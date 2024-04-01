@@ -34,6 +34,8 @@ class runGame:
         while True:
             if self.menu_state == "main":
                 self.main_menu()
+            elif self.menu_state == "settings":
+                self.settings_main()
             elif self.menu_state == "chp1":
                 Chapter1(self.screen, self.GameSession.player)
             elif self.menu_state == "chp2":
@@ -49,3 +51,24 @@ class runGame:
             else:
                 pygame.quit()
                 sys.exit()
+
+    def main_menu(self):
+        menu()
+
+    def chapter1(self):
+        chapter1_scene()
+
+    def chapter2(self):
+        pass
+
+    def chapter3(self):
+        pass
+
+    def chapter4(self):
+        pass
+
+    def chapter5(self):
+        pass
+
+    def chapter6(self):
+        pass
