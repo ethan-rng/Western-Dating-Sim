@@ -83,7 +83,7 @@ class Chapter2(Chapter):
                    
                     self.current_dialogue_index += 1 
                     if self.current_dialogue_index >= len(self.dialogueLines)-1:  # Check if dialogue is over, next chapter
-                        self.currPlayer.level = 1  # Proceed to next chapter
+                        self.currPlayer.level = 3  # Proceed to next chapter
                         return "chp"
                 
                     if not self.show_choices:
