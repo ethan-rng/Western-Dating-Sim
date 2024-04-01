@@ -83,8 +83,41 @@ class Chapter3(Chapter):
 
                     self.current_dialogue_index += 1 
                     if self.current_dialogue_index >= len(self.dialogueLines)-1:  # Check if dialogue is over, next chapter
-                        self.currPlayer.level = 4  # Proceed to next chapter
-                        return "chp"
+
+                        # Calculating Player's Score This Chapter and Updating It
+                        for choice in self.choices_made.values():
+                            if choice == "Yeah it looks like shit.":
+                                self.currPlayer.updateStats("Serena", -5)
+                            elif choice == "Yeah a little, no worries.":
+                                self.currPlayer.updateStats("Serena", 2)
+                            elif choice == "LMFAO, my house is messier":
+                                self.currPlayer.updateStats("Serena", 5)
+                            elif choice == "Your drawing sucks":
+                                self.currPlayer.updateStats("Serena", -10)
+                            elif choice == "Thanks! It looks ok":
+                                self.currPlayer.updateStats("Serena", 0)
+                            elif choice == "Wow it looks really nice!":
+                                self.currPlayer.updateStats("Serena", 5)
+                            elif choice == "Wow! It looks like me! I love it!":
+                                self.currPlayer.updateStats("Serena", 10)
+                            elif choice == "Maybe, you’re the problem":
+                                self.currPlayer.updateStats("Serena", -10)
+                            elif choice == "Yeah, but we can all be.":
+                                self.currPlayer.updateStats("Serena", -5)
+                            elif choice == "Sounds like a shit brother":
+                                self.currPlayer.updateStats("Serena", -7)
+                            elif choice == "My siblings are the same, love them though":
+                                self.currPlayer.updateStats("Serena", 5)
+                            else:
+                                raise Exception("Choice Isn't Valid")
+                            
+                        if self.currPlayer.attraction >= 20:
+                            
+                            self.currPlayer.level = 4  # Proceed to next chapter
+                            return "chp"
+                        elif self.currPlayer.attraction < 20:
+                            EndingScene(self.screen, "ending-ejected.png", self.currPlayer)
+                            return "main"
                 
                     if not self.show_choices:
                             #if there is a next background index
