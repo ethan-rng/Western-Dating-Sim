@@ -67,8 +67,8 @@ class Login:
                         if not self.username == '' and not self.password == '':
                             try:
                                 if isLogin:
-                                    currPlayer.login(self.password)
                                     currPlayer.loadPlayer(self.username)
+                                    currPlayer.login(self.password)
                                 else:
                                     if currPlayer.userExists(self.username):
                                         raise DuplicateUser(self.username)
