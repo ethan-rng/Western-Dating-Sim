@@ -51,8 +51,8 @@ class RunGame:
         while True:
             if self.game_state == "main":
                 self.game_state = Menu().event_handler(self.screen)
-            if self.menu_state == "login":
-                self.menu_state = self.login_screen.event_handler(self.screen)
+            if self.game_state == "login":
+                self.game_state = self.login_screen.event_handler(self.screen)
             elif self.game_state == "start":
                 self.game_state = NewGameScreen().event_handler(self.screen)
             elif self.game_state == "help1":
