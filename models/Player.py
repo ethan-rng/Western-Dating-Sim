@@ -43,7 +43,6 @@ class Player(User):
 
     # PUBLIC FACING METHODS
     """ Public Method which creates a new player account (throws AdminLevelAccount DuplicateUser, IllegalStats) """
-
     def createPlayer(self, username: str, password: str, charisma: int, intel: int, attraction: int) -> None:
 
         # Stats for Individual Players
@@ -96,7 +95,6 @@ class Player(User):
 
     """ Public Method which allows the player to update their stats after an interaction (throws IncorrectPrivilege, KeyError)"""
     def updateStats(self, character: str, newAttractionScore: int) -> int:
-
         # Checking If AttractionScore is Maxed Out or Mined Out
         if self._attractionScore[character] >= 100 and newAttractionScore > 0:
             print(f"Attraction Score Maxed Out With {character}")

@@ -6,8 +6,6 @@ from models.exceptions import UserNotFound
 
 """
 TODO: jumptoScreens(self, screenName: str) -> bool:
-TODO: debug(self, screenName: str) -> bool:
-
 """
 
 

@@ -37,7 +37,9 @@ class Chapter1(Chapter):
     def event_handler(self) -> str:
         while True:
             for event in pygame.event.get():
+                # Checks if Users Quit or if The Developer Mode Used "God Powers" (ie: jumped between screens)
                 self.checkQuitGame(event)
+                self.checkGodMode(event)
 
                 # Handle scene transitions and user inputs
                 if event.type == pygame.MOUSEBUTTONDOWN:

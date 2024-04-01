@@ -101,7 +101,7 @@ class RunGame:
                                                "Oh, sorry! Gotta run!!",
                                                f"{self.currPlayer.username} : Wait!",
                                                "She runs off, and you notice a music sheet with contact info for an exam..",
-                                               "Narrator: She's gone but left a dropped sheet with her contact. Do you return it?"
+                                               "Narrator: She's gone but dropped her sheet music on the ground. You see her name (Serena) and her number on the sheet. Do you return it?"
                                            ],
                                            [
                                                os.path.join('view', 'assets', 'chp1', 'talbot-1.jpg'),
