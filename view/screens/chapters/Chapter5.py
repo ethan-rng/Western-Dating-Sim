@@ -76,7 +76,7 @@ class Chapter5(Chapter):
                 if event.type == pygame.MOUSEBUTTONDOWN:            
 
                     self.current_dialogue_index += 1 
-                    if self.current_dialogue_index >= len(self.dialogueLines)-1:  # Check if dialogue is over, next chapter
+                    if self.current_dialogue_index >= len(self.dialogueLines):  # Check if dialogue is over, next chapter
                         self.currPlayer.level = 6  # Proceed to next chapter
                         return "chp"
                 
