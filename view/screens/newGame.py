@@ -11,7 +11,7 @@ class NewGameScreen:
         self.intelligence = 0
         self.charisma = 0
         self.attractiveness = 0
-        self.continue_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Continue", WHITE, "start_game", pygame)
+        self.continue_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3, (screen_width/4), (screen_height/13), "Continue", WHITE, "chp1", pygame)
         self.intelligence_slider = Slider((screen_width - screen_width/2.8, screen_height//4), (screen_width/1.8,20), "Intelligence", 0.5, 0, 10)
         self.charisma_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + screen_height//6), (screen_width/1.8,20), "Charisma", 0.5, 0, 10)
         self.attractiveness_slider = Slider((screen_width - screen_width/2.8, screen_height//4 + (screen_height//6 *2)), (screen_width/1.8,20), "Attractiveness", 0.5, 0, 10)

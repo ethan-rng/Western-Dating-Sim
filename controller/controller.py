@@ -47,7 +47,7 @@ class RunGame:
         # Main Loop
         while True:
             if self.menu_state == "main":
-                Menu(self.screen)
+                self.main_menu()
             elif self.menu_state == "start":
                 self.new_game()
             elif self.menu_state == "help1":
