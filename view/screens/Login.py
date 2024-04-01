@@ -7,6 +7,7 @@ from view.components.InputBox import TextInputBox
 from models.exceptions import *
 from controller.constants import *
 from models.Player import Player
+from models.Developer import Developer
 
 
 class Login:
@@ -67,8 +68,14 @@ class Login:
                         if not self.username == '' and not self.password == '':
                             try:
                                 if isLogin:
-                                    currPlayer.loadPlayer(self.username)                  
-                                    currPlayer.login(self.username, self.password)
+                                    # Developer
+                                    if self.username == "developer":
+                                        currPlayer: Developer = Developer(self.password)
+                                    # Normal Player
+                                    else:
+                                        currPlayer.loadPlayer(self.username)
+                                        currPlayer.login(self.username, self.password)
+
                                     self.game_state = "chp"
                                     return self.game_state, self.username, self.password
                                 else:

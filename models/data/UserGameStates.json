@@ -1,6 +1,6 @@
 [
     {
-        "username": "ggg",
+        "username": "developer",
         "level": 1,
         "charisma": 2,
         "intel": 5,
@@ -11,300 +11,80 @@
         "finalScore": 0
     },
     {
-        "username": "fasfsdafsfffasdfsad",
+        "username": "instructor",
+        "level": 1,
+        "charisma": 2,
+        "intel": 5,
+        "attraction": 2,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "tester",
+        "level": 1,
+        "charisma": 3,
+        "intel": 2,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
+    },
+    {
+        "username": "fsadfasf",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "asdlfkasdfasdfasd",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "asdlfkasdfasdfasd",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "fasdf",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 29.7
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "fasdf",
         "level": 4,
-        "charisma": 3,
-        "intel": 5,
-        "attraction": 2,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "sdfdsafadsf",
-        "level": 1,
-        "charisma": 3,
-        "intel": 5,
-        "attraction": 2,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "sdfasdfasdfdsafsadfas",
-        "level": 1,
-        "charisma": 2,
-        "intel": 5,
-        "attraction": 3,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "fadsfasfsdf",
-        "level": 3,
-        "charisma": 3,
-        "intel": 5,
-        "attraction": 2,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "ffadf333",
-        "level": 3,
-        "charisma": 2,
-        "intel": 5,
-        "attraction": 3,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "dsafasdfasfsafasd",
-        "level": 3,
-        "charisma": 1,
-        "intel": 5,
-        "attraction": 3,
-        "attractionScore": {
-            "Serena": 0.0
-        },
-        "finalScore": 0.0
-    },
-    {
-        "username": "dsafasdfasfsafasd",
-        "level": 3,
-        "charisma": 1,
-        "intel": 5,
-        "attraction": 3,
-        "attractionScore": {
-            "Serena": 0.0
-        },
-        "finalScore": 0.0
-    },
-    {
-        "username": "fsdafadsfsdafadsf",
-        "level": 3,
-        "charisma": 2,
-        "intel": 5,
-        "attraction": 2,
-        "attractionScore": {
-            "Serena": 4.05
-        },
-        "finalScore": 4.05
-    },
-    {
-        "username": "fsdafadsfsdafadsf",
-        "level": 3,
-        "charisma": 2,
-        "intel": 5,
-        "attraction": 2,
-        "attractionScore": {
-            "Serena": 4.05
-        },
-        "finalScore": 4.05
-    },
-    {
-        "username": "asdfsdafasasdfasdf",
-        "level": 3,
-        "charisma": 1,
-        "intel": 5,
-        "attraction": 3,
-        "attractionScore": {
-            "Serena": 6.5
-        },
-        "finalScore": 6.5
-    },
-    {
-        "username": "asdfsdafasasdfasdf",
-        "level": 3,
-        "charisma": 1,
-        "intel": 5,
-        "attraction": 3,
-        "attractionScore": {
-            "Serena": 6.5
-        },
-        "finalScore": 6.5
-    },
-    {
-        "username": "123",
-        "level": 3,
         "charisma": 1,
         "intel": 1,
         "attraction": 1,
         "attractionScore": {
-            "Serena": 0.0
+            "Serena": 29.7
         },
-        "finalScore": 0.0
-    },
-    {
-        "username": "123",
-        "level": 5,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 0.0
-        },
-        "finalScore": 0.0
-    },
-    {
-        "username": "1",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "3",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "345",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "456",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 5.5
-        },
-        "finalScore": 5.5
-    },
-    {
-        "username": "12",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 3.3
-        },
-        "finalScore": 3.3
-    },
-    {
-        "username": "122",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "122",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "435",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "5467",
-        "level": 3,
-        "charisma": 5,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 13.0
-        },
-        "finalScore": 13.0
-    },
-    {
-        "username": "564",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "564",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "465",
-        "level": 3,
-        "charisma": 5,
-        "intel": 1,
-        "attraction": 3,
-        "attractionScore": {
-            "Serena": 13.0
-        },
-        "finalScore": 13.0
-    },
-    {
-        "username": "465",
-        "level": 3,
-        "charisma": 5,
-        "intel": 1,
-        "attraction": 3,
-        "attractionScore": {
-            "Serena": 13.0
-        },
-        "finalScore": 13.0
-    },
-    {
-        "username": "454",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 11.0
-        },
-        "finalScore": 11.0
+        "finalScore": 29.7
     }
 ]
