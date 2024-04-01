@@ -98,18 +98,21 @@ class Chapter2(Chapter):
                         for choice in self.choices_made.values():
                             if choice == "Ask about her interests":
                                 self.currPlayer.updateStats("Serena", 10)
+                                print(self.currPlayer.attraction)
                             elif choice == "Ask about her background":
                                 self.currPlayer.updateStats("Serena", 5)
+                                print(self.currPlayer.attraction)
                             elif choice == "Scroll on your phone":
                                 self.currPlayer.updateStats("Serena", 0)
                             elif choice == "Yeah that sounds great":
                                 self.currPlayer.updateStats("Serena", 0)
                             elif choice == "Sorry, I might be a little busy":
                                 self.currPlayer.updateStats("Serena", -2)
+                                print(self.currPlayer.attraction)
                             else:
                                 raise Exception("Choice Isn't Valid")
 
-                        self.currPlayer.level = 5  # Proceed to next chapter
+                        self.currPlayer.level = 3  # Proceed to next chapter
                         self.currPlayer.saveProgress()
                         return "chp"
 
