@@ -33,7 +33,29 @@
         "finalScore": 0
     },
     {
-        "username": "123",
+        "username": "sdfs",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 3.3
+        },
+        "finalScore": 3.3
+    },
+    {
+        "username": "dfg",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 5.5
+        },
+        "finalScore": 5.5
+    },
+    {
+        "username": "asf",
         "level": 3,
         "charisma": 1,
         "intel": 1,
