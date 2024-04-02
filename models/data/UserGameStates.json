@@ -141,5 +141,16 @@
             "Serena": 11.0
         },
         "finalScore": 11.0
+    },
+    {
+        "username": "dsf",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0.0
+        },
+        "finalScore": 0.0
     }
 ]
