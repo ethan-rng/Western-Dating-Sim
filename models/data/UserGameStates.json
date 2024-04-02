@@ -185,5 +185,16 @@
             "Serena": 0
         },
         "finalScore": 0
+    },
+    {
+        "username": "1231",
+        "level": 6,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
     }
 ]
