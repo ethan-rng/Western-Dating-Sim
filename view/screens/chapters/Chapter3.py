@@ -31,6 +31,21 @@ class Chapter3(Chapter):
                  "My siblings are the same, love them though"]
         }
 
+        self.dialogue_responses = {
+            "Wtf?": ("What a rude response (-5)"),
+            "Yeah a little, no worries.": ("Truthful but polite (2)"),
+            "Yeah it looks like shit.": ("What a rude response (-5)"),
+            "LMFAO, my house is messier": ("Nice one! (+5)"),
+            "Your drawing sucks": ("What a rude response (-10)"),
+            "Thanks! It looks ok": ("You can come up with a better response (0)"),
+            "Wow it looks really nice!": ("Not bad (5)"),
+            "Wow! It looks like me! I love it!": ("Nice one! (10)"),
+            "Maybe, you’re the problem": ("What a rude response (-10)"),
+            "Yeah, but we can all be.": ("What are you thinking... (-5)"),
+            "Sounds like a shit brother": ("...Just why (-10)"),
+            "My siblings are the same, love them though": ("Good job! (5)")
+        }
+
         self.draw_chapter3()
 
     def draw_chapter3(self):
@@ -50,25 +65,20 @@ class Chapter3(Chapter):
 
                 # if selected choice index isnt none...
                 if self.selected_choice_index is not None:
-                    # show the selected choice response and background text
+                        # show the selected choice response and background text
                     selected_option_text = self.dialogue_options[self.current_dialogue_index][self.selected_choice_index]
-
-                    # Get the response text
-                    # response_text, background_index, self.next_background_index = self.dialogue_responses[selected_option_text]
-
-                    # store the choice made
+                        # Get the response text
+                    response_text = self.dialogue_responses[selected_option_text]
+                        # store the choice made
                     self.choices_made[self.current_dialogue_index] = selected_option_text
-                    self.current_scene_index += 1
                     self.show_choices = False
 
-                    self.current_dialogue_index += 1
-
-                    # After updating indices, get the new background and draw it
-                    # current_background = self.dialogueImages[background_index]
-                    # self.screen.blit(current_background, (0, 0))
-                    # dialogue_box = DialogueBox(self.screen, font_size=50, box_height=200)
-                    # dialogue_box.draw(response_text)
-                    # self.selected_choice_index = None
+                        # After updating indices, get the new background and draw it
+                    #current_background = self.dialogueImages[background_index]
+                    self.screen.blit(current_background, (0, 0))
+                    dialogue_box = DialogueBox(self.screen, font_size=50, box_height=200)
+                    dialogue_box.draw(response_text)
+                    self.selected_choice_index = None
             pygame.display.flip()
 
             return ""
@@ -88,6 +98,8 @@ class Chapter3(Chapter):
                             if choice == "Yeah it looks like shit.":
                                 self.currPlayer.updateStats("Serena", -5)
                                 print(self.currPlayer.attractionScore["Serena"])
+                            elif choice == "Wtf?":
+                                self.currPlayer.updateStats("Serena", -5)
                             elif choice == "Yeah a little, no worries.":
                                 self.currPlayer.updateStats("Serena", 2)
                                 print(self.currPlayer.attractionScore["Serena"])
@@ -115,7 +127,7 @@ class Chapter3(Chapter):
                                 raise Exception("Choice Isn't Valid")
 
                         if self.currPlayer.attractionScore["Serena"] >= 20:
-
+                            EndingScene(self.screen, "yesbbt.png", self.currPlayer)
                             self.currPlayer.level = 4  # Proceed to next chapter
                             return "chp"
                         elif self.currPlayer.attractionScore["Serena"] < 20:

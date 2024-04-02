@@ -1,0 +1,40 @@
+from controller.constants import *
+import pygame
+import sys
+
+from view.components.Button import Button
+
+
+class VideoSettings:
+    def __init__(self) -> None:
+        self.menu_state = "videosettings"
+
+        # load videosettings images
+        path = os.path.join('view', 'assets', 'videosettings.png')
+        videosettings = pygame.image.load(path)
+        self.videosettings = pygame.transform.scale(videosettings, (screen_width, videosettings.get_height() / (videosettings.get_width() / screen_width)))
+
+        # load videosettings menu buttons
+        self.back_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY, "main", pygame)
+
+    def draw_videosettings(self, screen: pygame.Surface) -> None:
+        screen.fill(LIGHT_GRAY)
+        screen.blit(self.videosettings, (0, screen_height // 2 - self.videosettings.get_height() // 2))
+        self.back_button.draw(screen)
+        pygame.display.flip()
+
+    def event_handler(self, screen: pygame.Surface) -> str:
+        while True:
+            # Checks for the actions of the player
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    click_sfx.play()
+                    if self.back_button.draw(screen):
+                        self.menu_state = self.back_button.draw(screen)
+                    return self.menu_state
+
+            self.draw_videosettings(screen)
