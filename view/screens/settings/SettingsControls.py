@@ -5,20 +5,43 @@ from view.components.Button import Button
 
 
 class SettingsControls:
+    """
+    Class representing the controls settings view in the game.
+
+    Attributes:
+    :game_state: String representing the state of the controls settings menu.
+    :controls_keys: Dictionary representing the mapping of actions to corresponding keyboard keys.
+    :auto_button: Button object representing the button for setting the auto action.
+    :settings_button: Button object representing the button for setting the settings action.
+    :pause_button: Button object representing the button for setting the pause action.
+    :save_button: Button object representing the button for setting the save action.
+    :load_button: Button object representing the button for setting the load action.
+    :help_button: Button object representing the button for setting the help action.
+    :back_controls_button: Button object representing the button to go back to the settings menu.
+    """
 
     def __init__(self) -> None:
-
+        """
+        Initialize the SettingsControls object.
+        """
         self.game_state = "controls"
 
-        # controls settings variables
-        self.controls_keys = {"auto_key": pygame.K_g, "settings_key": pygame.K_t, "pause_key": pygame.K_p,
-                              "save_key": pygame.K_s, "load_key": pygame.K_l, "help_key": pygame.K_h}
+        # Controls settings variables
+        self.controls_keys = {
+            "auto_key": pygame.K_g,
+            "settings_key": pygame.K_t,
+            "pause_key": pygame.K_p,
+            "save_key": pygame.K_s,
+            "load_key": pygame.K_l,
+            "help_key": pygame.K_h
+        }
 
-        # load controls settings buttons
+        # Load controls settings buttons
         self.auto_button = Button(screen_width / 5.4, screen_height / 3, (screen_width / 4), (screen_height / 13),
                                   "Auto: " + chr(self.controls_keys["auto_key"]), WHITE, "controls", pygame)
         self.settings_button = Button(screen_width - screen_width / 2.6, (screen_height / 3), (screen_width / 4),
-                                      (screen_height / 13), "Settings: " + chr(self.controls_keys["settings_key"]),
+                                      (screen_height / 13),
+                                      "Settings: " + chr(self.controls_keys["settings_key"]),
                                       WHITE, "sound", pygame)
         self.pause_button = Button(screen_width / 5.4, (screen_height / 3) + (screen_height / 6), (screen_width / 4),
                                    (screen_height / 13), "Pause: " + chr(self.controls_keys["pause_key"]), WHITE,
@@ -36,6 +59,12 @@ class SettingsControls:
                                            (screen_width / 4), (screen_height / 13), "Back", WHITE, "settings", pygame)
 
     def draw_settings_controls(self, screen: pygame.Surface) -> None:
+        """
+        Draw the controls settings view on the screen.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         screen.fill(DARK_GRAY)
         self.draw_text("Controls", title_font, BLACK, screen_width / 20, screen_height / 16, screen)
         self.draw_text("Click on a button, then press a key that is not binded", font, BLACK, screen_width / 20,
@@ -50,9 +79,15 @@ class SettingsControls:
         pygame.display.flip()
 
     def event_handler(self, screen: pygame.Surface) -> str:
+        """
+        Handle events in the controls settings view.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         settings_control_active = True
         while settings_control_active:
-            # checks for the actions of the player
+            # Checks for the actions of the player
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -142,8 +177,18 @@ class SettingsControls:
 
             self.draw_settings_controls(screen)
 
-    """ Helper function to draw text on the screen """
+    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float,
+                  screen: pygame.Surface) -> None:
+        """
+        Helper function to draw text on the screen.
 
-    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
+        Parameters:
+        :text: String representing the text to be drawn.
+        :font: Pygame font object representing the font style.
+        :text_col: Tuple representing the color of the text.
+        :x: Float representing the x-coordinate of the text.
+        :y: Float representing the y-coordinate of the text.
+        :screen: Pygame surface object representing the game screen.
+        """
         img = font.render(text, True, text_col)
         screen.blit(img, (x, y))

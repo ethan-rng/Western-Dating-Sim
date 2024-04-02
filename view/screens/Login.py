@@ -1,6 +1,6 @@
 from typing import Tuple, Any
-
-import pygame, sys
+import pygame
+import sys
 from controller.constants import *
 from view.components.Button import Button
 from view.components.InputBox import TextInputBox
@@ -9,9 +9,25 @@ from controller.constants import *
 from models.Player import Player
 from models.Developer import Developer
 
-
 class Login:
+    """
+    Class representing the login screen of the game.
+
+    Attributes:
+    :game_state: String representing the current state of the game.
+    :username: String representing the entered username.
+    :password: String representing the entered password.
+    :continue_button: Button object for continuing the login process.
+    :username_input_box: TextInputBox object for entering the username.
+    :password_input_box: TextInputBox object for entering the password.
+    :error_message: String representing any error messages during login.
+    :back_button: Button object for returning to the main menu.
+    """
+
     def __init__(self) -> None:
+        """
+        Initialize the login screen.
+        """
         self.game_state = "login"
         self.username = ''
         self.password = ''
@@ -25,8 +41,13 @@ class Login:
         
         self.back_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3.7, (screen_width/4), (screen_height/13), "Back", WHITE, "main", pygame)
 
-
     def draw_login(self, screen: pygame.Surface) -> None:
+        """
+        Draw the login screen.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         screen.fill(DARK_GRAY)
         self.draw_text("Login", title_font, BLACK, screen_width/20, screen_height/16, screen)
         self.continue_button.draw(screen)
@@ -43,7 +64,16 @@ class Login:
             screen.blit(text_surface, (text_x, text_y))
         pygame.display.flip()
 
-    def event_handler(self, screen: pygame.Surface, currPlayer: Player, isLogin: bool) -> tuple[str, str, str] | str:
+    def event_handler(self, screen: pygame.Surface, currPlayer: Player, isLogin: bool) -> Tuple[str, str, str] | str:
+        """
+        Handle events on the login screen.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        :currPlayer: Player object representing the current player.
+        :isLogin: Boolean representing if it's a login attempt.
+
+        """
         newgame_active = True
 
         while newgame_active:
@@ -110,9 +140,17 @@ class Login:
             self.draw_login(screen)
         return "chp"
         
-    """ Helper function to draw text on the screen """
-    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
+    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface) -> None:
+        """
+        Helper function to draw text on the screen.
+
+        Parameters:
+        :text: String representing the text to be drawn.
+        :font: Pygame font object representing the font of the text.
+        :text_col: Tuple representing the color of the text.
+        :x: Float representing the x-coordinate of the text.
+        :y: Float representing the y-coordinate of the text.
+        :screen: Pygame surface object representing the game screen.
+        """
         img = font.render(text, True, text_col)
         screen.blit(img, (x,y))
-
-        
