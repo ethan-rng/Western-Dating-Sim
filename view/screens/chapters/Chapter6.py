@@ -28,8 +28,8 @@ class Chapter6(Chapter):
         }
 
         self.dialogue_responses = {
-            "Follow": ("S: I'll just stay home", 3,5),
-            "Don't Follow": ("S: Y/N..? You're here?", 4,6),
+            "Follow": ("S: I'll just stay home", 3,6),
+            "Don't Follow": ("S: Y/N..? You're here?", 4,5),
         }
         
         self.draw_chapter6()
