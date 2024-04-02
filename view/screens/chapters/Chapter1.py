@@ -54,11 +54,7 @@ class Chapter1(Chapter):
 
                         if selected_choice_index is not None:
                             if selected_choice_index == 0:
-<<<<<<< HEAD
-                                self.currPlayer.level = 6  # Proceed to next chapter
-=======
                                 self.currPlayer.level = 2  # Proceed to next chapter
->>>>>>> refs/remotes/origin/restructure
                                 return "chp"
                             elif selected_choice_index == 1:
                                 EndingScene(self.screen, "ending-ghosted.png", self.currPlayer)
