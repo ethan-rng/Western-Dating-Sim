@@ -20,6 +20,8 @@ from view.screens.help.Help1 import Help1
 from view.screens.help.Help2 import Help2
 from view.screens.NewGame import NewGameScreen
 from view.screens.Login import Login
+from view.screens.HighScoreScreen import HighScoreScreen
+from view.screens.Album import Album
 from view.screens.InstructorLogin import InstructorLogin
 from view.screens.InstructorPanel import InstructorPanel
 from view.screens.chapters.Chapter1 import Chapter1
@@ -28,7 +30,9 @@ from view.screens.chapters.Chapter3 import Chapter3
 from view.screens.chapters.Chapter4 import Chapter4
 from view.screens.chapters.Chapter5 import Chapter5
 from view.screens.chapters.Chapter6 import Chapter6
-
+from view.screens.Album import Album
+from view.screens.Language import Language
+from view.screens.VideoSettings import VideoSettings
 
 class RunGame:
     def __init__(self) -> None:
@@ -50,6 +54,9 @@ class RunGame:
         self.sound_settings = SettingsSound()
         self.help1_page = Help1()
         self.help2_page = Help2()
+        self.album_screen = Album()
+        self.language_screen = Language()
+        self.videosettings_screen = VideoSettings()
         self.new_game_screen = NewGameScreen(self.currPlayer)
         self.login_screen = Login()
 
@@ -85,18 +92,26 @@ class RunGame:
                 username = ""
                 password = ""
 
+            elif self.game_state == "album":
+                self.game_state = Album().event_handler(self.screen)
             elif self.game_state == "help1":
                 self.game_state = Help1().event_handler(self.screen)
             elif self.game_state == "help2":
                 self.game_state = Help2().event_handler(self.screen)
+            elif self.game_state == "album":
+                self.game_state = Album().event_handler(self.screen)
+            elif self.game_state == "language":
+                self.game_state = Language().event_handler(self.screen)
+            elif self.game_state == "videosettings":
+                self.game_state = VideoSettings().event_handler(self.screen)
             elif self.game_state == "settings":
                 self.game_state = SettingsMain().event_handler(self.screen)
             elif self.game_state == "controls":
                 self.game_state = SettingsControls().event_handler(self.screen)
             elif self.game_state == "sound":
                 self.game_state = SettingsSound().event_handler(self.screen)
-            elif self.game_state == "load":
-                self.game_state = Login()
+            elif self.game_state == "highscores":
+                self.game_state = HighScoreScreen().event_handler(self.screen)
             elif self.game_state == "instructor_login":
                 self.game_state = InstructorLogin().event_handler(self.screen)
             elif self.game_state == "instructor_panel":
@@ -169,7 +184,7 @@ class RunGame:
                                                "How do you respond?",
                                                "As it gets late, the visit comes to an end",
                                                "S: Alright, it’s probably time for you to go. Get home safe!",
-                                               "After some time to think, you decide to call Serena.. ",
+                                               "After some time to think, you decide to call Serena to ask if she wants to get Boba sometime... ",
                                                "Y/N: Hi Serena, I really enjoyed today. Do you want to get Boba sometime?"
                                            ],
                                            [

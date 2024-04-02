@@ -1,20 +1,50 @@
+"""
+Module: instructor_model
+Authors: Ethan Rong, Jasper Yang, Aaron Xie
+This module provides the Instructor class for managing instructor accounts and interacting with player data.
+
+"""
+
 from models.User import User
 from models.Player import Player
 from typing import List
-import json, os
+import json
+import os
 from models.exceptions import UserNotFound
 
 
 class Instructor(User):
+    """
+    A class to represent instructor accounts and interact with player data.
+
+    Attributes:
+    - Players: class variable representing a list of player instances
+
+    Methods:
+    - __init__: initializes the Instructor instance and loads player data
+    - _loadPlayers: private class method to load player data from disk
+    - viewStats: public method to view the stats of a specific user
+    - viewProgress: public method to view the progress of a specific user
+    """
+
     Players: List['Player'] = []
 
     def __init__(self, password: str) -> None:
+        """
+        Initializes the Instructor instance and loads player data.
+        
+        Parameters:
+        - password: the password of the instructor account
+        """
         super().__init__()
         super().login("instructor", password)
         Instructor._loadPlayers()
 
-    # PRIVATE CLASS METHODS
+    @staticmethod
     def _loadPlayers() -> None:
+        """
+        Private class method to load player data from disk.
+        """
         with open(os.path.join('models', 'data', 'UserGameStates.json'), "r") as file:
             jsonData = json.load(file)
             Instructor.Players = []
@@ -23,10 +53,19 @@ class Instructor(User):
                 new_player.loadPlayer(data["username"])
                 Instructor.Players.append(new_player)
 
-    # PUBLIC METHODS
-    """ Public Method which allows the instructor to view the stats of a specific user (throws UserNotFound, IncorrectPrivilege exception) """
     def viewStats(self, username: str) -> dict:
-        self._checkInstructor()
+        """
+        Public method to view the stats of a specific user.
+
+        Parameters:
+        - username: the username of the user whose stats are to be viewed
+
+        Returns:
+        - dict: a dictionary containing the stats of the specified user
+
+        Raises:
+        - UserNotFound: if the specified user does not exist
+        """
         Instructor._loadPlayers()
 
         for player in Instructor.Players:
@@ -39,9 +78,19 @@ class Instructor(User):
 
         raise UserNotFound(username)
 
-    """ Public Method which allows the instructor to view the progress of a specific user (throws IncorrectPrivilege exception) """
     def viewProgress(self, username: str) -> dict:
-        self._checkInstructor()
+        """
+        Public method to view the progress of a specific user.
+
+        Parameters:
+        - username: the username of the user whose progress is to be viewed
+
+        Returns:
+        - dict: a dictionary containing the progress of the specified user
+
+        Raises:
+        - UserNotFound: if the specified user does not exist
+        """
         Instructor._loadPlayers()
 
         for player in Instructor.Players:

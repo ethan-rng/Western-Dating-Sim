@@ -8,7 +8,22 @@ from hashlib import sha256
 
 
 class InstructorLogin:
+    """
+    Class representing the login interface for instructors.
+
+    Attributes:
+    :game_state: String representing the current state of the game.
+    :username: String representing the instructor's username.
+    :password: String representing the instructor's password.
+    :continue_button: Button object for continuing to the instructor panel.
+    :username_input_box: TextInputBox object for entering the username.
+    :password_input_box: TextInputBox object for entering the password.
+    :error_message: String representing any error messages during login.
+    :back_button: Button object for returning to the settings.
+    """
+
     def __init__(self) -> None:
+        """Initialize the instructor login interface."""
         self.game_state = "instructor_login"
         self.username = ''
         self.password = ''
@@ -21,6 +36,12 @@ class InstructorLogin:
 
         
     def draw_login(self, screen: pygame.Surface) -> None:
+        """
+        Draw the instructor login interface on the screen.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         screen.fill(DARK_GRAY)
         self.draw_text("Login", title_font, BLACK, screen_width/20, screen_height/16, screen)
         self.continue_button.draw(screen)
@@ -40,9 +61,15 @@ class InstructorLogin:
         pygame.display.flip()
         
     def event_handler(self, screen: pygame.Surface) -> None:
+        """
+        Handle events on the instructor login interface.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         newgame_active = True
         while newgame_active:  
-            #checks for the actions of the player
+            # Checks for the actions of the player
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -73,6 +100,8 @@ class InstructorLogin:
                                     return self.game_state
                                 else:
                                     self.error_message = "You entered the wrong password"
+                            else:
+                                self.error_message = "You entered the wrong username"
                         else:
                             self.error_message = "Please enter a value into the username or password box"
                                     
@@ -85,7 +114,18 @@ class InstructorLogin:
                                 
             self.draw_login(screen)
     
-    """ Helper function to draw text on the screen """
-    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
+    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface) -> None:
+        """
+        Helper function to draw text on the screen.
+
+        Parameters:
+        :text: String representing the text to be drawn.
+        :font: Pygame font object representing the font of the text.
+        :text_col: Tuple representing the color of the text.
+        :x: Float representing the x-coordinate of the text.
+        :y: Float representing the y-coordinate of the text.
+        :screen: Pygame surface object representing the game screen.
+        """
         img = font.render(text, True, text_col)
         screen.blit(img, (x,y))
+

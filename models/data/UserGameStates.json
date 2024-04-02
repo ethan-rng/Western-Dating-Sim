@@ -11,7 +11,7 @@
         "finalScore": 0
     },
     {
-        "username": "fasfsdafsfffasdfsad",
+        "username": "ASDF",
         "level": 4,
         "charisma": 3,
         "intel": 5,
@@ -22,8 +22,8 @@
         "finalScore": 0
     },
     {
-        "username": "sdfdsafadsf",
-        "level": 1,
+        "username": "sda",
+        "level": 4,
         "charisma": 3,
         "intel": 5,
         "attraction": 2,
@@ -31,6 +31,7 @@
             "Serena": 0
         },
         "finalScore": 0
+<<<<<<< HEAD
     },
     {
         "username": "sdfasdfasdfdsafsadfas",
@@ -196,5 +197,7 @@
             "Serena": 0
         },
         "finalScore": 0
+=======
+>>>>>>> refs/remotes/origin/restructure
     }
 ]

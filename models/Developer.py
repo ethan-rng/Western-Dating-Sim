@@ -32,7 +32,7 @@ class Developer(Player):
     """" Public Facing Method which allows the user to skip levels """
     def jumptoScreen(self, newLevel: int) -> None:
         self._checkDev()
-        if newLevel >= 1 and newLevel >= 6:
+        if newLevel >= 1 and newLevel <= 6:
             self.level = newLevel
             return
 

@@ -1,13 +1,26 @@
-from controller.constants import *
-import os
 import pygame
+import os
 import sys
+from controller.constants import *
 from view.components.Button import Button
 
-
 class Menu:
-    def __init__(self) -> None:
+    """
+    Class representing the main menu of the game.
 
+    Attributes:
+    :background_image: Pygame surface object representing the background image.
+    :grey_rectangle: Pygame surface object representing the grey rectangle.
+    :logo: Pygame surface object representing the game logo.
+    :title: Pygame surface object representing the game title.
+    :menu_items: List of strings representing the menu items.
+    :game_state: String representing the current state of the game.
+    """
+
+    def __init__(self) -> None:
+        """
+        Initialize the main menu.
+        """
         background_image = pygame.image.load(os.path.join('view', 'assets', 'tower-thumb.jpg')).convert()
         background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
         self.background_image = pygame.transform.scale(background_image, (screen_width + 200, screen_height + 200))
@@ -27,6 +40,12 @@ class Menu:
         self.menu_items = ["Start New Game", "Load Game", "Highscores", "Album", "Settings", "Help", "Quit"]
 
     def draw_menu(self, screen):
+        """
+        Draw the main menu on the screen.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         # Draw main menu screen
         screen.blit(self.background_image, (0, 0))  # draws background
         self.grey_rectangle.set_alpha(200)  # sets transparency of the grey ractangle
@@ -52,7 +71,13 @@ class Menu:
         screen.blit(message2, (screen_width // 50, screen_height))
         pygame.display.flip()
 
-    def event_handler(self, screen: pygame.Surface):
+    def event_handler(self, screen: pygame.Surface) -> str:
+        """
+        Handle events on the main menu.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         menu_active = True
         while menu_active:
             # checks for the actions of the player
@@ -79,8 +104,13 @@ class Menu:
 
             self.draw_menu(screen)
 
-    """ Public method that handles menu clicks """
     def menu_click(self, index: int) -> None:
+        """
+        Handle menu item clicks.
+
+        Parameters:
+        :index: Integer representing the index of the clicked menu item.
+        """
         # This function handles the menu clicks
         if index == 0:
             self.game_state = "login"
@@ -102,3 +132,5 @@ class Menu:
         elif index == 6:
             pygame.quit()
             sys.exit()
+
+
