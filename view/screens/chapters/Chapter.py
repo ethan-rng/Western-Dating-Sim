@@ -5,6 +5,7 @@ import pygame
 from controller.constants import *
 from models.Player import Player
 from view.screens.chapters.SceneTitle import SceneTitle
+from models.exceptions import *
 
 
 class Chapter:
@@ -76,12 +77,16 @@ class Chapter:
 
         """
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
-            self.currPlayer.saveProgress()
-            pygame.quit()
-            sys.exit()
+            try:
+                self.currPlayer._checkDev
+            except IncorrectPrivilege:
+                self.currPlayer.saveProgress()
+            finally:
+                pygame.quit()
+                sys.exit()  
 
     """ Public Method Which Allows the Developer to Change Their Stats and View Them """
-    def checkGodMode(self, event: pygame.event.Event) -> None:
+    def checkGodMode(self, event: pygame.event.Event) -> int:
         """
         Check if the developer is in god mode.
 
@@ -89,25 +94,29 @@ class Chapter:
         :event (pygame.event.Event): The pygame event.
 
         """
-        if type(self.currPlayer) == "<class 'models.Developer.Developer'>":
-            if event.type == pygame.KEYDOWN and (event.key == pygame.K_LCTRL or event.key == pygame.K_RCTRL):
+        try:
+            self.currPlayer._checkDev
+        except IncorrectPrivilege:
+            pass
+        else:
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
-                    self.currPlayer.jumpToScreen(1)
+                    return self.currPlayer.jumpToScreen(1)
 
                 elif event.key == pygame.K_2:
-                    self.currPlayer.jumpToScreen(2)
+                    return self.currPlayer.jumpToScreen(2)
 
                 elif event.key == pygame.K_3:
-                    self.currPlayer.jumpToScreen(3)
+                    return self.currPlayer.jumpToScreen(3)
 
                 elif event.key == pygame.K_4:
-                    self.currPlayer.jumpToScreen(4)
+                    return self.currPlayer.jumpToScreen(4)
 
                 elif event.key == pygame.K_5:
-                    self.currPlayer.jumpToScreen(5)
+                    return self.currPlayer.jumpToScreen(5)
 
                 elif event.key == pygame.K_6:
-                    self.currPlayer.jumpToScreen(6)
+                    return self.currPlayer.jumpToScreen(6)
 
 
 

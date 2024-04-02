@@ -37,7 +37,6 @@ class Developer(Player):
         super().__init__()
         super().loadUser("developer")
         super().login("developer", password)
-        self._loadPlayers()
 
     def _loadPlayers(self) -> None:
         """
@@ -49,21 +48,3 @@ class Developer(Player):
 
             for i, data in enumerate(jsonData):
                 Developer.Players.append(Player().loadPlayer(data["username"]))
-
-    def jumptoScreen(self, newLevel: int) -> None:
-        """
-        Public method to skip levels.
-
-        Parameters:
-        - newLevel: the level to jump to
-
-        Raises:
-        - IndexError: if the specified level is out of bounds
-        """
-        self._checkDev()
-        if newLevel >= 1 and newLevel <= 6:
-            self.level = newLevel
-            return
-
-        raise IndexError
-

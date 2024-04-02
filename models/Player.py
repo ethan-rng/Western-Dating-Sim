@@ -181,6 +181,22 @@ class Player(User):
 
         return finalScore
 
+    def jumpToScreen(self, newLevel: int) -> int:
+        """
+        Public method to skip levels.
+
+        Parameters:
+        - newLevel: the level to jump to
+
+        Raises:
+        - IndexError: if the specified level is out of bounds
+        """
+        self._checkDev()
+        if newLevel >= 1 and newLevel <= 6:
+            return newLevel
+
+        raise IndexError
+
     # SETTERS AND GETTERS
     @property
     def level(self):

@@ -33,14 +33,36 @@
         "finalScore": 12.5
     },
     {
-        "username": "Turnip",
-        "level": 6,
-        "charisma": 4,
+        "username": "wadw",
+        "level": 2,
+        "charisma": 1,
         "intel": 1,
-        "attraction": 5,
+        "attraction": 1,
         "attractionScore": {
-            "Serena": 75.0
+            "Serena": 0
         },
-        "finalScore": 75.0
+        "finalScore": 0
+    },
+    {
+        "username": "wasd",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "joe",
+        "level": 3,
+        "charisma": 10,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 15.0
+        },
+        "finalScore": 15.0
     }
 ]

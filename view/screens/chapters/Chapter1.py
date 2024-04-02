@@ -35,7 +35,6 @@ class Chapter1(Chapter):
         """
         super().__init__(1, screen, gameSession, dialogueLines, dialogueImagePaths, controls)
 
-        # Control Variables for Chapter 1
         self.show_choices: bool = False
         self.showing_choices: bool = False
         self.current_dialogue_index: int = 0
@@ -51,12 +50,12 @@ class Chapter1(Chapter):
         current_background = self.dialogueImages[self.current_dialogue_index]
         self.screen.blit(current_background, (0, 0))
         dialogue_box = DialogueBox(self.screen, font_size=50, box_height=200)
-        dialogue_text = self.dialogueLines[self.current_dialogue_index]  # Get current line of dialogue
+        dialogue_text = self.dialogueLines[self.current_dialogue_index]
         dialogue_box.draw(dialogue_text)
         pygame.display.flip()
 
         if self.current_dialogue_index == 6 and not self.show_choices:
-            self.show_choices = True  # Prepare to display choices
+            self.show_choices = True
         return ""
 
     def event_handler(self) -> str:
@@ -68,7 +67,9 @@ class Chapter1(Chapter):
             for event in pygame.event.get():
                 # Checks if Users Quit or if The Developer Mode Used "God Powers" (ie: jumped between screens)
                 self.checkQuitGame(event)
-                self.checkGodMode(event)
+                if self.checkGodMode(event):
+                    self.currPlayer.level = self.checkGodMode(event)
+                    return "chp"
 
                 # Handle scene transitions and user inputs
                 if event.type == pygame.MOUSEBUTTONDOWN:
@@ -97,4 +98,3 @@ class Chapter1(Chapter):
                     if not self.show_choices:
                         # If no choices need to be displayed, and dialogues are over, continue showing the same scene
                         break
-

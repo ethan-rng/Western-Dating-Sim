@@ -117,9 +117,13 @@ class Chapter3(Chapter):
         """
         while True:
             for event in pygame.event.get():
+                # Checks if Users Quit or if The Developer Mode Used "God Powers" (ie: jumped between screens)
                 self.checkQuitGame(event)
+                if self.checkGodMode(event):
+                    self.currPlayer.level = self.checkGodMode(event)
+                    return "chp"
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    click_sfx.play()
+                    #click_sfx.play()
                     self.current_dialogue_index += 1
                     if self.current_dialogue_index >= len(
                             self.dialogueLines) - 1:  # Check if dialogue is over, next chapter
