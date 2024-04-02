@@ -2,6 +2,7 @@ import pygame
 import sys
 import os
 import threading
+import pydoc
 
 from controller.constants import *
 from view.screens.chapters import *
@@ -35,7 +36,31 @@ from view.screens.Language import Language
 from view.screens.VideoSettings import VideoSettings
 
 class RunGame:
+    """
+    Initializes and runs the main game loop.
+
+    This class sets up the pygame environment, manages game state transitions based on
+    player interactions, orchestrates the game flow, and handles background music.
+
+    Attributes:
+        music_thread (Optional[threading.Thread]): A thread for running game music.
+        currPlayer (Player): The player currently playing the game.
+        screen (pygame.Surface): The main screen surface for the game display.
+        menu (Menu): The main game menu.
+        game_state (str): The current state of the game.
+        controls (dict): A dictionary containing the current control settings.
+    
+    Methods:
+        __init__: Sets up the game environment and initializes variables.
+        event_handler: Handles the game state changes and user interactions.
+        _play_music: A private method to handle music playback in a separate thread.
+        start_music: Starts playing background music.
+        stop_music: Stops the music and terminates the music thread.
+    """
     def __init__(self) -> None:
+        """
+        Initialize the game, setting up pygame, loading assets, and preparing the initial state.
+        """
         # Initialize Pygame
         pygame.init()
         pygame.display.set_caption("Dating Simulator Ver. Western")
@@ -294,12 +319,14 @@ class RunGame:
 
     # METHODS TO CONTROL THE MUSIC
     def _play_music(self, file_path: str) -> None:
+        """Play the specified music file in a separate thread."""
         pygame.mixer.music.stop()
         pygame.mixer.music.load(os.path.join('view', 'assets', 'music', file_path))
         pygame.mixer.music.play(-1)  
 
     """ Public Method to Start Music """
     def start_music(self, file_path: str) -> None:
+        """Start playing the music from the specified file."""
         # Stop any existing music thread before starting a new one
         if self.music_thread is not None and self.music_thread.is_alive():
             pygame.mixer.music.stop()  # Stop the music if the thread is alive
@@ -311,6 +338,7 @@ class RunGame:
 
     """ Public Method to Stop Music """
     def stop_music(self) -> None:
+        """Stop playing any music that is currently playing."""
         # Stop the music playback
         pygame.mixer.music.stop()
 
