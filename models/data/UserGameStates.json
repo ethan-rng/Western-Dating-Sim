@@ -31,16 +31,5 @@
             "Serena": 0
         },
         "finalScore": 0
-    },
-    {
-        "username": "ASDF",
-        "level": 6,
-        "charisma": 3,
-        "intel": 5,
-        "attraction": 2,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
     }
 ]
