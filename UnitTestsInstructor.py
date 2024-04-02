@@ -1,29 +1,42 @@
+"""
+Module: test_instructor
+Author: Jasper Yang
+This module provides unit tests for the Instructor class.
+
+"""
+
 from models.User import User
 from models.Player import Player
 from models.Instructor import Instructor
 from typing import List
-import json, os
+import json
+import os
 from models.exceptions import UserNotFound
 import unittest
 
-class testInstructor(unittest.TestCase):
-    
-    '''tests view stats and view progress'''
-    def test_viewStats_and_progress(self):
-        #the player that the instructor will be viewing
-        Jasmine: Player = Player()
-        Jasmine.createPlayer("Jasmine", "abcd", 2, 2, 2)
-        Jasmine.saveProgress()
-        #login to the instructor account
-        Teacher:Instructor = Instructor("abcd")
-        #view stats
-        self.assertEqual(Teacher.viewStats("Jasmine")["charisma"], 2)
-        self.assertEqual(Teacher.viewStats("Jasmine")["intelligence"], 2)
-        self.assertEqual(Teacher.viewStats("Jasmine")["attraction"], 2)
-        #view Progress
-        self.assertEqual(Teacher.viewProgress("Jasmine")["level"], 1)
-        self.assertEqual(Teacher.viewProgress("Jasmine")["attractionScore"], Jasmine.attractionScore)
-        #deletes Jasmine from passwords
+class TestInstructor(unittest.TestCase):
+    """
+    Unit tests for the Instructor class.
+    """
+
+    def test_view_stats_and_progress(self):
+        """
+        Tests view stats and view progress functions.
+        """
+        # The player that the instructor will be viewing
+        jasmine = Player()
+        jasmine.create_player("Jasmine", "abcd", 2, 2, 2)
+        jasmine.save_progress()
+        # Login to the instructor account
+        teacher = Instructor("abcd")
+        # View stats
+        self.assertEqual(teacher.view_stats("Jasmine")["charisma"], 2)
+        self.assertEqual(teacher.view_stats("Jasmine")["intelligence"], 2)
+        self.assertEqual(teacher.view_stats("Jasmine")["attraction"], 2)
+        # View progress
+        self.assertEqual(teacher.view_progress("Jasmine")["level"], 1)
+        self.assertEqual(teacher.view_progress("Jasmine")["attractionScore"], jasmine.attraction_score)
+        # Deletes Jasmine from passwords
         for user in User.Users:
             if user["username"] == "Jasmine":
                 User.Users.remove(user)
@@ -31,7 +44,7 @@ class testInstructor(unittest.TestCase):
         # Updates the JSON file
         with open(os.path.join("models", "data", "UserPasswords.json"), 'w', encoding='utf-8') as file:
             json.dump(User.Users, file, indent=4)
-        #deletes Jasmine from gamestates
+        # Deletes Jasmine from gamestates
         with open(os.path.join("models", "data", "UserGameStates.json"), "r") as file:
             game_states = json.load(file)
             updated_game_states = [data for data in game_states if data["username"] != "Jasmine"]
