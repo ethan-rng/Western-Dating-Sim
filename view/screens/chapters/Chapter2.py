@@ -31,14 +31,14 @@ class Chapter2(Chapter):
         # 1st number is the index of the image, 2nd number is the index of the next image after
         self.dialogue_responses = {
             "Ask about her interests": (
-            "S: Thanks for asking! Music is one of my favourite ways to pass time. I’ve been competing in piano contests since I was young! I also love to draw...wait I can draw a picture of you!",
+            "S: Thanks for asking! Music is one of my favourite ways to pass time. I’ve been competing in piano contests since I was young! I also love to draw...wait I can draw a picture of you! [Nice one! (+10)]",
             3, 6),
             "Ask about her background": (
-            "S: I grew up in Markham actually. I was never a sports kid and I did a lot of Olympiads and Kumon growing up. I always did like art though. I can draw a picture of you!",
+            "S: I grew up in Markham actually. I was never a sports kid and I did a lot of Olympiads and Kumon growing up. I always did like art though. I can draw a picture of you! [Good Choice (+5)]",
             4, 6),
-            "Scroll on your phone": ("S: *Silence*", 5, 6),
-            "Yeah that sounds great": ("S: Sounds good!", 7, 9),
-            "Sorry, I might be a little busy": ("S: Don’t worry... it won’t take long. ", 8, 9)
+            "Scroll on your phone": ("S: *Silence* [Where's the effort..? (0)]", 5, 6),
+            "Yeah that sounds great": ("S: Sounds good! [Nice (0)]", 7, 9),
+            "Sorry, I might be a little busy": ("S: Don’t worry... it won’t take long. [Why so reluctant? (-2)]", 8, 9)
         }
 
         self.draw_chapter2()
