@@ -1,24 +1,36 @@
+"""
+Module: test_dev
+Author: Jasper Yang
+This module provides unit tests for the Developer class.
+
+"""
+
 from models.User import User
 from models.Player import Player
 from models.Developer import Developer
 from typing import List
-import json, os
+import json
+import os
 from models.exceptions import UserNotFound
 import unittest
 
-class testDev(unittest.TestCase):
-    
-    '''test jump to screen'''
-    def test_jumptoScreen(self):
-        #sign in to developer dashboard
-        Dev: Developer = Developer("abcd")
-        #test jumpscreen function to an actual screen
-        Dev.jumptoScreen(4)
-        self.assertEqual(Dev.level, 4)
-        #test out of bounds
-        self.assertRaises(IndexError, Dev.jumptoScreen, 8)
-        self.assertRaises(IndexError, Dev.jumptoScreen, 0)
+class TestDev(unittest.TestCase):
+    """
+    Unit tests for the Developer class.
+    """
 
+    def test_jumpto_screen(self):
+        """
+        Tests jump to screen function.
+        """
+        # Sign in to developer dashboard
+        dev = Developer("abcd")
+        # Test jump screen function to an actual screen
+        dev.jumpto_screen(4)
+        self.assertEqual(dev.level, 4)
+        # Test out of bounds
+        self.assertRaises(IndexError, dev.jumpto_screen, 8)
+        self.assertRaises(IndexError, dev.jumpto_screen, 0)
 
 if __name__ == '__main__':
     unittest.main()
