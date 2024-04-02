@@ -43,7 +43,7 @@ class RunGame:
         # Initialize Sounds
         pygame.mixer.init()
         self.music_thread: Optional[threading.Thread] = None
-        # self.start_music("backsound.mp3")
+        self.start_music("backsound.mp3")
 
         # Initializing Variables for PyGame
         self.currPlayer: Player = Player()
