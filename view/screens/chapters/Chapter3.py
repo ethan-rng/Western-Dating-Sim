@@ -119,7 +119,7 @@ class Chapter3(Chapter):
             for event in pygame.event.get():
                 self.checkQuitGame(event)
                 if event.type == pygame.MOUSEBUTTONDOWN:
-
+                    click_sfx.play()
                     self.current_dialogue_index += 1
                     if self.current_dialogue_index >= len(
                             self.dialogueLines) - 1:  # Check if dialogue is over, next chapter

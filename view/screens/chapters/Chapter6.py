@@ -59,7 +59,7 @@ class Chapter6(Chapter):
 
         self.dialogue_responses = {
             "Follow": ("S: I'll just stay home", 3,6),
-            "Don't Follow": ("S: Y/N..? You're here?", 4,5),
+            "Don't Follow": ("S: Aweee. You're here?", 4,5),
         }
         
         self.draw_chapter6()
@@ -108,10 +108,9 @@ class Chapter6(Chapter):
         """
         while True:
             for event in pygame.event.get():
-                click_sfx.play()
                 self.checkQuitGame(event)
                 if event.type == pygame.MOUSEBUTTONDOWN:            
-
+                    click_sfx.play()
                     self.current_dialogue_index += 1 
                     if not self.show_choices:
                             #if there is a next background index

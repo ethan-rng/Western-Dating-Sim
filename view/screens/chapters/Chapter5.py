@@ -114,7 +114,8 @@ class Chapter5(Chapter):
             for event in pygame.event.get():
                 click_sfx.play()
                 self.checkQuitGame(event)
-                if event.type == pygame.MOUSEBUTTONDOWN:            
+                if event.type == pygame.MOUSEBUTTONDOWN:        
+                    click_sfx.play()       
 
                     if self.selected_choice_index == 1:
                         EndingScene(self.screen, "ending-rejected.png", self.currPlayer)

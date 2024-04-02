@@ -20,5 +20,27 @@
             "Serena": 0
         },
         "finalScore": 0
+    },
+    {
+        "username": "Turnip",
+        "level": 3,
+        "charisma": 4,
+        "intel": 1,
+        "attraction": 5,
+        "attractionScore": {
+            "Serena": 60.0
+        },
+        "finalScore": 12.5
+    },
+    {
+        "username": "Turnip",
+        "level": 6,
+        "charisma": 4,
+        "intel": 1,
+        "attraction": 5,
+        "attractionScore": {
+            "Serena": 75.0
+        },
+        "finalScore": 75.0
     }
 ]
