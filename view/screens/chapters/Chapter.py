@@ -8,9 +8,31 @@ from view.screens.chapters.SceneTitle import SceneTitle
 
 
 class Chapter:
+    """
+    Class representing a chapter in the game.
+
+    Attributes:
+    :sceneIndex (int): The index of the current scene in the chapter.
+    :screen (pygame.Surface): The surface to display the chapter scenes.
+    :currPlayer (Player): The current player object.
+    :dialogueLines (List[str]): List of dialogue lines in the chapter.
+    :dialogueImages (List[pygame.Surface]): List of images corresponding to dialogue scenes.
+    :currentDialogueIndex (int): Index of the current dialogue scene.
+    :controls (dict): Dictionary of control mappings.
+    """
     def __init__(self, sceneIndex: int, screen: pygame.Surface, currPlayer: Player,
                  dialogueLines: List[str], dialogueImagePaths: List[str], controls: dict) -> None:
+        """
+        Initializes the Chapter object.
 
+        Parameters:
+        :sceneIndex (int): The index of the current scene in the chapter.
+        :screen (pygame.Surface): The surface to display the chapter scenes.
+        :currPlayer (Player): The current player object.
+        :dialogueLines (List[str]): List of dialogue lines in the chapter.
+        :dialogueImagePaths (List[str]): List of file paths to dialogue images.
+        :controls (dict): Dictionary of control mappings.
+        """
         self.sceneIndex: int = sceneIndex
         self.screen: pygame.Surface = screen
         self.currPlayer: Player = currPlayer
@@ -27,6 +49,9 @@ class Chapter:
 
     """ Public Method Which Simply Transitions The Chapter With A SceneTitle Element """
     def updateScene(self) -> None:
+        """
+        Transition the chapter with a SceneTitle element.
+        """
         while True:
             for event in pygame.event.get():
                 self.checkQuitGame(event)
@@ -43,6 +68,13 @@ class Chapter:
 
     """ Public Method Which Just Detects If The Game Has Been Quit (to be called in the beginning of the event loop)"""
     def checkQuitGame(self, event: pygame.event.Event) -> None:
+        """
+        Check if the game has been quit.
+
+        Parameters:
+        :event (pygame.event.Event): The pygame event.
+
+        """
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
             self.currPlayer.saveProgress()
             pygame.quit()
@@ -50,6 +82,13 @@ class Chapter:
 
     """ Public Method Which Allows the Developer to Change Their Stats and View Them """
     def checkGodMode(self, event: pygame.event.Event) -> None:
+        """
+        Check if the developer is in god mode.
+
+        Parameters:
+        :event (pygame.event.Event): The pygame event.
+
+        """
         if type(self.currPlayer) == "<class 'models.Developer.Developer'>":
             if event.type == pygame.KEYDOWN and (event.key == pygame.K_LCTRL or event.key == pygame.K_RCTRL):
                 if event.key == pygame.K_1:

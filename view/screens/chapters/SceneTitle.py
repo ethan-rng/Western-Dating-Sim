@@ -2,7 +2,29 @@ import pygame
 
 
 class SceneTitle:
+    """
+    Represents a scene title to be displayed on a pygame surface.
+
+    Attributes:
+        :screen (pygame.Surface): The pygame surface where the title will be displayed.
+        :text (str): The text content of the title.
+        :font_size (int): The font size of the title text.
+        :bg_color (tuple[int]): The background color of the title.
+        :text_color (tuple[int]): The color of the title text.
+        :box_color (tuple[int]): The color of the rectangle box behind the text.
+    """
     def __init__(self, screen: pygame.Surface, text:str, font_size=74, bg_color=(0, 0, 0), text_color=(255, 255, 255), box_color=(0, 0, 0)):
+        """
+        Initialize a title scene.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        :text: String representing the title text.
+        :font_size: Integer representing the font size of the title text. Default is 74.
+        :bg_color: Tuple representing the background color of the scene. Default is black.
+        :text_color: Tuple representing the color of the title text. Default is white.
+        :box_color: Tuple representing the color of the rectangle box behind the text. Default is black.
+        """
         self.screen: pygame.Surface = screen
         self.text: str = text
         self.font_size: int = font_size
@@ -16,6 +38,9 @@ class SceneTitle:
         self.text_rect = self.text_surface.get_rect(center=(screen.get_width()//2, screen.get_height()//2))
 
     def draw(self):
+        """
+        Draws the SceneTitle onto the screen.
+        """
         # Fill the screen with the background color
         self.screen.fill(self.bg_color)
         

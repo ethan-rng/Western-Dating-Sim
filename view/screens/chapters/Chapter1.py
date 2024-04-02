@@ -11,9 +11,28 @@ from typing import List
 
 
 class Chapter1(Chapter):
+    """
+    Class representing Chapter 1 of the game.
+
+    Attributes:
+    :show_choices (bool): Flag indicating whether choices need to be displayed.
+    :showing_choices (bool): Flag indicating if choices are currently being shown.
+    :current_dialogue_index (int): Index of the current dialogue in the chapter.
+    :current_scene_index (int): Index of the current scene in the chapter.
+    """
     def __init__(self, screen: pygame.Surface, gameSession: Player,
                  title: str, dialogueLines: List[str], dialogueImagePaths: List[str], controls: dict) -> None:
+        """
+        Initializes Chapter1 object.
 
+        Parameters:
+        :screen (pygame.Surface): The surface to display the chapter scenes.
+        :gameSession (Player): The current player object.
+        :title (str): The title of the chapter.
+        :dialogueLines (List[str]): List of dialogue lines in the chapter.
+        :dialogueImagePaths (List[str]): List of file paths to dialogue images.
+        :controls (dict): Dictionary of control mappings.
+        """
         super().__init__(1, screen, gameSession, dialogueLines, dialogueImagePaths, controls)
 
         # Control Variables for Chapter 1
@@ -23,6 +42,12 @@ class Chapter1(Chapter):
         self.current_scene_index: int = 0
 
     def draw_chapter1(self) -> str:
+        """
+        Draw the scenes and dialogues for Chapter 1.
+
+        Returns:
+        :str: An empty string.
+        """
         current_background = self.dialogueImages[self.current_dialogue_index]
         self.screen.blit(current_background, (0, 0))
         dialogue_box = DialogueBox(self.screen, font_size=50, box_height=200)
@@ -35,6 +60,10 @@ class Chapter1(Chapter):
         return ""
 
     def event_handler(self) -> str:
+        """
+        Handle events and user inputs for Chapter 1.
+
+        """
         while True:
             for event in pygame.event.get():
                 # Checks if Users Quit or if The Developer Mode Used "God Powers" (ie: jumped between screens)

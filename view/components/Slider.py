@@ -2,7 +2,35 @@ from controller.constants import *
 
 
 class Slider:
+    """
+    Represents a slider component for adjusting values within a range in a pygame application.
+
+    Attributes:
+        :pos (tuple): The position (x, y) of the slider.
+        :size (tuple): The size (width, height) of the slider.
+        :label (str): The label associated with the slider.
+        :initial_val (float): The initial value of the slider.
+        :min (int): The minimum value of the slider.
+        :max (int): The maximum value of the slider.
+        :container_rect (pygame.Rect): The rectangular area representing the slider container.
+        :button_rect (pygame.Rect): The rectangular area representing the slider button.
+        :text (str): The text value displayed on the slider.
+        :render: The rendered text surface.
+        :text_width (int): The width of the rendered text.
+        :text_height (int): The height of the rendered text.
+    """
     def __init__(self, pos: tuple, size: tuple, label: str, initial_val: float, min: int, max: int) -> None:
+        """
+        Initializes a Slider object.
+
+        Parameters:
+            :pos (tuple): The position (x, y) of the slider.
+            :size (tuple): The size (width, height) of the slider.
+            :label (str): The label associated with the slider.
+            :initial_val (float): The initial value of the slider.
+            :min (int): The minimum value of the slider.
+            :max (int): The maximum value of the slider.
+        """
         self.pos = pos
         self.size = size
 
@@ -23,11 +51,23 @@ class Slider:
         self.updateText()
 
     def moveSlider(self, mouse_pos):
+        """
+        Moves the slider button based on the mouse position.
+
+        Parameters:
+            :mouse_pos (tuple): The position of the mouse (x, y).
+        """
         self.button_rect.centerx = mouse_pos[0]
 
     """Public methods that draws out the slider component onto the screen"""
 
     def draw(self, screen: pygame.Surface) -> None:
+        """
+        Draws the slider component on the screen.
+
+        Parameters:
+            :screen (pygame.Surface): The pygame surface on which the slider will be drawn.
+        """
         infoObject = pygame.display.Info()
         screen_width = infoObject.current_w
         screen_height = infoObject.current_h
@@ -51,12 +91,17 @@ class Slider:
         pygame.draw.rect(screen, "black", self.button_rect)
 
     def updateText(self):
+        """Updates the text value displayed on the slider."""
         self.text = str(self.getValue())
         self.render = font.render(self.text, True, 'black')
         self.text_width = self.render.get_width()
         self.text_height = self.render.get_height()
 
     def getValue(self):
+        """
+        Gets the current value of the slider.
+
+        """
         val_range = self.slider_right_pos - self.slider_left_pos - 1
         button_val = self.button_rect.centerx - self.slider_left_pos
 

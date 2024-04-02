@@ -12,8 +12,38 @@ import sys
 
 
 class Chapter6(Chapter):
+    """
+    Represents the sixth chapter of the game.
+
+    Attributes:
+        :screen (pygame.Surface): The pygame surface to draw on.
+        :currPlayer (Player): The current player object.
+        :title (str): The title of the chapter.
+        :dialogueLines (List[str]): List of dialogue lines.
+        :dialogueImagePaths (List[str]): List of image paths for the dialogue scenes.
+        :controls (dict): Dictionary of controls for the chapter.
+        :show_choices (bool): Flag to indicate whether choices are shown.
+        :choices_made (dict): Dictionary to store the choices made by the player.
+        :current_dialogue_index (int): Index of the current dialogue.
+        :current_scene_index (int): Index of the current scene.
+        :selected_choice_index: Index of the selected choice.
+        :next_background_index (int): Index of the next background scene.
+        :dialogue_options (dict): Dictionary containing dialogue options.
+        :dialogue_responses (dict): Dictionary containing responses to dialogue options.
+    """
     def __init__(self, screen: pygame.Surface, currPlayer: Player,
                  title: str, dialogueLines: List[str], dialogueImagePaths: List[str], controls: dict):
+        """
+        Initializes Chapter6.
+
+        Parameters:
+            :screen (pygame.Surface): The pygame surface to draw on.
+            :currPlayer (Player): The current player object.
+            :title (str): The title of the chapter.
+            :dialogueLines (List[str]): List of dialogue lines.
+            :dialogueImagePaths (List[str]): List of image paths for the dialogue scenes.
+            :controls (dict): Dictionary of controls for the chapter.
+        """
         super().__init__(6, screen, currPlayer, dialogueLines, dialogueImagePaths, controls)
 
         self.show_choices: bool = False
@@ -35,6 +65,9 @@ class Chapter6(Chapter):
         self.draw_chapter6()
 
     def draw_chapter6(self):
+        """
+        Draws Chapter6 on the screen.
+        """
         while True:
             current_background = self.dialogueImages[self.current_scene_index]
             self.screen.blit(current_background, (0, 0))
@@ -70,6 +103,9 @@ class Chapter6(Chapter):
             return ""
 
     def event_handler(self):
+        """
+        Handles events in Chapter6.
+        """
         while True:
             for event in pygame.event.get():
                 click_sfx.play()

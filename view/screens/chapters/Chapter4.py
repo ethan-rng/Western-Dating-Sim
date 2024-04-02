@@ -12,8 +12,33 @@ import sys
 
 
 class Chapter4(Chapter):
+    """
+    Class representing Chapter 4 of the game.
+
+    Attributes:
+    :show_choices (bool): Flag indicating whether choices need to be displayed.
+    :choices_made (dict): Dictionary storing choices made during the chapter.
+    :current_dialogue_index (int): Index of the current dialogue in the chapter.
+    :current_scene_index (int): Index of the current scene in the chapter.
+    :selected_choice_index (int): Index of the selected choice.
+    :next_background_index (int): Index of the next background image.
+    :dialogue_options (dict): Dictionary mapping dialogue indices to available choices.
+    :dialogue_responses (dict): Dictionary mapping choices to their respective responses.
+
+    """
     def __init__(self, screen: pygame.Surface, currPlayer: Player,
                  title: str, dialogueLines: List[str], dialogueImagePaths: List[str], controls: dict):
+        """
+        Initializes Chapter4 object.
+
+        Parameters:
+        :screen (pygame.Surface): The surface to display the chapter scenes.
+        :currPlayer (Player): The current player object.
+        :title (str): The title of the chapter.
+        :dialogueLines (List[str]): List of dialogue lines in the chapter.
+        :dialogueImagePaths (List[str]): List of file paths to dialogue images.
+        :controls (dict): Dictionary of control mappings.
+        """
         super().__init__(4, screen, currPlayer, dialogueLines, dialogueImagePaths, controls)
 
         self.show_choices: bool = False
@@ -54,6 +79,9 @@ class Chapter4(Chapter):
         self.draw_chapter4()
 
     def draw_chapter4(self):
+        """
+        Draw the scenes and dialogues for Chapter 4.
+        """
         while True:
             current_background = self.dialogueImages[self.current_scene_index]
             self.screen.blit(current_background, (0, 0))
@@ -89,6 +117,9 @@ class Chapter4(Chapter):
             return ""
 
     def event_handler(self):
+        """
+        Handle events for Chapter 4.
+        """
         while True:
             for event in pygame.event.get():
                 click_sfx.play()

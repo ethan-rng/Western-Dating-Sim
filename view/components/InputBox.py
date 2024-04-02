@@ -5,9 +5,36 @@ from controller.constants import *
 
 
 class TextInputBox:
+    """
+    Represents a text input box for user interaction in a pygame application.
+
+    Attributes:
+        :x (float): The x-coordinate of the top-left corner of the text input box.
+        :y (float): The y-coordinate of the top-left corner of the text input box.
+        :width (float): The width of the text input box.
+        :height (float): The height of the text input box.
+        :label (str): The label associated with the text input box.
+        :color (tuple): The color of the text input box.
+        :pygame_instance: An instance of the pygame module.
+        :user_text (str): The text entered by the user.
+        :input_rect (pygame.Rect): The rectangular area for the text input box.
+        :active (bool): Indicates whether the text input box is currently active (accepting input) or not.
+    """
     def __init__(self, x, y, width, height, label, color, pygame_instance) -> None:
         # pygame.init() will initialize all
         # imported module
+        """
+        Initializes a TextInputBox object.
+
+        Parameters:
+            :x (float): The x-coordinate of the top-left corner of the text input box.
+            :y (float): The y-coordinate of the top-left corner of the text input box.
+            :width (float): The width of the text input box.
+            :height (float): The height of the text input box.
+            :label (str): The label associated with the text input box.
+            :color (tuple): The color of the text input box.
+            :pygame_instance: An instance of the pygame module.
+        """
         pygame.init()
 
         self.clock = pygame.time.Clock()
@@ -24,7 +51,12 @@ class TextInputBox:
         self.active = False
 
     def draw(self, screen: pygame.Surface) -> bool:
+        """
+        Draws the text input box on the screen.
 
+        Parameters:
+            :screen (pygame.Surface): The pygame surface on which the text input box will be drawn.
+        """
         pos = pygame.mouse.get_pos()
 
         if self.input_rect.collidepoint(pos):
@@ -57,6 +89,12 @@ class TextInputBox:
             self.input_rect.w = max(screen_width / 1.35, text_surface.get_width() + 10)
 
     def updateText(self, screen: pygame.Surface) -> None:
+        """
+        Updates the text input box with the user's input text.
+
+        Parameters:
+            :screen (pygame.Surface): The pygame surface on which the text input box will be updated.
+        """
         pygame.draw.rect(screen, self.color, self.input_rect)
         text_surface = font.render(self.user_text, True, BLACK)
 
@@ -68,6 +106,12 @@ class TextInputBox:
         self.input_rect.w = max(10, text_surface.get_width() + 10)
 
     def event_handler(self, screen: pygame.Surface) -> None:
+        """
+        Handles events related to the text input box.
+
+        Parameters:
+            :screen (pygame.Surface): The pygame surface on which the events will be handled.
+        """
         while self.active == True:
             for event in pygame.event.get():
                 pos = pygame.mouse.get_pos()

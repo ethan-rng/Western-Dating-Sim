@@ -2,7 +2,30 @@ import pygame
 
 
 class ChoicesScreen:
+    """
+    Represents a screen displaying choices for the user to select in a pygame application.
+
+    Attributes:
+        :screen: The pygame surface on which the choices will be displayed.
+        :choices (list): A list of strings representing the choices to be displayed.
+        :font (pygame.font.Font): The font used for rendering the choice text.
+        :button_width (float): The width of each choice button.
+        :button_height (float): The height of each choice button.
+        :button_margin (float): The vertical spacing between choice buttons.
+        :button_color (tuple): The color of the choice buttons.
+        :text_color (tuple): The color of the choice text.
+        :buttons (list): A list of pygame.Rect objects representing the boundaries of choice buttons.
+        :selected_choice_index (int): The index of the selected choice.
+
+    """
     def __init__(self, screen, choices):
+        """
+        Initializes a ChoicesScreen object.
+
+        Parameters:
+            :screen: The pygame surface on which the choices will be displayed.
+            :choices (list): A list of strings representing the choices to be displayed.
+        """
         self.screen = screen
         self.choices = choices
         self.font = pygame.font.Font(None, 40)
@@ -19,6 +42,9 @@ class ChoicesScreen:
         self.button_height = self.font.get_height() + 2 * self.button_margin
 
     def draw_buttons(self):
+        """
+        Draws the choice buttons on the screen.
+        """
         self.buttons.clear()
         screen_width, screen_height = self.screen.get_size()
         start_y = (screen_height - (
@@ -45,6 +71,9 @@ class ChoicesScreen:
             self.screen.blit(button_surface, button_rect.topleft)
 
     def display(self) -> int:
+        """
+        Displays the choices on the screen and handles user interaction.
+        """
         self.selected_choice_index = None  # Reset the selected choice index each time the display is called
         running = True
         
