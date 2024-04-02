@@ -5,6 +5,7 @@ import sys
 from models.Instructor import Instructor
 from view.components.Button import Button
 from view.components.InputBox import TextInputBox
+from models.exceptions import *
 
 class InstructorPanel:
     def __init__(self) -> None:
@@ -17,6 +18,8 @@ class InstructorPanel:
         self.attractiveness_text = ''
         self.level_text = ''
         self.attraction_text = ''
+        self.error_message: str = ""
+
         
         self.username_input_box = TextInputBox(screen_width//11.5, screen_height//5, screen_width/2, screen_height/20, "Player Username:", DARK_GRAY, pygame)
         self.username_search_button = Button(screen_width//19, (screen_height//5) + (screen_height/8), (screen_width/2.1), (screen_height/13), "Search", WHITE, "search", pygame)
@@ -79,6 +82,16 @@ class InstructorPanel:
         attraction_text_surface = font.render(self.attraction_text, True, BLACK)
         attraction_text_rect = attraction_text_surface.get_rect(x = self.view_attraction_rect.right - self.view_attraction_rect.width/3.2, centery = self.view_attraction_rect.centery)
         screen.blit(attraction_text_surface, attraction_text_rect)
+        
+        # Drawing Error Message For any errors 
+        if self.error_message:
+            error_font = pygame.font.SysFont(None, 80)
+            text_surface = error_font.render(self.error_message, True, RED)
+            # Calculate x position to center the text
+            text_x = (screen_width - text_surface.get_width()) / 2
+            text_y = (screen_height * 9) / 13
+            screen.blit(text_surface, (text_x, text_y))
+            
         pygame.display.flip()
         
     def event_handler(self, screen: pygame.Surface) -> str:
@@ -102,12 +115,18 @@ class InstructorPanel:
                     
                     if self.username_search_button.draw(screen):
                         click_sfx.play()
-                        self.charisma_text = str(self.instructor.viewStats(self.username)["charisma"])
-                        self.intelligence_text = str(self.instructor.viewStats(self.username)["intelligence"])
-                        self.attractiveness_text = str(self.instructor.viewStats(self.username)["attraction"])                       
-                        self.level_text = str(self.instructor.viewProgress(self.username)["level"])
-                        self.attraction_text = str(self.instructor.viewProgress(self.username)["attractionScore"])
-                        self.draw_instructor_panel(screen)
+                        try:
+                            self.charisma_text = str(self.instructor.viewStats(self.username)["charisma"])
+                            self.intelligence_text = str(self.instructor.viewStats(self.username)["intelligence"])
+                            self.attractiveness_text = str(self.instructor.viewStats(self.username)["attraction"])                       
+                            self.level_text = str(self.instructor.viewProgress(self.username)["level"])
+                            self.attraction_text = str(self.instructor.viewProgress(self.username)["attractionScore"])
+                        except UserNotFound:
+                            self.error_message = "user does not exist"
+                        else:
+                            self.error_message = ""
+                            self.draw_instructor_panel(screen)
+
 
                     
                     if self.username_input_box.draw(screen):

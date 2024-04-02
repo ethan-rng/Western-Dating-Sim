@@ -20,6 +20,8 @@ from view.screens.help.Help1 import Help1
 from view.screens.help.Help2 import Help2
 from view.screens.NewGame import NewGameScreen
 from view.screens.Login import Login
+from view.screens.HighScoreScreen import HighScoreScreen
+from view.screens.Album import Album
 from view.screens.InstructorLogin import InstructorLogin
 from view.screens.InstructorPanel import InstructorPanel
 from view.screens.chapters.Chapter1 import Chapter1
@@ -90,6 +92,8 @@ class RunGame:
                 username = ""
                 password = ""
 
+            elif self.game_state == "album":
+                self.game_state = Album().event_handler(self.screen)
             elif self.game_state == "help1":
                 self.game_state = Help1().event_handler(self.screen)
             elif self.game_state == "help2":
@@ -106,8 +110,8 @@ class RunGame:
                 self.game_state = SettingsControls().event_handler(self.screen)
             elif self.game_state == "sound":
                 self.game_state = SettingsSound().event_handler(self.screen)
-            elif self.game_state == "load":
-                self.game_state = Login()
+            elif self.game_state == "highscores":
+                self.game_state = HighScoreScreen().event_handler(self.screen)
             elif self.game_state == "instructor_login":
                 self.game_state = InstructorLogin().event_handler(self.screen)
             elif self.game_state == "instructor_panel":

@@ -73,6 +73,8 @@ class InstructorLogin:
                                     return self.game_state
                                 else:
                                     self.error_message = "You entered the wrong password"
+                            else:
+                                self.error_message = "You entered the wrong username"
                         else:
                             self.error_message = "Please enter a value into the username or password box"
                                     
