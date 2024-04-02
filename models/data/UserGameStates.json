@@ -86,5 +86,16 @@
             "Serena": 3.3
         },
         "finalScore": 3.3
+    },
+    {
+        "username": "00",
+        "level": 2,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
     }
 ]
