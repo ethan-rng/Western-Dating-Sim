@@ -143,14 +143,35 @@
         "finalScore": 11.0
     },
     {
+<<<<<<< HEAD
         "username": "dsf",
+=======
+        "username": "1",
+>>>>>>> refs/remotes/origin/restructure
         "level": 3,
         "charisma": 1,
         "intel": 1,
         "attraction": 1,
         "attractionScore": {
+<<<<<<< HEAD
             "Serena": 0.0
         },
         "finalScore": 0.0
+=======
+            "Serena": 33.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "1",
+        "level": 4,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 33.0
+        },
+        "finalScore": 33.0
+>>>>>>> refs/remotes/origin/restructure
     }
 ]
