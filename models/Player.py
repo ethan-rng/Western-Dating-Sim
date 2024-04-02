@@ -125,6 +125,9 @@ class Player(User):
         """
         Public method to save player progress.
         """
+        file1 = open(os.path.join("models", "data", "UserGameStates.json"), "r")
+        new_db = json.load(file1)
+
         with open(os.path.join("models", "data", "UserGameStates.json"), "w") as file:
             playerData = {
                 "username": self.username,
@@ -135,6 +138,9 @@ class Player(User):
                 "attractionScore": self._attractionScore,
                 "finalScore": self.getFinalScore(),
             }
+            for aPlayer in Player.Players:
+                if playerData["username"] == aPlayer["username"]:
+                    Player.Players.remove(aPlayer)
             Player.Players.append(playerData)
             json.dump(Player.Players, file, ensure_ascii=False, indent=4)
 

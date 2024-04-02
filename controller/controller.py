@@ -32,8 +32,8 @@ from view.screens.chapters.Chapter4 import Chapter4
 from view.screens.chapters.Chapter5 import Chapter5
 from view.screens.chapters.Chapter6 import Chapter6
 from view.screens.Album import Album
-from view.screens.Language import Language
-from view.screens.VideoSettings import VideoSettings
+from view.screens.settings.Language import Language
+from view.screens.settings.VideoSettings import VideoSettings
 
 class RunGame:
     """
@@ -302,10 +302,10 @@ class RunGame:
                                                os.path.join('view', 'assets', 'chp6', 'argument-1.jpg'),
                                                os.path.join('view', 'assets', 'chp6', 'argument-2.jpg'),
                                                os.path.join('view', 'assets', 'chp6', 'argument-3.jpg'),
-                                               os.path.join('view', 'assets', 'chp6', 'argument-3.1.jpg'),
                                                os.path.join('view', 'assets', 'chp6', 'argument-3.2.jpg'),
-                                               os.path.join('view', 'assets', 'chp6', 'argument-4.1.jpg'),
+                                               os.path.join('view', 'assets', 'chp6', 'argument-3.1.jpg'),
                                                os.path.join('view', 'assets', 'chp6', 'argument-4.2.jpg'),
+                                               os.path.join('view', 'assets', 'chp6', 'argument-4.1.jpg'),
                        
                                            ],
                                            self.controls

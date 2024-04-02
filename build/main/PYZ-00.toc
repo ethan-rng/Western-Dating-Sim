@@ -225,6 +225,14 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\hashlib.py',
    'PYMODULE'),
+  ('html',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\html\\__init__.py',
+   'PYMODULE'),
+  ('html.entities',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\html\\entities.py',
+   'PYMODULE'),
   ('http',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\http\\__init__.py',
@@ -236,6 +244,10 @@
   ('http.cookiejar',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\http\\cookiejar.py',
+   'PYMODULE'),
+  ('http.server',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\http\\server.py',
    'PYMODULE'),
   ('importlib',
    'C:\\Program '
@@ -595,6 +607,18 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\py_compile.py',
    'PYMODULE'),
+  ('pydoc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\pydoc.py',
+   'PYMODULE'),
+  ('pydoc_data',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\pydoc_data\\__init__.py',
+   'PYMODULE'),
+  ('pydoc_data.topics',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\pydoc_data\\topics.py',
+   'PYMODULE'),
   ('pygame',
    'C:\\Users\\1xiea\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\__init__.py',
    'PYMODULE'),
@@ -650,6 +674,10 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\selectors.py',
    'PYMODULE'),
+  ('shlex',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\shlex.py',
+   'PYMODULE'),
   ('shutil',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\shutil.py',
@@ -661,6 +689,10 @@
   ('socket',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\socket.py',
+   'PYMODULE'),
+  ('socketserver',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\socketserver.py',
    'PYMODULE'),
   ('ssl',
    'C:\\Program '
@@ -713,6 +745,10 @@
   ('tracemalloc',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('tty',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\tty.py',
    'PYMODULE'),
   ('typing',
    'C:\\Program '
@@ -774,9 +810,6 @@
   ('view.screens.InstructorPanel',
    'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\InstructorPanel.py',
    'PYMODULE'),
-  ('view.screens.Language',
-   'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\Language.py',
-   'PYMODULE'),
   ('view.screens.Login',
    'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\Login.py',
    'PYMODULE'),
@@ -785,9 +818,6 @@
    'PYMODULE'),
   ('view.screens.NewGame',
    'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\NewGame.py',
-   'PYMODULE'),
-  ('view.screens.VideoSettings',
-   'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\VideoSettings.py',
    'PYMODULE'),
   ('view.screens.chapters', '-', 'PYMODULE'),
   ('view.screens.chapters.Chapter',
@@ -822,6 +852,9 @@
    'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\help\\Help2.py',
    'PYMODULE'),
   ('view.screens.settings', '-', 'PYMODULE'),
+  ('view.screens.settings.Language',
+   'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\settings\\Language.py',
+   'PYMODULE'),
   ('view.screens.settings.SettingsControls',
    'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\settings\\SettingsControls.py',
    'PYMODULE'),
@@ -830,6 +863,13 @@
    'PYMODULE'),
   ('view.screens.settings.SettingsSound',
    'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\settings\\SettingsSound.py',
+   'PYMODULE'),
+  ('view.screens.settings.VideoSettings',
+   'C:\\Users\\1xiea\\Documents\\group29\\view\\screens\\settings\\VideoSettings.py',
+   'PYMODULE'),
+  ('webbrowser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\webbrowser.py',
    'PYMODULE'),
   ('xml',
    'C:\\Program '

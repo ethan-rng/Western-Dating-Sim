@@ -100,6 +100,8 @@ class Login:
                     elif self.back_button.draw(screen):
                         click_sfx.play()
                         self.game_state = self.back_button.draw(screen)
+                        self.username_input_box.user_text = ''
+                        self.password_input_box.user_text = ''
                         return self.game_state, self.username, self.password
 
                     elif self.continue_button.draw(screen):

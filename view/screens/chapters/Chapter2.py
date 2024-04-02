@@ -121,7 +121,7 @@ class Chapter2(Chapter):
                     return "chp"
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    #click_sfx.play()
+                    click_sfx.play()
                     self.current_dialogue_index += 1
                     if self.current_dialogue_index >= len(
                             self.dialogueLines) - 1:  # Check if dialogue is over, next chapter

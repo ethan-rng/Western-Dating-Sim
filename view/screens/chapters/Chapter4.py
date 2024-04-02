@@ -175,6 +175,8 @@ class Chapter4(Chapter):
                             else:
                                 raise Exception("Choice Isn't Valid")
                         self.currPlayer.level = 5  # Proceed to next chapter
+                        self.currPlayer.saveProgress()
+
                         return "chp"
                 
                     if not self.show_choices:

@@ -58,8 +58,8 @@ class Chapter6(Chapter):
         }
 
         self.dialogue_responses = {
-            "Follow": ("S: I'll just stay home", 3,6),
-            "Don't Follow": ("S: Aweee. You're here?", 4,5),
+            "Follow": ("S: Aweee. You're here?", 3,6),
+            "Don't Follow": ("S: I'll just stay home", 4,5),
         }
         
         self.draw_chapter6()
@@ -117,7 +117,7 @@ class Chapter6(Chapter):
                     click_sfx.play()
                     self.current_dialogue_index += 1 
                     if not self.show_choices:
-                            #if there is a next background index
+                        #if there is a next background index
                         if self.next_background_index:                  
                             self.current_scene_index = self.next_background_index
                             self.next_background_index = None
@@ -125,6 +125,8 @@ class Chapter6(Chapter):
                             self.current_scene_index += 1  # Proceed to the next background index
                     
                     if self.current_dialogue_index >= 3:
+                        self.currPlayer.saveProgress()
+
                         return "main"
                         
                     self.draw_chapter6()  # Redraw dialogue.
