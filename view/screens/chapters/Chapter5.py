@@ -82,6 +82,7 @@ class Chapter5(Chapter):
     def event_handler(self):
         while True:
             for event in pygame.event.get():
+                click_sfx.play()
                 self.checkQuitGame(event)
                 if event.type == pygame.MOUSEBUTTONDOWN:            
 
