@@ -8,7 +8,21 @@ from view.components.TableInput import TableInput
 
 
 class HighScoreScreen:
+    """
+    Class representing the high score screen.
+
+    Attributes:
+    :counter: Integer representing a counter for the screen.
+    :game_state: String representing the current state of the game.
+    :high_score_table: HighScoreTable object representing the high score table.
+    :back_highscore_button: Button object for returning to the main menu.
+    :backdrop_rect: Pygame Rect object representing the backdrop rectangle.
+    :player_name_rect: Pygame Rect object representing the rectangle for player names.
+    :player_score_rect: Pygame Rect object representing the rectangle for player scores.
+    """
+
     def __init__(self) -> None:
+        """Initialize the high score screen."""
         self.counter = 0
         self.game_state = "highscores"
         self.high_score_table :HighScoreTable = HighScoreTable()
@@ -19,6 +33,12 @@ class HighScoreScreen:
         self.player_score_rect = pygame.Rect(screen_width - screen_width/2.19, screen_height//4.5, screen_width/2.5, screen_height/15)
               
     def draw_high_score_screen(self, screen: pygame.Surface) -> None:
+        """
+        Draw the high score screen on the given surface.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         screen.fill(DARK_GRAY)
         self.draw_text("High Scores", title_font, BLACK, screen_width/20, screen_height/16, screen)
         self.draw_text("View all high scores from all players", font, BLACK, screen_width/20, screen_height/16 + screen_height/12, screen)
@@ -43,6 +63,12 @@ class HighScoreScreen:
         pygame.display.flip()
 
     def event_handler(self, screen: pygame.Surface) -> None:
+        """
+        Handle events on the high score screen.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         newgame_active = True
 
         while newgame_active:
@@ -63,7 +89,17 @@ class HighScoreScreen:
                     
             self.draw_high_score_screen(screen)
     
-    """ Helper function to draw text on the screen """
-    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface):
+    def draw_text(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.Surface) -> None:
+        """
+        Helper function to draw text on the screen.
+
+        Parameters:
+        :text: String representing the text to be drawn.
+        :font: Pygame font object representing the font style.
+        :text_col: Tuple representing the color of the text.
+        :x: Float representing the x-coordinate of the text.
+        :y: Float representing the y-coordinate of the text.
+        :screen: Pygame surface object representing the game screen.
+        """
         img = font.render(text, True, text_col)
         screen.blit(img, (x,y))

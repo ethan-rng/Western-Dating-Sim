@@ -6,7 +6,19 @@ from view.components.Button import Button
 
 
 class Album:
+    """
+    Class representing the album view in the game.
+
+    Attributes:
+    :menu_state: String representing the state of the album menu.
+    :album: Pygame surface object representing the album image.
+    :back_album_button: Button object representing the button to go back to the main menu.
+    """
+
     def __init__(self) -> None:
+        """
+        Initialize the Album object.
+        """
         self.menu_state = "album"
 
         # load album images
@@ -18,12 +30,24 @@ class Album:
         self.back_album_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/5)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "main", pygame)
 
     def draw_album(self, screen: pygame.Surface) -> None:
+        """
+        Draw the album view on the screen.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         screen.fill(LIGHT_GRAY)
         screen.blit(self.album, (0, screen_height // 2 - self.album.get_height() // 2))
         self.back_album_button.draw(screen)
         pygame.display.flip()
 
     def event_handler(self, screen: pygame.Surface) -> str:
+        """
+        Handle events in the album view.
+
+        Parameters:
+        :screen: Pygame surface object representing the game screen.
+        """
         while True:
             # Checks for the actions of the player
             for event in pygame.event.get():
@@ -38,3 +62,4 @@ class Album:
                     return self.menu_state
 
             self.draw_album(screen)
+
