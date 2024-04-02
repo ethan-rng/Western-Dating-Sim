@@ -125,6 +125,9 @@ class Player(User):
         """
         Public method to save player progress.
         """
+        file1 = open(os.path.join("models", "data", "UserGameStates.json"), "r")
+        new_db = json.load(file1)
+
         with open(os.path.join("models", "data", "UserGameStates.json"), "w") as file:
             playerData = {
                 "username": self.username,
@@ -135,6 +138,9 @@ class Player(User):
                 "attractionScore": self._attractionScore,
                 "finalScore": self.getFinalScore(),
             }
+            for aPlayer in Player.Players:
+                if playerData["username"] == aPlayer["username"]:
+                    Player.Players.remove(aPlayer)
             Player.Players.append(playerData)
             json.dump(Player.Players, file, ensure_ascii=False, indent=4)
 
@@ -180,6 +186,22 @@ class Player(User):
             finalScore += score
 
         return finalScore
+
+    def jumpToScreen(self, newLevel: int) -> int:
+        """
+        Public method to skip levels.
+
+        Parameters:
+        - newLevel: the level to jump to
+
+        Raises:
+        - IndexError: if the specified level is out of bounds
+        """
+        self._checkDev()
+        if newLevel >= 1 and newLevel <= 6:
+            return newLevel
+
+        raise IndexError
 
     # SETTERS AND GETTERS
     @property

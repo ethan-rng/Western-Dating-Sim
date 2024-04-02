@@ -108,12 +108,16 @@ class Chapter6(Chapter):
         """
         while True:
             for event in pygame.event.get():
+                # Checks if Users Quit or if The Developer Mode Used "God Powers" (ie: jumped between screens)
                 self.checkQuitGame(event)
+                if self.checkGodMode(event):
+                    self.currPlayer.level = self.checkGodMode(event)
+                    return "chp"
                 if event.type == pygame.MOUSEBUTTONDOWN:            
                     click_sfx.play()
                     self.current_dialogue_index += 1 
                     if not self.show_choices:
-                            #if there is a next background index
+                        #if there is a next background index
                         if self.next_background_index:                  
                             self.current_scene_index = self.next_background_index
                             self.next_background_index = None
@@ -121,6 +125,8 @@ class Chapter6(Chapter):
                             self.current_scene_index += 1  # Proceed to the next background index
                     
                     if self.current_dialogue_index >= 3:
+                        self.currPlayer.saveProgress()
+
                         return "main"
                         
                     self.draw_chapter6()  # Redraw dialogue.

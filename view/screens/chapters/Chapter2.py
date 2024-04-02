@@ -116,7 +116,9 @@ class Chapter2(Chapter):
             for event in pygame.event.get():
                 # Checks if Users Quit or if The Developer Mode Used "God Powers" (ie: jumped between screens)
                 self.checkQuitGame(event)
-                self.checkGodMode(event)
+                if self.checkGodMode(event):
+                    self.currPlayer.level = self.checkGodMode(event)
+                    return "chp"
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     click_sfx.play()

@@ -33,40 +33,18 @@
         "finalScore": 12.5
     },
     {
-        "username": "Turnip",
-        "level": 6,
-        "charisma": 4,
-        "intel": 1,
-        "attraction": 5,
-        "attractionScore": {
-            "Serena": 75.0
-        },
-        "finalScore": 75.0
-    },
-    {
-        "username": "tazrin",
-        "level": 3,
+        "username": "wadw",
+        "level": 2,
         "charisma": 1,
         "intel": 1,
-        "attraction": 8,
+        "attraction": 1,
         "attractionScore": {
-            "Serena": 5.499999999999998
+            "Serena": 0
         },
-        "finalScore": 0.0
+        "finalScore": 0
     },
     {
-        "username": "ethanrong",
-        "level": 3,
-        "charisma": 5,
-        "intel": 3,
-        "attraction": 2,
-        "attractionScore": {
-            "Serena": 7.0
-        },
-        "finalScore": 7.0
-    },
-    {
-        "username": "123",
+        "username": "wasd",
         "level": 3,
         "charisma": 1,
         "intel": 1,
@@ -77,29 +55,7 @@
         "finalScore": 11.0
     },
     {
-        "username": "21",
-        "level": 1,
-        "charisma": 0,
-        "intel": 2,
-        "attraction": 2,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "56456",
-        "level": 3,
-        "charisma": 5,
-        "intel": 3,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 14.0
-        },
-        "finalScore": 14.0
-    },
-    {
-        "username": "12312300",
+        "username": "test",
         "level": 3,
         "charisma": 1,
         "intel": 1,
@@ -108,60 +64,5 @@
             "Serena": 11.0
         },
         "finalScore": 11.0
-    },
-    {
-        "username": "HaoHanTA",
-        "level": 3,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 66.0
-        },
-        "finalScore": 11.0
-    },
-    {
-        "username": "HaoHanTAhh",
-        "level": 1,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "jasper",
-        "level": 1,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "jasper",
-        "level": 1,
-        "charisma": 1,
-        "intel": 1,
-        "attraction": 1,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
-    },
-    {
-        "username": "",
-        "level": 1,
-        "charisma": 0,
-        "intel": 0,
-        "attraction": 0,
-        "attractionScore": {
-            "Serena": 0
-        },
-        "finalScore": 0
     }
 ]

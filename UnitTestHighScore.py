@@ -26,13 +26,13 @@ class TestHighScore(unittest.TestCase):
         hscores = HighScoreTable()
         # Create a player to put on the highscores table
         aaron = Player()
-        aaron.create_player("Aaron", "abcd", 0, 0, 0)
+        aaron.createPlayer("Aaron", "abcd", 0, 0, 0)
         # Give the player some score
-        aaron.update_stats("Serena", 10)
+        aaron.updateStats("Serena", 10)
         # Save the score
-        aaron.save_progress()
+        aaron.saveProgress()
         # Gets the scores
-        self.assertEqual(hscores.get_scores()["Aaron"], 10)
+        self.assertEqual(hscores.getScores()["Aaron"], 10)
         # Deletes Aaron from passwords
         for user in User.Users:
             if user["username"] == "Aaron":
@@ -55,7 +55,8 @@ class TestHighScore(unittest.TestCase):
         # Create the highscores table
         hscores = HighScoreTable()
         # Gets the ranks
-        self.assertEqual(hscores.get_rank_score(1), ('ggg', 0))
+        self.assertEqual(hscores.getRankScore(1), ('joe', 15))
 
 if __name__ == '__main__':
     unittest.main()
+

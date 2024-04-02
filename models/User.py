@@ -148,6 +148,7 @@ class User:
         - IncorrectPassword: if the provided password is incorrect
         """
         if username == "developer":
+            print(User.Users[0]["password"] == sha256(password.encode()).hexdigest())
             if User.Users[0]["password"] == sha256(password.encode()).hexdigest():
                 User.LoggedInUser = "developer"
                 

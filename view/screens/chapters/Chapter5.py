@@ -87,12 +87,15 @@ class Chapter5(Chapter):
                         else:
                             raise Exception("Choice Isn't Valid")
                         
-                    if self.currPlayer.attraction >= 0:
+                    if self.currPlayer.attraction >= 70:
                         response_text = "Yes, I’d love that!"
+                        self.currPlayer.saveProgress()
+
                         background_index= 2
                         self.selected_choice_index = 2
                     else:
                         response_text = "Oh, sorry. I never thought of you that way. I prefer to be friends..."
+                        self.currPlayer.saveProgress()
                         background_index = 3
                         self.selected_choice_index = 1
        
@@ -112,8 +115,11 @@ class Chapter5(Chapter):
         """
         while True:
             for event in pygame.event.get():
-                click_sfx.play()
+                # Checks if Users Quit or if The Developer Mode Used "God Powers" (ie: jumped between screens)
                 self.checkQuitGame(event)
+                if self.checkGodMode(event):
+                    self.currPlayer.level = self.checkGodMode(event)
+                    return "chp"
                 if event.type == pygame.MOUSEBUTTONDOWN:        
                     click_sfx.play()       
 
@@ -122,6 +128,7 @@ class Chapter5(Chapter):
                         return "main"
                     elif self.selected_choice_index == 2:
                         self.currPlayer.level = 6  # Proceed to next chapter
+                        self.currPlayer.saveProgress
                         return "chp"
                             
                     self.current_dialogue_index += 1 

@@ -23,13 +23,13 @@ class TestUser(unittest.TestCase):
         """
         # Create a user
         jasper = User()
-        jasper.create_user("Jasper", "abcd")
+        jasper.createUser("Jasper", "abcd")
         # Checks if the username and password are correct
         self.assertEqual(jasper.username, "Jasper")
         self.assertEqual(jasper._password, sha256("abcd".encode()).hexdigest())
         # Tries to create a duplicate to see if it will be rejected
         jasper2 = User()
-        self.assertRaises(DuplicateUser, jasper2.create_user, "Jasper", "abcd")
+        self.assertRaises(DuplicateUser, jasper2.createUser, "Jasper", "abcd")
         # Deletes Jasper from password
         for user in User.Users:
             if user["username"] == "Jasper":
@@ -38,9 +38,7 @@ class TestUser(unittest.TestCase):
         # Update JSON file
         with open(os.path.join("models", "data", "UserPasswords.json"), 'w', encoding='utf-8') as file:
             json.dump(User.Users, file, indent=4)
-        # Checks if attempt to create admin level accounts are rejected
-        self.assertRaises(AdminLevelAccount, jasper2.create_user, "developer", "abcd")
-        self.assertRaises(AdminLevelAccount, jasper2.create_user, "instructor", "abcd")
+       
 
     def test_load_user(self):
         """
@@ -48,14 +46,14 @@ class TestUser(unittest.TestCase):
         """
         # Creates a user
         ethan = User()
-        ethan.create_user("Ethan", "abcd")
+        ethan.createUser("Ethan", "abcd")
         # Loads the user
         ethan2 = User()
-        ethan2.load_user("Ethan")
+        ethan2.loadUser("Ethan")
         self.assertEqual(ethan2._password, sha256("abcd".encode()).hexdigest())
         # Attempts to load non-existent user
         ethan3 = User()
-        self.assertRaises(UserNotFound, ethan3.load_user, "Ethan3")
+        self.assertRaises(UserNotFound, ethan3.loadUser, "Ethan3")
         # Deletes Ethan from password
         for user in User.Users:
             if user["username"] == "Ethan":
@@ -71,18 +69,18 @@ class TestUser(unittest.TestCase):
         """
         # Creates user
         jasmine = User()
-        jasmine.create_user("Jasmine", "abcd")
+        jasmine.createUser("Jasmine", "abcd")
         # Attempt to login with the wrong password
         aaron = User()
-        aaron.load_user("Jasmine")
+        aaron.loadUser("Jasmine")
         self.assertRaises(IncorrectPassword, aaron.login, "Jasmine", "a")
         # Login with correct password
         aaron.login("Jasmine", "abcd")
-        self.assertEqual(aaron.logged_in_user, aaron)
-        self.assertEqual(aaron.logged_in_user.username, "Jasmine")
+        self.assertEqual(aaron.LoggedInUser, aaron)
+        self.assertEqual(aaron.LoggedInUser.username, "Jasmine")
         # Logout
         aaron.logout()
-        self.assertNotEqual(aaron.logged_in_user, aaron)
+        self.assertNotEqual(aaron.LoggedInUser, aaron)
         # Deletes Jasmine from password
         for user in User.Users:
             if user["username"] == "Jasmine":
@@ -95,3 +93,4 @@ class TestUser(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

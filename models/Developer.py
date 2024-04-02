@@ -37,7 +37,6 @@ class Developer(Player):
         super().__init__()
         super().loadUser("developer")
         super().login("developer", password)
-        self._loadPlayers()
 
     def _loadPlayers(self) -> None:
         """
@@ -49,8 +48,8 @@ class Developer(Player):
 
             for i, data in enumerate(jsonData):
                 Developer.Players.append(Player().loadPlayer(data["username"]))
-
-    def jumptoScreen(self, newLevel: int) -> None:
+                
+	 def jumptoScreen(self, newLevel: int) -> None:
         """
         Public method to skip levels.
 
