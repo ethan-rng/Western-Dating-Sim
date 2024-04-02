@@ -1,4 +1,9 @@
-# Exceptions
+"""
+Module: exceptions
+Author: Ethan Rong
+This module defines custom exception classes used in the application.
+
+"""
 
 # User Issues Exceptions
 class UserNotFound(Exception):
