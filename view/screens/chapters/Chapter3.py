@@ -131,7 +131,7 @@ class Chapter3(Chapter):
                             self.currPlayer.level = 4  # Proceed to next chapter
                             return "chp"
                         elif self.currPlayer.attractionScore["Serena"] < 20:
-                            EndingScene(self.screen, "ending-ejected.png", self.currPlayer)
+                            EndingScene(self.screen, "ending-rejected.png", self.currPlayer)
                             return "main"
 
                     if not self.show_choices:
