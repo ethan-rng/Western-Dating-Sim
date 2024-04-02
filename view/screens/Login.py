@@ -21,6 +21,9 @@ class Login:
         self.password_input_box = TextInputBox(screen_width // 11.5, screen_height // 5 + screen_height // 8,
                                                screen_width, screen_height / 20, "Password:", DARK_GRAY, pygame)
         self.error_message = ""
+        
+        self.back_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/6)*3.7, (screen_width/4), (screen_height/13), "Back", WHITE, "main", pygame)
+
 
     def draw_login(self, screen: pygame.Surface) -> None:
         screen.fill(DARK_GRAY)
@@ -28,6 +31,7 @@ class Login:
         self.continue_button.draw(screen)
         self.username_input_box.draw(screen)
         self.password_input_box.draw(screen)
+        self.back_button.draw(screen)
 
         if self.error_message:
             font = pygame.font.SysFont(None, 80)
@@ -61,6 +65,11 @@ class Login:
                         click_sfx.play()
                         self.password_input_box.event_handler(screen)
                         self.password = self.password_input_box.user_text
+                    
+                    elif self.back_button.draw(screen):
+                        click_sfx.play()
+                        self.game_state = self.back_button.draw(screen)
+                        return self.game_state, self.username, self.password
 
                     elif self.continue_button.draw(screen):
                         click_sfx.play()

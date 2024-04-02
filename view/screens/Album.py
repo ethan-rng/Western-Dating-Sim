@@ -15,12 +15,12 @@ class Album:
         self.album = pygame.transform.scale(album, (screen_width, album.get_height() / (album.get_width() / screen_width)))
 
         # load album menu buttons
-        self.back_button = Button(screen_width/10, 7*(screen_height/8), (screen_width/4), (screen_height/13), "Back", GRAY, "main", pygame)
+        self.back_album_button = Button(screen_width/2.48, (screen_height/3) + (screen_height/5)*3, (screen_width/4), (screen_height/13), "Back", WHITE, "main", pygame)
 
     def draw_album(self, screen: pygame.Surface) -> None:
         screen.fill(LIGHT_GRAY)
         screen.blit(self.album, (0, screen_height // 2 - self.album.get_height() // 2))
-        self.back_button.draw(screen)
+        self.back_album_button.draw(screen)
         pygame.display.flip()
 
     def event_handler(self, screen: pygame.Surface) -> str:
@@ -33,8 +33,8 @@ class Album:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     click_sfx.play()
-                    if self.back_button.draw(screen):
-                        self.menu_state = self.back_button.draw(screen)
+                    if self.back_album_button.draw(screen):
+                        self.menu_state = self.back_album_button.draw(screen)
                     return self.menu_state
 
             self.draw_album(screen)
