@@ -26,7 +26,6 @@ class Instructor(User):
     # PUBLIC METHODS
     """ Public Method which allows the instructor to view the stats of a specific user (throws UserNotFound, IncorrectPrivilege exception) """
     def viewStats(self, username: str) -> dict:
-        self._checkInstructor()
         Instructor._loadPlayers()
 
         for player in Instructor.Players:
@@ -41,7 +40,6 @@ class Instructor(User):
 
     """ Public Method which allows the instructor to view the progress of a specific user (throws IncorrectPrivilege exception) """
     def viewProgress(self, username: str) -> dict:
-        self._checkInstructor()
         Instructor._loadPlayers()
 
         for player in Instructor.Players:
