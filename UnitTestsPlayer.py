@@ -4,7 +4,6 @@ Author: Jasper Yang
 This module provides unit tests for the Player class.
 
 """
-
 from models.Player import Player
 from models.User import User
 from models.exceptions import IllegalStats, UserNotFound
@@ -23,9 +22,9 @@ class TestPlayer(unittest.TestCase):
         """
         # Create a player with too high stats
         lecia = Player()
-        self.assertRaises(IllegalStats, lecia.create_player, "Lecia", "abcd", 20, 20, 20)
+        self.assertRaises(IllegalStats, lecia.createPlayer, "Lecia", "abcd", 20, 20, 20)
         # Create player
-        lecia.create_player("Lecia", "abcd", 2, 2, 2)
+        lecia.createPlayer("Lecia", "abcd", 2, 2, 2)
         self.assertEqual(lecia.charisma, 2)
         self.assertEqual(lecia.attraction, 2)
         self.assertEqual(lecia.intelligence, 2)
@@ -44,12 +43,12 @@ class TestPlayer(unittest.TestCase):
         """
         # Create a player
         aaron = Player()
-        aaron.create_player("Aaron", "abcd", 2, 2, 2)
+        aaron.createPlayer("Aaron", "abcd", 2, 2, 2)
         # Saves Aaron's progress
-        aaron.save_progress()
+        aaron.saveProgress()
         # Load progress
         aaron2 = Player()
-        aaron2.load_player("Aaron")
+        aaron2.loadPlayer("Aaron")
         self.assertEqual(aaron2.level, 1)
         self.assertEqual(aaron2.charisma, 2)
         self.assertEqual(aaron2.intelligence, 2)
@@ -75,9 +74,9 @@ class TestPlayer(unittest.TestCase):
         """
         # Create Player
         ethan = Player()
-        ethan.create_player("Ethan", "abcd", 2, 2, 2)
+        ethan.createPlayer("Ethan", "abcd", 2, 2, 2)
         # Update stats
-        self.assertEqual(ethan.update_stats("Serena", 10), 12)
+        self.assertEqual(ethan.updateStats("Serena", 10), 12)
         # Deletes Ethan from passwords
         for user in User.Users:
             if user["username"] == "Ethan":
@@ -93,9 +92,9 @@ class TestPlayer(unittest.TestCase):
         """
         # Create Player
         jasper = Player()
-        jasper.create_player("Jasper", "abcd", 2, 2, 2)
-        jasper.update_stats("Serena", 10)
-        self.assertEqual(jasper.get_final_score(), 12)
+        jasper.createPlayer("Jasper", "abcd", 2, 2, 2)
+        jasper.updateStats("Serena", 10)
+        self.assertEqual(jasper.getFinalScore(), 12)
         # Deletes Jasper from passwords
         for user in User.Users:
             if user["username"] == "Jasper":
@@ -107,3 +106,4 @@ class TestPlayer(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

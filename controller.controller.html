@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module controller.controller</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="controller.html" class="white">controller</a>.controller</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Clecia%5Cgroup29%5Ccontroller%5Ccontroller.py">c:\users\lecia\group29\controller\controller.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="os.html">os</a><br>
+<a href="pydoc.html">pydoc</a><br>
+</td><td class="multicolumn"><a href="pygame.html">pygame</a><br>
+<a href="sys.html">sys</a><br>
+</td><td class="multicolumn"><a href="threading.html">threading</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="controller.controller.html#RunGame">RunGame</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="RunGame">class <strong>RunGame</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#RunGame">RunGame</a>()&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+Initializes&nbsp;and&nbsp;runs&nbsp;the&nbsp;main&nbsp;game&nbsp;loop.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;sets&nbsp;up&nbsp;the&nbsp;pygame&nbsp;environment,&nbsp;manages&nbsp;game&nbsp;state&nbsp;transitions&nbsp;based&nbsp;on<br>
+player&nbsp;interactions,&nbsp;orchestrates&nbsp;the&nbsp;game&nbsp;flow,&nbsp;and&nbsp;handles&nbsp;background&nbsp;music.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;music_thread&nbsp;(Optional[threading.Thread]):&nbsp;A&nbsp;thread&nbsp;for&nbsp;running&nbsp;game&nbsp;music.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;currPlayer&nbsp;(Player):&nbsp;The&nbsp;player&nbsp;currently&nbsp;playing&nbsp;the&nbsp;game.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;screen&nbsp;(pygame.Surface):&nbsp;The&nbsp;main&nbsp;screen&nbsp;surface&nbsp;for&nbsp;the&nbsp;game&nbsp;display.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;menu&nbsp;(Menu):&nbsp;The&nbsp;main&nbsp;game&nbsp;menu.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;game_state&nbsp;(str):&nbsp;The&nbsp;current&nbsp;state&nbsp;of&nbsp;the&nbsp;game.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;controls&nbsp;(dict):&nbsp;A&nbsp;dictionary&nbsp;containing&nbsp;the&nbsp;current&nbsp;control&nbsp;settings.<br>
+&nbsp;<br>
+Methods:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;__init__:&nbsp;Sets&nbsp;up&nbsp;the&nbsp;game&nbsp;environment&nbsp;and&nbsp;initializes&nbsp;variables.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event_handler:&nbsp;Handles&nbsp;the&nbsp;game&nbsp;state&nbsp;changes&nbsp;and&nbsp;user&nbsp;interactions.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;_play_music:&nbsp;A&nbsp;private&nbsp;method&nbsp;to&nbsp;handle&nbsp;music&nbsp;playback&nbsp;in&nbsp;a&nbsp;separate&nbsp;thread.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start_music:&nbsp;Starts&nbsp;playing&nbsp;background&nbsp;music.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stop_music:&nbsp;Stops&nbsp;the&nbsp;music&nbsp;and&nbsp;terminates&nbsp;the&nbsp;music&nbsp;thread.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="RunGame-__init__"><strong>__init__</strong></a>(self) -&gt; None</dt><dd><span class="code">Initialize&nbsp;the&nbsp;game,&nbsp;setting&nbsp;up&nbsp;pygame,&nbsp;loading&nbsp;assets,&nbsp;and&nbsp;preparing&nbsp;the&nbsp;initial&nbsp;state.</span></dd></dl>
+
+<dl><dt><a name="RunGame-start_music"><strong>start_music</strong></a>(self, file_path: str) -&gt; None</dt><dd><span class="code">Start&nbsp;playing&nbsp;the&nbsp;music&nbsp;from&nbsp;the&nbsp;specified&nbsp;file.</span></dd></dl>
+
+<dl><dt><a name="RunGame-stop_music"><strong>stop_music</strong></a>(self) -&gt; None</dt><dd><span class="code">Stop&nbsp;playing&nbsp;any&nbsp;music&nbsp;that&nbsp;is&nbsp;currently&nbsp;playing.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>BLACK</strong> = (0, 0, 0)<br>
+<strong>DARK_GRAY</strong> = (132, 135, 140)<br>
+<strong>GRAY</strong> = (192, 192, 192)<br>
+<strong>GREEN</strong> = (0, 255, 0)<br>
+<strong>LIGHT_GRAY</strong> = (234, 234, 234)<br>
+<strong>Optional</strong> = typing.Optional<br>
+<strong>PURPLE</strong> = (160, 32, 240)<br>
+<strong>RED</strong> = (255, 0, 0)<br>
+<strong>SCENE_TITLES</strong> = {1: 'SCENE 1: Talbot College', 2: 'SCENE 2: The UCC', 3: 'SCENE 3: Her Place', 4: 'SCENE 4: Date', 5: 'SCENE 5: UC Hill', 6: 'SCENE 6: Argument'}<br>
+<strong>WHITE</strong> = (255, 255, 255)<br>
+<strong>baby_font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>click_sfx</strong> = &lt;pygame.mixer.Sound object&gt;<br>
+<strong>font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>infoObject</strong> = &lt;VideoInfo(hw = 0, wm = 1,video_mem = 0
+        ...         pixel_format = SDL_PIXELFORMAT_RGB888)
+&gt;<br>
+<strong>screen_height</strong> = 864<br>
+<strong>screen_width</strong> = 1536<br>
+<strong>title_font</strong> = &lt;pygame.font.Font object&gt;</td></tr></table>
+</body></html>

@@ -26,11 +26,11 @@ class TestDev(unittest.TestCase):
         # Sign in to developer dashboard
         dev = Developer("abcd")
         # Test jump screen function to an actual screen
-        dev.jumpto_screen(4)
+        dev.jumpToScreen(4)
         self.assertEqual(dev.level, 4)
         # Test out of bounds
-        self.assertRaises(IndexError, dev.jumpto_screen, 8)
-        self.assertRaises(IndexError, dev.jumpto_screen, 0)
+        self.assertRaises(IndexError, dev.jumpToScreen, 8)
+        self.assertRaises(IndexError, dev.jumpToScreen, 0)
 
 if __name__ == '__main__':
     unittest.main()

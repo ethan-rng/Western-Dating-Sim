@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module view.components.Slider</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="view.html" class="white">view</a>.<a href="view.components.html" class="white">components</a>.Slider</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Clecia%5Cgroup29%5Cview%5Ccomponents%5Cslider.py">c:\users\lecia\group29\view\components\slider.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="pygame.html">pygame</a><br>
+</td><td class="multicolumn"><a href="sys.html">sys</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="view.components.Slider.html#Slider">Slider</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Slider">class <strong>Slider</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Slider">Slider</a>(pos:&nbsp;tuple,&nbsp;size:&nbsp;tuple,&nbsp;label:&nbsp;str,&nbsp;initial_val:&nbsp;float,&nbsp;min:&nbsp;int,&nbsp;max:&nbsp;int)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+Represents&nbsp;a&nbsp;slider&nbsp;component&nbsp;for&nbsp;adjusting&nbsp;values&nbsp;within&nbsp;a&nbsp;range&nbsp;in&nbsp;a&nbsp;pygame&nbsp;application.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:pos&nbsp;(tuple):&nbsp;The&nbsp;position&nbsp;(x,&nbsp;y)&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:size&nbsp;(tuple):&nbsp;The&nbsp;size&nbsp;(width,&nbsp;height)&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:label&nbsp;(str):&nbsp;The&nbsp;label&nbsp;associated&nbsp;with&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:initial_val&nbsp;(float):&nbsp;The&nbsp;initial&nbsp;value&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:min&nbsp;(int):&nbsp;The&nbsp;minimum&nbsp;value&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:max&nbsp;(int):&nbsp;The&nbsp;maximum&nbsp;value&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:container_rect&nbsp;(pygame.Rect):&nbsp;The&nbsp;rectangular&nbsp;area&nbsp;representing&nbsp;the&nbsp;slider&nbsp;container.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:button_rect&nbsp;(pygame.Rect):&nbsp;The&nbsp;rectangular&nbsp;area&nbsp;representing&nbsp;the&nbsp;slider&nbsp;button.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:text&nbsp;(str):&nbsp;The&nbsp;text&nbsp;value&nbsp;displayed&nbsp;on&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:render:&nbsp;The&nbsp;rendered&nbsp;text&nbsp;surface.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:text_width&nbsp;(int):&nbsp;The&nbsp;width&nbsp;of&nbsp;the&nbsp;rendered&nbsp;text.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:text_height&nbsp;(int):&nbsp;The&nbsp;height&nbsp;of&nbsp;the&nbsp;rendered&nbsp;text.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Slider-__init__"><strong>__init__</strong></a>(self, pos: tuple, size: tuple, label: str, initial_val: float, min: int, max: int) -&gt; None</dt><dd><span class="code">Initializes&nbsp;a&nbsp;<a href="#Slider">Slider</a>&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:pos&nbsp;(tuple):&nbsp;The&nbsp;position&nbsp;(x,&nbsp;y)&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:size&nbsp;(tuple):&nbsp;The&nbsp;size&nbsp;(width,&nbsp;height)&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:label&nbsp;(str):&nbsp;The&nbsp;label&nbsp;associated&nbsp;with&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:initial_val&nbsp;(float):&nbsp;The&nbsp;initial&nbsp;value&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:min&nbsp;(int):&nbsp;The&nbsp;minimum&nbsp;value&nbsp;of&nbsp;the&nbsp;slider.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:max&nbsp;(int):&nbsp;The&nbsp;maximum&nbsp;value&nbsp;of&nbsp;the&nbsp;slider.</span></dd></dl>
+
+<dl><dt><a name="Slider-draw"><strong>draw</strong></a>(self, screen: pygame.surface.Surface) -&gt; None</dt><dd><span class="code">Draws&nbsp;the&nbsp;slider&nbsp;component&nbsp;on&nbsp;the&nbsp;screen.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:screen&nbsp;(pygame.Surface):&nbsp;The&nbsp;pygame&nbsp;surface&nbsp;on&nbsp;which&nbsp;the&nbsp;slider&nbsp;will&nbsp;be&nbsp;drawn.</span></dd></dl>
+
+<dl><dt><a name="Slider-getValue"><strong>getValue</strong></a>(self)</dt><dd><span class="code">Gets&nbsp;the&nbsp;current&nbsp;value&nbsp;of&nbsp;the&nbsp;slider.</span></dd></dl>
+
+<dl><dt><a name="Slider-moveSlider"><strong>moveSlider</strong></a>(self, mouse_pos)</dt><dd><span class="code">Moves&nbsp;the&nbsp;slider&nbsp;button&nbsp;based&nbsp;on&nbsp;the&nbsp;mouse&nbsp;position.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:mouse_pos&nbsp;(tuple):&nbsp;The&nbsp;position&nbsp;of&nbsp;the&nbsp;mouse&nbsp;(x,&nbsp;y).</span></dd></dl>
+
+<dl><dt><a name="Slider-updateText"><strong>updateText</strong></a>(self)</dt><dd><span class="code">Updates&nbsp;the&nbsp;text&nbsp;value&nbsp;displayed&nbsp;on&nbsp;the&nbsp;slider.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>BLACK</strong> = (0, 0, 0)<br>
+<strong>DARK_GRAY</strong> = (132, 135, 140)<br>
+<strong>GRAY</strong> = (192, 192, 192)<br>
+<strong>GREEN</strong> = (0, 255, 0)<br>
+<strong>LIGHT_GRAY</strong> = (234, 234, 234)<br>
+<strong>PURPLE</strong> = (160, 32, 240)<br>
+<strong>RED</strong> = (255, 0, 0)<br>
+<strong>SCENE_TITLES</strong> = {1: 'SCENE 1: Talbot College', 2: 'SCENE 2: The UCC', 3: 'SCENE 3: Her Place', 4: 'SCENE 4: Date', 5: 'SCENE 5: UC Hill', 6: 'SCENE 6: Argument'}<br>
+<strong>WHITE</strong> = (255, 255, 255)<br>
+<strong>baby_font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>click_sfx</strong> = &lt;pygame.mixer.Sound object&gt;<br>
+<strong>font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>infoObject</strong> = &lt;VideoInfo(hw = 0, wm = 1,video_mem = 0
+        ...         pixel_format = SDL_PIXELFORMAT_RGB888)
+&gt;<br>
+<strong>screen_height</strong> = 864<br>
+<strong>screen_width</strong> = 1536<br>
+<strong>title_font</strong> = &lt;pygame.font.Font object&gt;</td></tr></table>
+</body></html>

@@ -25,17 +25,17 @@ class TestInstructor(unittest.TestCase):
         """
         # The player that the instructor will be viewing
         jasmine = Player()
-        jasmine.create_player("Jasmine", "abcd", 2, 2, 2)
-        jasmine.save_progress()
+        jasmine.createPlayer("Jasmine", "abcd", 2, 2, 2)
+        jasmine.saveProgress()
         # Login to the instructor account
         teacher = Instructor("abcd")
         # View stats
-        self.assertEqual(teacher.view_stats("Jasmine")["charisma"], 2)
-        self.assertEqual(teacher.view_stats("Jasmine")["intelligence"], 2)
-        self.assertEqual(teacher.view_stats("Jasmine")["attraction"], 2)
+        self.assertEqual(teacher.viewStats("Jasmine")["charisma"], 2)
+        self.assertEqual(teacher.viewStats("Jasmine")["intelligence"], 2)
+        self.assertEqual(teacher.viewStats("Jasmine")["attraction"], 2)
         # View progress
-        self.assertEqual(teacher.view_progress("Jasmine")["level"], 1)
-        self.assertEqual(teacher.view_progress("Jasmine")["attractionScore"], jasmine.attraction_score)
+        self.assertEqual(teacher.viewProgress("Jasmine")["level"], 1)
+        self.assertEqual(teacher.viewProgress("Jasmine")["attractionScore"], jasmine.attractionScore)
         # Deletes Jasmine from passwords
         for user in User.Users:
             if user["username"] == "Jasmine":
@@ -53,3 +53,4 @@ class TestInstructor(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
