@@ -74,7 +74,9 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\contextvars.py',
    'PYMODULE'),
-  ('controller', '-', 'PYMODULE'),
+  ('controller',
+   'C:\\Users\\1xiea\\Documents\\group29\\controller\\__init__.py',
+   'PYMODULE'),
   ('controller.constants',
    'C:\\Users\\1xiea\\Documents\\group29\\controller\\constants.py',
    'PYMODULE'),
@@ -373,7 +375,9 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\mimetypes.py',
    'PYMODULE'),
-  ('models', '-', 'PYMODULE'),
+  ('models',
+   'C:\\Users\\1xiea\\Documents\\group29\\models\\__init__.py',
+   'PYMODULE'),
   ('models.Developer',
    'C:\\Users\\1xiea\\Documents\\group29\\models\\Developer.py',
    'PYMODULE'),
@@ -774,7 +778,9 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\response.py',
    'PYMODULE'),
-  ('view', '-', 'PYMODULE'),
+  ('view',
+   'C:\\Users\\1xiea\\Documents\\group29\\view\\__init__.py',
+   'PYMODULE'),
   ('view.components', '-', 'PYMODULE'),
   ('view.components.Button',
    'C:\\Users\\1xiea\\Documents\\group29\\view\\components\\Button.py',

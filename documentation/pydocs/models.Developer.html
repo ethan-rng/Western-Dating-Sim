@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module models.Developer</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="models.html" class="white">models</a>.Developer</strong></td>
+<td class="extra"><a href="../base.html">index</a><br><a href="file:c%3A%5Cusers%5Clecia%5Cgroup29%5Cmodels%5Cdeveloper.py">c:\users\lecia\group29\models\developer.py</a></td></tr></table>
+    <p><span class="code">Module:&nbsp;developer_model<br>
+Authors:&nbsp;Ethan&nbsp;Rong,&nbsp;Jasper&nbsp;Yang,&nbsp;Aaron&nbsp;Xie<br>
+This&nbsp;module&nbsp;provides&nbsp;the&nbsp;<a href="#Developer">Developer</a>&nbsp;class&nbsp;for&nbsp;managing&nbsp;developer&nbsp;functionalities.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="models.Player.html#Player">models.Player.Player</a>(<a href="models.User.html#User">models.User.User</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="models.Developer.html#Developer">Developer</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Developer">class <strong>Developer</strong></a>(<a href="models.Player.html#Player">models.Player.Player</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Developer">Developer</a>(password:&nbsp;str)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+A&nbsp;class&nbsp;to&nbsp;represent&nbsp;a&nbsp;developer.<br>
+&nbsp;<br>
+Attributes:<br>
+-&nbsp;Players:&nbsp;a&nbsp;list&nbsp;of&nbsp;<a href="models.Player.html#Player">Player</a>&nbsp;instances<br>
+&nbsp;<br>
+Methods:<br>
+-&nbsp;__init__:&nbsp;initializes&nbsp;the&nbsp;<a href="#Developer">Developer</a>&nbsp;instance<br>
+-&nbsp;_loadPlayers:&nbsp;private&nbsp;method&nbsp;to&nbsp;load&nbsp;player&nbsp;instances&nbsp;from&nbsp;disk<br>
+-&nbsp;jumptoScreen:&nbsp;public&nbsp;method&nbsp;to&nbsp;skip&nbsp;levels<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.Developer.html#Developer">Developer</a></dd>
+<dd><a href="models.Player.html#Player">models.Player.Player</a></dd>
+<dd><a href="models.User.html#User">models.User.User</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Developer-__init__"><strong>__init__</strong></a>(self, password: str) -&gt; None</dt><dd><span class="code">Initializes&nbsp;the&nbsp;<a href="#Developer">Developer</a>&nbsp;instance.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;password:&nbsp;the&nbsp;password&nbsp;for&nbsp;the&nbsp;developer&nbsp;account</span></dd></dl>
+
+<dl><dt><a name="Developer-jumptoScreen"><strong>jumptoScreen</strong></a>(self, newLevel: int) -&gt; None</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;skip&nbsp;levels.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;newLevel:&nbsp;the&nbsp;level&nbsp;to&nbsp;jump&nbsp;to<br>
+&nbsp;<br>
+Raises:<br>
+-&nbsp;IndexError:&nbsp;if&nbsp;the&nbsp;specified&nbsp;level&nbsp;is&nbsp;out&nbsp;of&nbsp;bounds</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>Players</strong> = []</dl>
+
+<dl><dt><strong>__annotations__</strong> = {'Players': typing.List[models.Player.Player]}</dl>
+
+<hr>
+Methods inherited from <a href="models.Player.html#Player">models.Player.Player</a>:<br>
+<dl><dt><a name="Developer-createPlayer"><strong>createPlayer</strong></a>(self, username: str, password: str, charisma: int, intel: int, attraction: int) -&gt; None</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;player&nbsp;account.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;username:&nbsp;the&nbsp;username&nbsp;of&nbsp;the&nbsp;new&nbsp;player<br>
+-&nbsp;password:&nbsp;the&nbsp;password&nbsp;of&nbsp;the&nbsp;new&nbsp;player<br>
+-&nbsp;charisma:&nbsp;the&nbsp;charisma&nbsp;stat&nbsp;of&nbsp;the&nbsp;new&nbsp;player<br>
+-&nbsp;intel:&nbsp;the&nbsp;intelligence&nbsp;stat&nbsp;of&nbsp;the&nbsp;new&nbsp;player<br>
+-&nbsp;attraction:&nbsp;the&nbsp;attraction&nbsp;stat&nbsp;of&nbsp;the&nbsp;new&nbsp;player<br>
+&nbsp;<br>
+Raises:<br>
+-&nbsp;IllegalStats:&nbsp;if&nbsp;the&nbsp;sum&nbsp;of&nbsp;charisma,&nbsp;intelligence,&nbsp;and&nbsp;attraction&nbsp;is&nbsp;greater&nbsp;than&nbsp;MAX_SCORE</span></dd></dl>
+
+<dl><dt><a name="Developer-getFinalScore"><strong>getFinalScore</strong></a>(self) -&gt; int</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;calculate&nbsp;the&nbsp;final&nbsp;score&nbsp;of&nbsp;the&nbsp;player.<br>
+&nbsp;<br>
+Returns:<br>
+-&nbsp;int:&nbsp;the&nbsp;final&nbsp;score&nbsp;of&nbsp;the&nbsp;player</span></dd></dl>
+
+<dl><dt><a name="Developer-jumpToScreen"><strong>jumpToScreen</strong></a>(self, newLevel: int) -&gt; int</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;skip&nbsp;levels.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;newLevel:&nbsp;the&nbsp;level&nbsp;to&nbsp;jump&nbsp;to<br>
+&nbsp;<br>
+Raises:<br>
+-&nbsp;IndexError:&nbsp;if&nbsp;the&nbsp;specified&nbsp;level&nbsp;is&nbsp;out&nbsp;of&nbsp;bounds</span></dd></dl>
+
+<dl><dt><a name="Developer-loadPlayer"><strong>loadPlayer</strong></a>(self, username: str) -&gt; None</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;load&nbsp;an&nbsp;existing&nbsp;player&nbsp;account.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;username:&nbsp;the&nbsp;username&nbsp;of&nbsp;the&nbsp;player&nbsp;to&nbsp;load<br>
+&nbsp;<br>
+Raises:<br>
+-&nbsp;UserNotFound:&nbsp;if&nbsp;the&nbsp;player&nbsp;does&nbsp;not&nbsp;exist</span></dd></dl>
+
+<dl><dt><a name="Developer-saveProgress"><strong>saveProgress</strong></a>(self) -&gt; None</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;save&nbsp;player&nbsp;progress.</span></dd></dl>
+
+<dl><dt><a name="Developer-updateStats"><strong>updateStats</strong></a>(self, character: str, newAttractionScore: int) -&gt; int</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;update&nbsp;player&nbsp;stats&nbsp;after&nbsp;an&nbsp;interaction.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;character:&nbsp;the&nbsp;character&nbsp;associated&nbsp;with&nbsp;the&nbsp;interaction<br>
+-&nbsp;newAttractionScore:&nbsp;the&nbsp;new&nbsp;attraction&nbsp;score&nbsp;obtained&nbsp;from&nbsp;the&nbsp;interaction<br>
+&nbsp;<br>
+Returns:<br>
+-&nbsp;int:&nbsp;the&nbsp;updated&nbsp;attraction&nbsp;score&nbsp;for&nbsp;the&nbsp;character</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="models.Player.html#Player">models.Player.Player</a>:<br>
+<dl><dt><strong>attraction</strong></dt>
+</dl>
+<dl><dt><strong>attractionScore</strong></dt>
+</dl>
+<dl><dt><strong>charisma</strong></dt>
+</dl>
+<dl><dt><strong>intelligence</strong></dt>
+</dl>
+<dl><dt><strong>level</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="models.User.html#User">models.User.User</a>:<br>
+<dl><dt><a name="Developer-createUser"><strong>createUser</strong></a>(self, username, password) -&gt; None</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;user&nbsp;account.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;username:&nbsp;the&nbsp;username&nbsp;of&nbsp;the&nbsp;new&nbsp;user<br>
+-&nbsp;password:&nbsp;the&nbsp;password&nbsp;of&nbsp;the&nbsp;new&nbsp;user<br>
+&nbsp;<br>
+Raises:<br>
+-&nbsp;AdminLevelAccount:&nbsp;if&nbsp;the&nbsp;username&nbsp;is&nbsp;"developer"&nbsp;or&nbsp;"instructor"<br>
+-&nbsp;DuplicateUser:&nbsp;if&nbsp;the&nbsp;username&nbsp;already&nbsp;exists</span></dd></dl>
+
+<dl><dt><a name="Developer-loadUser"><strong>loadUser</strong></a>(self, username: str) -&gt; None</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;load&nbsp;an&nbsp;existing&nbsp;user.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;username:&nbsp;the&nbsp;username&nbsp;of&nbsp;the&nbsp;user&nbsp;to&nbsp;load<br>
+&nbsp;<br>
+Raises:<br>
+-&nbsp;UserNotFound:&nbsp;if&nbsp;the&nbsp;user&nbsp;does&nbsp;not&nbsp;exist</span></dd></dl>
+
+<dl><dt><a name="Developer-login"><strong>login</strong></a>(self, username: str, password: str) -&gt; None</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;log&nbsp;in&nbsp;a&nbsp;user.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;username:&nbsp;the&nbsp;username&nbsp;of&nbsp;the&nbsp;user&nbsp;to&nbsp;log&nbsp;in<br>
+-&nbsp;password:&nbsp;the&nbsp;password&nbsp;of&nbsp;the&nbsp;user&nbsp;to&nbsp;log&nbsp;in<br>
+&nbsp;<br>
+Raises:<br>
+-&nbsp;IncorrectPassword:&nbsp;if&nbsp;the&nbsp;provided&nbsp;password&nbsp;is&nbsp;incorrect</span></dd></dl>
+
+<dl><dt><a name="Developer-logout"><strong>logout</strong></a>(self) -&gt; None</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;log&nbsp;out&nbsp;a&nbsp;user.</span></dd></dl>
+
+<dl><dt><a name="Developer-userExists"><strong>userExists</strong></a>(self, username: str) -&gt; bool</dt><dd><span class="code">Public&nbsp;method&nbsp;to&nbsp;check&nbsp;if&nbsp;a&nbsp;user&nbsp;exists.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;username:&nbsp;the&nbsp;username&nbsp;to&nbsp;check<br>
+&nbsp;<br>
+Returns:<br>
+-&nbsp;bool:&nbsp;True&nbsp;if&nbsp;the&nbsp;user&nbsp;exists,&nbsp;False&nbsp;otherwise</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="models.User.html#User">models.User.User</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="models.User.html#User">models.User.User</a>:<br>
+<dl><dt><strong>LoggedInUser</strong> = None</dl>
+
+<dl><dt><strong>Users</strong> = []</dl>
+
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>List</strong> = typing.List</td></tr></table>
+</body></html>

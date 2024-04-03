@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module view.screens.NewGame</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="view.html" class="white">view</a>.<a href="view.screens.html" class="white">screens</a>.NewGame</strong></td>
+<td class="extra"><a href="../base.html">index</a><br><a href="file:c%3A%5Cusers%5Clecia%5Cgroup29%5Cview%5Cscreens%5Cnewgame.py">c:\users\lecia\group29\view\screens\newgame.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="pygame.html">pygame</a><br>
+</td><td class="multicolumn"><a href="sys.html">sys</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="view.screens.NewGame.html#NewGameScreen">NewGameScreen</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="NewGameScreen">class <strong>NewGameScreen</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#NewGameScreen">NewGameScreen</a>(currPlayer:&nbsp;models.Player.Player)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+Class&nbsp;representing&nbsp;the&nbsp;screen&nbsp;for&nbsp;creating&nbsp;a&nbsp;new&nbsp;game.<br>
+&nbsp;<br>
+Attributes:<br>
+:currPlayer:&nbsp;Player&nbsp;<a href="builtins.html#object">object</a>&nbsp;representing&nbsp;the&nbsp;current&nbsp;player.<br>
+:intelligence:&nbsp;Integer&nbsp;representing&nbsp;the&nbsp;intelligence&nbsp;stat.<br>
+:charisma:&nbsp;Integer&nbsp;representing&nbsp;the&nbsp;charisma&nbsp;stat.<br>
+:attractiveness:&nbsp;Integer&nbsp;representing&nbsp;the&nbsp;attractiveness&nbsp;stat.<br>
+:continue_button:&nbsp;Button&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;continuing&nbsp;the&nbsp;game.<br>
+:intelligence_slider:&nbsp;Slider&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;adjusting&nbsp;intelligence&nbsp;stat.<br>
+:charisma_slider:&nbsp;Slider&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;adjusting&nbsp;charisma&nbsp;stat.<br>
+:attractiveness_slider:&nbsp;Slider&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;adjusting&nbsp;attractiveness&nbsp;stat.<br>
+:error_message:&nbsp;String&nbsp;containing&nbsp;error&nbsp;message,&nbsp;if&nbsp;any.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="NewGameScreen-__init__"><strong>__init__</strong></a>(self, currPlayer: models.Player.Player) -&gt; None</dt><dd><span class="code">Initialize&nbsp;a&nbsp;new&nbsp;game&nbsp;screen.<br>
+&nbsp;<br>
+Parameters:<br>
+:currPlayer:&nbsp;Player&nbsp;<a href="builtins.html#object">object</a>&nbsp;representing&nbsp;the&nbsp;current&nbsp;player.</span></dd></dl>
+
+<dl><dt><a name="NewGameScreen-draw_newgame_screen"><strong>draw_newgame_screen</strong></a>(self, screen: pygame.surface.Surface) -&gt; None</dt><dd><span class="code">Draw&nbsp;the&nbsp;new&nbsp;game&nbsp;screen.<br>
+&nbsp;<br>
+Parameters:<br>
+:screen:&nbsp;Pygame&nbsp;surface&nbsp;<a href="builtins.html#object">object</a>&nbsp;representing&nbsp;the&nbsp;game&nbsp;screen.</span></dd></dl>
+
+<dl><dt><a name="NewGameScreen-draw_text"><strong>draw_text</strong></a>(self, text: str, font: pygame.font.Font, text_col: tuple, x: float, y: float, screen: pygame.surface.Surface) -&gt; None</dt><dd><span class="code">Draw&nbsp;text&nbsp;on&nbsp;the&nbsp;screen.<br>
+&nbsp;<br>
+Parameters:<br>
+:text:&nbsp;String&nbsp;representing&nbsp;the&nbsp;text&nbsp;to&nbsp;be&nbsp;drawn.<br>
+:font:&nbsp;Pygame&nbsp;font&nbsp;<a href="builtins.html#object">object</a>&nbsp;representing&nbsp;the&nbsp;font&nbsp;of&nbsp;the&nbsp;text.<br>
+:text_col:&nbsp;Tuple&nbsp;representing&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;text.<br>
+:x:&nbsp;Float&nbsp;representing&nbsp;the&nbsp;x-coordinate&nbsp;of&nbsp;the&nbsp;text.<br>
+:y:&nbsp;Float&nbsp;representing&nbsp;the&nbsp;y-coordinate&nbsp;of&nbsp;the&nbsp;text.<br>
+:screen:&nbsp;Pygame&nbsp;surface&nbsp;<a href="builtins.html#object">object</a>&nbsp;representing&nbsp;the&nbsp;game&nbsp;screen.</span></dd></dl>
+
+<dl><dt><a name="NewGameScreen-event_handler"><strong>event_handler</strong></a>(self, screen: pygame.surface.Surface, username: str, password: str) -&gt; str</dt><dd><span class="code">Handle&nbsp;events&nbsp;on&nbsp;the&nbsp;new&nbsp;game&nbsp;screen.<br>
+&nbsp;<br>
+Parameters:<br>
+:screen:&nbsp;Pygame&nbsp;surface&nbsp;<a href="builtins.html#object">object</a>&nbsp;representing&nbsp;the&nbsp;game&nbsp;screen.<br>
+:username:&nbsp;String&nbsp;representing&nbsp;the&nbsp;username.<br>
+:password:&nbsp;String&nbsp;representing&nbsp;the&nbsp;password.<br>
+&nbsp;<br>
+Returns:<br>
+:str:&nbsp;Menu&nbsp;state&nbsp;after&nbsp;handling&nbsp;events.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>BLACK</strong> = (0, 0, 0)<br>
+<strong>DARK_GRAY</strong> = (132, 135, 140)<br>
+<strong>GRAY</strong> = (192, 192, 192)<br>
+<strong>GREEN</strong> = (0, 255, 0)<br>
+<strong>LIGHT_GRAY</strong> = (234, 234, 234)<br>
+<strong>PURPLE</strong> = (160, 32, 240)<br>
+<strong>RED</strong> = (255, 0, 0)<br>
+<strong>SCENE_TITLES</strong> = {1: 'SCENE 1: Talbot College', 2: 'SCENE 2: The UCC', 3: 'SCENE 3: Her Place', 4: 'SCENE 4: Date', 5: 'SCENE 5: UC Hill', 6: 'SCENE 6: Argument'}<br>
+<strong>WHITE</strong> = (255, 255, 255)<br>
+<strong>baby_font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>click_sfx</strong> = &lt;pygame.mixer.Sound object&gt;<br>
+<strong>font</strong> = &lt;pygame.font.Font object&gt;<br>
+<strong>infoObject</strong> = &lt;VideoInfo(hw = 0, wm = 1,video_mem = 0
+        ...         pixel_format = SDL_PIXELFORMAT_RGB888)
+&gt;<br>
+<strong>screen_height</strong> = 864<br>
+<strong>screen_width</strong> = 1536<br>
+<strong>title_font</strong> = &lt;pygame.font.Font object&gt;</td></tr></table>
+</body></html>
