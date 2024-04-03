@@ -1,0 +1,25 @@
+[
+    {
+    "username": "joe",
+    "level": 1,
+    "charisma": 0,
+    "intel": 0,
+    "attraction": 0,
+    "attractionScore": {
+        "Kelly": 0
+    },
+    "finalScore": 0
+    },
+    {
+        "username": "george",
+        "level": 1,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Kelly": 0
+        },
+        "finalScore": 0
+    }
+    
+]

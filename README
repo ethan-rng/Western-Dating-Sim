@@ -14,7 +14,7 @@
     Have you ever fumbled the perfect opportunity with the perfect someone?
     Are you shy and introverted and much rather talk to a computer rather than other people?
     ‎ 
-    Well, no need to worry because Western Dating Sim is here to rescue! 
+    Well, no need to worry because Western Dating Sim is here to the rescue! 
     Embark on this once-in-a-lifetime journey as you play through a fun interactive visual novel with a 
     romantic (but more importantly educational 😏) element with Serena, a shy CS student who enjoys 
     playing music and art. 
@@ -30,7 +30,7 @@
 </div>
 
 ## 🚀 Demo
-Check out our quick demo and walkthrough of the game [here](https://www.loom.com/share/a7a998bd5e0a4d9d81c0c54da400309b?sid=a80fa4bd-d44f-41a0-b4a9-40bb8e2044c6).
+Check out our quick demo and walkthrough of the game [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 
 ## ⚙️ Installation & Setup
 ### From Source Code
@@ -38,7 +38,7 @@ Check out our quick demo and walkthrough of the game [here](https://www.loom.com
 2. Run the game: ```$ python main.py```
 
 ### From Executable
-- Windows 🪟: Click on `DatingSim.exe`
+- Windows 🪟: Navigate to dist folder and click on `main.exe`
 
 ## 👨‍💻 Instructor and Developer Mode
 **Instructor Mode**:
@@ -55,6 +55,8 @@ Developer mode allows you to navigate between chapters by simply pressing 1-6 on
 ````
 ## 📝 Documentation
 Documentation can be found for all classes in the repository using pydoc.
+1. Download the entire documentation folder (found in the root directory)
+2. Open base.html in a browser to view the documentation.
 
 ## 🛠️ Third Party Tools
 - PyGame v2.5.2
