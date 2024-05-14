@@ -251,5 +251,16 @@
             "Serena": 5.5
         },
         "finalScore": 5.5
+    },
+    {
+        "username": "asdfasd",
+        "level": 2,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0
+        },
+        "finalScore": 0
     }
 ]
