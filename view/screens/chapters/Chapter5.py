@@ -86,8 +86,8 @@ class Chapter5(Chapter):
                             self.currPlayer.updateStats("Serena", 10)
                         else:
                             raise Exception("Choice Isn't Valid")
-                        
-                    if self.currPlayer.attraction >= 70:
+                    
+                    if self.currPlayer.attractionScore["Serena"] >= 50:
                         response_text = "Yes, I’d love that!"
                         self.currPlayer.saveProgress()
 

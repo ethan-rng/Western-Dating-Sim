@@ -64,5 +64,192 @@
             "Serena": 11.0
         },
         "finalScore": 11.0
+    },
+    {
+        "username": "jackie boiy",
+        "level": 3,
+        "charisma": 10,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": -7.5
+        },
+        "finalScore": -7.5
+    },
+    {
+        "username": "fdvbnm",
+        "level": 5,
+        "charisma": 5,
+        "intel": 3,
+        "attraction": 2,
+        "attractionScore": {
+            "Serena": 37.8
+        },
+        "finalScore": 37.8
+    },
+    {
+        "username": "fdvb",
+        "level": 5,
+        "charisma": 5,
+        "intel": 0,
+        "attraction": 5,
+        "attractionScore": {
+            "Serena": 75.0
+        },
+        "finalScore": 75.0
+    },
+    {
+        "username": "fdv",
+        "level": 5,
+        "charisma": 5,
+        "intel": 5,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 75.0
+        },
+        "finalScore": 75.0
+    },
+    {
+        "username": "bob miller",
+        "level": 5,
+        "charisma": 5,
+        "intel": 5,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 78.0
+        },
+        "finalScore": 78.0
+    },
+    {
+        "username": "steph2",
+        "level": 3,
+        "charisma": 5,
+        "intel": 5,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 15.0
+        },
+        "finalScore": 15.0
+    },
+    {
+        "username": "",
+        "level": 5,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 28.0
+        },
+        "finalScore": 28.0
+    },
+    {
+        "username": "sadf",
+        "level": 5,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 58.3
+        },
+        "finalScore": 58.3
+    },
+    {
+        "username": "fff",
+        "level": 5,
+        "charisma": 10,
+        "intel": 0,
+        "attraction": 0,
+        "attractionScore": {
+            "Serena": 90.0
+        },
+        "finalScore": 90.0
+    },
+    {
+        "username": "Fiona",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 0.0
+        },
+        "finalScore": 0.0
+    },
+    {
+        "username": "penis",
+        "level": 3,
+        "charisma": 0,
+        "intel": 0,
+        "attraction": 10,
+        "attractionScore": {
+            "Serena": 10.0
+        },
+        "finalScore": 10.0
+    },
+    {
+        "username": "ethan",
+        "level": 5,
+        "charisma": 0,
+        "intel": 3,
+        "attraction": 7,
+        "attractionScore": {
+            "Serena": 34.5
+        },
+        "finalScore": 34.5
+    },
+    {
+        "username": "j1",
+        "level": 6,
+        "charisma": 3,
+        "intel": 3,
+        "attraction": 4,
+        "attractionScore": {
+            "Serena": 52.0
+        },
+        "finalScore": 52.0
+    },
+    {
+        "username": "dfdf",
+        "level": 6,
+        "charisma": 3,
+        "intel": 2,
+        "attraction": 5,
+        "attractionScore": {
+            "Serena": 62.5
+        },
+        "finalScore": 62.5
+    },
+    {
+        "username": "leo2",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "123",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 4,
+        "attractionScore": {
+            "Serena": 11.0
+        },
+        "finalScore": 11.0
+    },
+    {
+        "username": "fadsf",
+        "level": 3,
+        "charisma": 1,
+        "intel": 1,
+        "attraction": 1,
+        "attractionScore": {
+            "Serena": 5.5
+        },
+        "finalScore": 5.5
     }
 ]
