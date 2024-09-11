@@ -1,7 +1,0 @@
-
-{
-
-  "terminal.integrated.shellArgs.linux": ["-c", "source ./.venv/bin/activate"],
-    "terminal.integrated.shellArgs.osx": ["-c", "source ./.venv/bin/activate"],
-    "python.terminal.activateEnvironment": true,
-}
