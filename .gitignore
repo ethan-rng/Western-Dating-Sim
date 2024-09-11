@@ -2,6 +2,8 @@
 __pycache__
 .DS_Store
 .vscode
-
+.idea
+.vscode
+_internal
 test.py
 confluence.zip
