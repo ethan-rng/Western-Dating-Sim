@@ -1,10 +1,4 @@
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://i.imgur.com/XxWvE5d.png" alt="project-screenshot" width="18%" height="200/">
-  <img src="https://i.imgur.com/NO0zKxn.png" alt="project-screenshot" width="18%" height="200/">
-  <img src="https://i.imgur.com/VEfBYAJ.png" alt="project-screenshot" width="18%" height="200/">
-  <img src="https://i.imgur.com/qhhqzp5.png" alt="project-screenshot" width="18%" height="200/">
-  <img src="https://i.imgur.com/RDHJFo3.png" alt="project-screenshot" width="18%" height="200/">
-</div>
+
 <h1 align="center" id="title">Western Dating Simulator (GROUP 29) 🟪⬜</h1>
 
 <div style="display: flex; justify-content: space-between;">
